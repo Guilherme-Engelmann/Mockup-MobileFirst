@@ -40,3 +40,51 @@
     width: 100%;
     height: auto;
   }
+
+  .login h2 {
+    margin-bottom: 15px;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    color: white;
+  }
+
+  .senha {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    color: white;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin: 10px 0;
+  }
+  
+  .botao-login {
+    background-color: #2baa40;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  .register {
+    font-size: 0.85rem;
+  }
