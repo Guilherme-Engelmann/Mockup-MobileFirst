@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Trens</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .phone {
+      width: 375px;
+      height: 671px;
+      background-color: #ccc;
+      border: 10px solid #000;
+      border-radius: 40px;
+      position: relative;
+      background-image: url('https://via.placeholder.com/375x671/ccc/fff'); /* substitua pela imagem de fundo desejada */
+      background-size: cover;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 60px;
+    }
+
+    .app-item {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 10px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .app-item img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 5px;
+    }
+
+    .app-item span {
+      display: block;
+      font-size: 14px;
+    }
+
+    .top-icon {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="top-icon">
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Dashboard">
+        <span>dashboard</span>
+      </div>
+    </div>
+    <div class="app-grid">
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Velocidade">
+        <span>Velocidade</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Rotas">
+        <span>Rotas</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Meus dados">
+        <span>Meus dados</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Status dos trens">
+        <span>Status dos trens</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Chat">
+        <span>Chat</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Calendário">
+        <span>Calendário</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Manutenção">
+        <span>Monitoramento de manutenção</span>
+      </div>
+      <div class="app-item">
+        <img src="https://via.placeholder.com/40" alt="Alertas">
+        <span>Alertas e notificações</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
