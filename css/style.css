@@ -88,3 +88,77 @@
   .register {
     font-size: 0.85rem;
   }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #cfcfcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 360px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.mapa img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.linha, .velocidade {
+    text-align: center;
+}
+
+.linha img, .velocidade img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.cartao {
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nome {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nome span {
+    font-weight: normal;
+}
+
+.codigo-barra img {
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.codigo-barra p {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.grafico img {
+    width: 100%;
+    border-radius: 10px;
+}
