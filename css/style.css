@@ -216,7 +216,7 @@ body {
 
 .loading-progress {  
   height: 100%;  
-  background-color: #4caf50;  
+  background-color: #449246;  
   animation: loading 2s infinite;  
 }
 
