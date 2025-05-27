@@ -253,44 +253,61 @@ body {
   background-color: #e0e0e0;
 }
 
-body, html {
+
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
   height: 100%;
   font-family: Arial, sans-serif;
-  background: linear-gradient(#999, #ccc); /* Fundo cinza semelhante */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(#c1c1c1, #a0a0a0);
 }
 
-.logo {
-  width: 200px;
-  margin-bottom: 20px;
+.trem {
+  width: 150px;
+  margin-bottom: 30px;
 }
 
 .loading-text {
+  font-size: 18px;
+  margin-bottom: 15px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #000;
 }
 
 .progress-bar {
-  width: 200px;
+  width: 70%;
   height: 20px;
-  border: 2px solid #444;
+  background-color: #ddd;
   border-radius: 10px;
-  background-color: #eee;
-  margin: 0 auto;
   overflow: hidden;
 }
 
 .progress {
-  width: 50%; /* Altere para simular progresso */
   height: 100%;
-  background-color: #aaa;
-  border-radius: 10px 0 0 10px;
+  width: 0%;
+  background-color: #000;
+  border-radius: 10px;
+  animation: load 3s linear forwards;
+}
+
+@keyframes load {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
