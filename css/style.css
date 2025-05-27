@@ -252,3 +252,45 @@ body {
 .icon:hover {
   background-color: #e0e0e0;
 }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#999, #ccc); /* Fundo cinza semelhante */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 20px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  background-color: #eee;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.progress {
+  width: 50%; /* Altere para simular progresso */
+  height: 100%;
+  background-color: #aaa;
+  border-radius: 10px 0 0 10px;
+}
