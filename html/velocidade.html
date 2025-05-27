@@ -1,23 +1,55 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velocidade</title>
-    <link rel="stylesheet" href="../css/style.css">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velocidade dos Trens</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>Aba de velocidade dos trens</h1>
-   <img src="../imagens/velocimetro.jpg" width="500"> 
-<div class="velo1">
-   <div class="fundotelavelocidade">
-    
-   <div><h1>Linhas</h1>
-    <img src="../imagens/trem.jpg" width="500">
-    <h1>31</h1></div> 
-   <div> <img src="../imagens/velocimetro.jpg" width="500"> </div>
-   </div>
-</div>
+  <header class="top-bar">
+    <span class="back-arrow">←</span>
+    <h1>Velocidade</h1>
+  </header>
+
+  <main class="container">
+    <!-- Cartão de linha -->
+    <div class="card">
+      <div class="info">
+        <p><strong>Linhas</strong></p>
+        <img src="train-icon.png" alt="Trem" class="icon">
+        <p class="linha">031</p>
+      </div>
+      <div class="info">
+        <p><strong>Velocidade</strong></p>
+        <img src="speedometer-icon.png" alt="Velocímetro" class="icon">
+        <p class="velocidade">60</p>
+      </div>
+      <div class="info">
+        <p><strong>Km/h</strong></p>
+        <p class="velocidade">✓</p>
+      </div>
+    </div>
+
+    <!-- Repita para outras linhas -->
+    <div class="card">
+      <div class="info">
+        <p><strong>Linhas</strong></p>
+        <img src="train-icon.png" alt="Trem" class="icon">
+        <p class="linha">057</p>
+      </div>
+      <div class="info">
+        <p><strong>Velocidade</strong></p>
+        <img src="speedometer-icon.png" alt="Velocímetro" class="icon">
+        <p class="velocidade">75</p>
+      </div>
+      <div class="info">
+        <p><strong>Km/h</strong></p>
+        <p class="velocidade">✓</p>
+      </div>
+    </div>
+
+    <!-- Adicione mais blocos conforme necessário -->
+  </main>
 </body>
 </html>
