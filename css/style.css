@@ -311,3 +311,25 @@ body, html {
     width: 100%;
   }
 }
+
+
+.tracktrain-title {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 20px 0 10px 0;
+  background: linear-gradient(90deg, #005bea 30%, #00c6fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.track {
+  letter-spacing: 3px;
+}
+
+.train {
+  color: #ffb300;
+  text-shadow: 1px 1px 8px #ffb30055;
+}
