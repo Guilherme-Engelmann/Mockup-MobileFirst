@@ -418,3 +418,83 @@ body, html {
       background: #1565c0;
     }
   </style>
+  
+.speed-card {
+  background: #222;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.train-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.line-number {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.speedometer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speedometer-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.speed-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.speed-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
