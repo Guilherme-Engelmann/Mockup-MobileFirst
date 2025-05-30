@@ -1,86 +1,111 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status dos trens</title>
-    <link rel="stylesheet" href="../css/style.css"
-        width: 300px;
-        height: 100px;
-        background-color: black;
-        color: aliceblue;
-        
-        >
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Status dos Trens</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Status dos trens</h2>
+  <div class="device-frame">
+    <div class="notch">
+      <div class="speaker"></div>
+      <div class="camera"></div>
+    </div>
+
+    <div class="phone-content">
+      <div class="header">
+        <i class="fas fa-arrow-left back-icon"></i>
+        <div class="icon-title">
+          <i class="fas fa-clipboard-list header-icon"></i>
+          <h2>Status dos trens</h2>
+        </div>
+      </div>
+
+      <div class="train-list">
+      
+        <div class="train-card">
+          <div class="train-icon">
+            <i class="fas fa-subway"></i>
+            <div class="train-id">031</div>
+          </div>
+          <div class="train-info">
+            <p><strong>Modelo:</strong></p>
+            <p><strong>Carga:</strong></p>
+            <p><strong>Horário de saída e chegada</strong></p>
+            <p><strong>Condutor</strong></p>
+
+            <div class="desempenho">
+              <span class="label">Desempenho</span>
+              <div class="options">
+                <label><input type="checkbox" checked> Ruim</label>
+                <label><input type="checkbox"> Moderado</label>
+                <label><input type="checkbox"> Bom</label>
+              </div>
+            </div>
+
+            <div class="battery">
+              <i class="fas fa-bolt"></i> 60%
+            </div>
+          </div>
         </div>
 
-        <div class="TRAIN-CARD">
-            <DIV>
-                <img src="imagens/trem-amarelo.webp" alt="">
-                <h2>031</h2>
-            </DIV>
-        </div>
-        <div class="train-info">
-            <strong>Modelo:</strong>
-            <strong>Carga:</strong>
-            <strong>Horário de saída e chegada:</strong>
-            <strong>Condutor:</strong>
-        </div>
-        <div class="performance">
-            <div class="desempenho-btn">Desempenho</div>
-            <div class="checkbox-group">
-              <label><input type="checkbox" checked> Ruim</label>
-              <label><input type="checkbox"> Moderado</label>
-              <label><input type="checkbox"> Bom</label>
-        </div>
-    </div>
-    <div class="battery">⚡ 60%</div>
+        
+        <div class="train-card">
+          <div class="train-icon">
+            <i class="fas fa-subway"></i>
+            <div class="train-id">057</div>
+          </div>
+          <div class="train-info">
+            <p><strong>Modelo:</strong></p>
+            <p><strong>Carga:</strong></p>
+            <p><strong>Horário de saída da estação x</strong></p>
+            <p><strong>Condutor</strong></p>
 
-    <div class="TRAIN-CARD">
-        <DIV>
-            <img src="imagens/a2adc47d744894be725a4d3993099ec0-sinal-de-icone-de-trem.webp" alt="">
-            <h2>057</h2>
-        </DIV>
-    </div>
-    <div class="train-info">
-        <strong>Modelo:</strong>
-        <strong>Carga:</strong>
-        <strong>Horário de saída e chegada:</strong>
-        <strong>Condutor:</strong>
-    </div>
-    <div class="performance">
-        <div class="desempenho-btn">Desempenho</div>
-        <div class="checkbox-group">
-          <label><input type="checkbox" checked> Ruim</label>
-          <label><input type="checkbox"> Moderado</label>
-          <label><input type="checkbox"> Bom</label>
-    </div>
-</div>
-<div class="battery">⚡ 90%</div>
+            <div class="desempenho">
+              <span class="label">Desempenho</span>
+              <div class="options">
+                <label><input type="checkbox"> Ruim</label>
+                <label><input type="checkbox" checked> Moderado</label>
+                <label><input type="checkbox"> Bom</label>
+              </div>
+            </div>
 
-<div class="TRAIN-CARD">
-    <DIV>
-        <img src="imagens/a2adc47d744894be725a4d3993099ec0-sinal-de-icone-de-trem.webp" alt="">
-        <h2>341</h2>
-    </DIV>
-</div>
-<div class="train-info">
-    <strong>Modelo:</strong>
-    <strong>Carga:</strong>
-    <strong>Horário de saída e chegada:</strong>
-    <strong>Condutor:</strong>
-</div>
-<div class="performance">
-    <div class="desempenho-btn">Desempenho</div>
-    <div class="checkbox-group">
-      <label><input type="checkbox" checked> Ruim</label>
-      <label><input type="checkbox"> Moderado</label>
-      <label><input type="checkbox"> Bom</label>
-</div>
-</div>
-<div class="battery">⚡ 75%</div>
+            <div class="battery">
+              <i class="fas fa-bolt"></i> 90%
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="train-card">
+          <div class="train-icon">
+            <i class="fas fa-subway"></i>
+            <div class="train-id">341</div>
+          </div>
+          <div class="train-info">
+            <p><strong>Modelo:</strong></p>
+            <p><strong>Carga:</strong></p>
+            <p><strong>Horário de saída da estação x</strong></p>
+            <p><strong>Condutor</strong></p>
+
+            <div class="desempenho">
+              <span class="label active">Desempenho</span>
+              <div class="options">
+                <label><input type="checkbox"> Ruim</label>
+                <label><input type="checkbox"> Moderado</label>
+                <label><input type="checkbox" checked> Bom</label>
+              </div>
+            </div>
+
+            <div class="battery">
+              <i class="fas fa-bolt"></i> 75%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
