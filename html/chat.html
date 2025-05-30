@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackTrain Chat</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .chat-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #1e88e5;
+      color: #fff;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f9f9f9;
+    }
+    .message {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 1em;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    .message.sent {
+      align-self: flex-end;
+      background: #1e88e5;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .message.received {
+      align-self: flex-start;
+      background: #e3e3e3;
+      color: #222;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-input-area {
+      display: flex;
+      border-top: 1px solid #eee;
+      background: #fafafa;
+      padding: 10px;
+    }
+    .chat-input-area input {
+      flex: 1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 16px;
+      font-size: 1em;
+      outline: none;
+      background: #f1f1f1;
+      margin-right: 8px;
+    }
+    .chat-input-area button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .chat-input-area button:hover {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      Chat TrackTrain
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message received">Olá! Como posso ajudar você hoje?</div>
+      <!-- Mensagens aparecerão aqui -->
+    </div>
+    <form class="chat-input-area" id="chatForm" autocomplete="off">
+      <input type="text" id="chatInput" placeholder="Digite sua mensagem..." required />
+      <button type="submit">&#9658;</button>
+    </form>
+  </div>
+  <script>
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    chatForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (text) {
+        // Adiciona mensagem enviada
+        const sentMsg = document.createElement('div');
+        sentMsg.className = 'message sent';
+        sentMsg.textContent = text;
+        chatMessages.appendChild(sentMsg);
+
+        // Simula resposta automática
+        setTimeout(() => {
+          const receivedMsg = document.createElement('div');
+          receivedMsg.className = 'message received';
+          receivedMsg.textContent = 'Um atendente já vai te atender!';
+          chatMessages.appendChild(receivedMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 800);
+
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    });
+  </script>
+</body>
+</html>
