@@ -321,7 +321,7 @@ body, html {
   text-align: center;
   margin: 20px 0 10px 0;
   background: linear-gradient(90deg, #005bea 30%, #00c6fb 100%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -333,3 +333,171 @@ body, html {
   color: #ffb300;
   text-shadow: 1px 1px 8px #ffb30055;
 }
+
+
+
+
+    body {
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .chat-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #1e88e5;
+      color: #fff;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f9f9f9;
+    }
+    .message {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 1em;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    .message.sent {
+      align-self: flex-end;
+      background: #1e88e5;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .message.received {
+      align-self: flex-start;
+      background: #e3e3e3;
+      color: #222;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-input-area {
+      display: flex;
+      border-top: 1px solid #eee;
+      background: #fafafa;
+      padding: 10px;
+    }
+    .chat-input-area input {
+      flex: 1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 16px;
+      font-size: 1em;
+      outline: none;
+      background: #f1f1f1;
+      margin-right: 8px;
+    }
+    .chat-input-area button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition:  0.2s;
+    }
+    .chat-input-area button:hover {
+      background: #1565c0;
+    }
+  
+  
+.speed-card {
+  background: #222;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.train-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.line-number {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.speedometer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speedometer-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.speed-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.speed-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+

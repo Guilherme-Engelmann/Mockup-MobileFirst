@@ -7,49 +7,33 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top-bar">
-    <span class="back-arrow">←</span>
-    <h1>Velocidade</h1>
-  </header>
-
-  <main class="container">
-    <!-- Cartão de linha -->
-    <div class="card">
-      <div class="info">
-        <p><strong>Linhas</strong></p>
-        <img src="train-icon.png" alt="Trem" class="icon">
-        <p class="linha">031</p>
-      </div>
-      <div class="info">
-        <p><strong>Velocidade</strong></p>
-        <img src="speedometer-icon.png" alt="Velocímetro" class="icon">
-        <p class="velocidade">60</p>
-      </div>
-      <div class="info">
-        <p><strong>Km/h</strong></p>
-        <p class="velocidade">✓</p>
+ 
+<div class="speed-card">
+  <div class="card-header">
+    <span class="label">Linhas</span>
+    <span class="label">Velocidade</span>
+    <span class="label">Km/h</span>
+  </div>
+  <div class="card-content">
+    <div class="icon-section">
+      
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/train.png" alt="Trem" class="train-icon" />
+      <div class="line-number">031</div>
+    </div>
+    <div class="speedometer-section">
+     
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/speedometer.png" alt="Velocímetro" class="speedometer-icon" />
+    </div>
+    <div class="speed-section">
+      <div class="speed-value">60</div>
+      <div class="arrows">
+        <button class="arrow-btn">▲</button>
+        <button class="arrow-btn">▼</button>
       </div>
     </div>
-
-    <!-- Repita para outras linhas -->
-    <div class="card">
-      <div class="info">
-        <p><strong>Linhas</strong></p>
-        <img src="train-icon.png" alt="Trem" class="icon">
-        <p class="linha">057</p>
-      </div>
-      <div class="info">
-        <p><strong>Velocidade</strong></p>
-        <img src="speedometer-icon.png" alt="Velocímetro" class="icon">
-        <p class="velocidade">75</p>
-      </div>
-      <div class="info">
-        <p><strong>Km/h</strong></p>
-        <p class="velocidade">✓</p>
-      </div>
-    </div>
-
-    <!-- Adicione mais blocos conforme necessário -->
+  </div>
+</div>
+   
   </main>
 </body>
 </html>
