@@ -29,17 +29,17 @@
       e.preventDefault();
       const text = chatInput.value.trim();
       if (text) {
-        // Adiciona mensagem enviada
+  
         const sentMsg = document.createElement('div');
         sentMsg.className = 'message sent';
         sentMsg.textContent = text;
         chatMessages.appendChild(sentMsg);
 
-        // Simula resposta automática
+       
         setTimeout(() => {
           const receivedMsg = document.createElement('div');
           receivedMsg.className = 'message received';
-          receivedMsg.textContent = Um atendente já vai te atender!';
+          receivedMsg.textContent = "Um atendente já vai te atender";
           chatMessages.appendChild(receivedMsg);
           chatMessages.scrollTop = chatMessages.scrollHeight;
         }, 800);
