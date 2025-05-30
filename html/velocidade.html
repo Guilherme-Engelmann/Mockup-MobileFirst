@@ -4,24 +4,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velocidade dos Trens</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      background: #888;
+      font-family: Arial, sans-serif;
+    }
+    .card {
+      background: #222;
+      border-radius: 20px;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 20px auto;
+      width: 320px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    .card-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .icon-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .line-number {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .speedometer-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .speed-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .speed-value {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .arrows {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2px;
+    }
+    .arrow-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+  </style>
 </head>
-  <body>
-    <div class="linha">
-      <h1>Linhas</h1>
-<img src="../img/trem.png" alt="Trem" />
-<h1>031</h1>
-<img src="" alt="">
-<h1>Velocidade</h1>
-<h1>Km/H</h1>
-<button></button>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <span>Linhas</span>
+      <span>Velocidade</span>
+      <span>Km/h</span>
     </div>
+    <div class="card-content">
+      <div class="icon-section">
+        <!-- SVG do trem -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="10" y="8" width="28" height="24" rx="8" stroke="white" stroke-width="3" fill="none"/>
+          <rect x="16" y="14" width="16" height="10" rx="3" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="16" cy="36" r="3" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="32" cy="36" r="3" stroke="white" stroke-width="2" fill="none"/>
+          <line x1="16" y1="40" x2="12" y2="44" stroke="white" stroke-width="2"/>
+          <line x1="32" y1="40" x2="36" y2="44" stroke="white" stroke-width="2"/>
+        </svg>
+        <div class="line-number">031</div>
+      </div>
+      <div class="speedometer-section">
+        <!-- SVG do velocímetro -->
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="24" stroke="white" stroke-width="3" fill="none"/>
+          <path d="M30 30 L50 30" stroke="white" stroke-width="3" />
+          <path d="M30 30 L44 44" stroke="white" stroke-width="3" />
+          <path d="M30 30 L30 50" stroke="white" stroke-width="3" />
+        </svg>
+      </div>
+      <div class="speed-section">
+        <div class="speed-value" id="speed-1">60</div>
+        <div class="arrows">
+          <button class="arrow-btn" onclick="changeSpeed('speed-1', 1)">▲</button>
+          <button class="arrow-btn" onclick="changeSpeed('speed-1', -1)">▼</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Você pode duplicar o bloco .card para outras linhas, mudando o número e o id da velocidade -->
 
-
-
-
-
-
-
-  </body>
+  <script>
+    function changeSpeed(id, delta) {
+      const el = document.getElementById(id);
+      let value = parseInt(el.textContent, 10);
+      value = Math.max(0, value + delta);
+      el.textContent = value;
+    }
+  </script>
+</body>
 </html>
