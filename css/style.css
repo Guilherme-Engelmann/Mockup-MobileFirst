@@ -1210,3 +1210,56 @@ top-bar {
     .forgot-password-container a:hover {
       text-decoration: underline;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .signup-container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(235, 221, 221, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    .signup-container h2 {
+      margin-bottom: 20px;
+      color: #ececec;
+    }
+    .signup-container input[type="text"],
+    .signup-container input[type="email"],
+    .signup-container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .signup-container button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .signup-container button:hover {
+      background-color: #218838;
+    }
+    .signup-container a {
+      display: block;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .signup-container a:hover {
+      text-decoration: underline;
+    }
