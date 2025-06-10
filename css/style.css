@@ -739,7 +739,6 @@ top-bar {
     }
     
     .phone {
-      width: 375px;
       height: 720px;
       background-color: #ffffff;
       border: 8px solid #d7c7b6;
