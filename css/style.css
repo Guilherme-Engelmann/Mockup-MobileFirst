@@ -1264,3 +1264,8 @@ top-bar {
     .signup-container a:hover {
       text-decoration: underline;
     }
+
+  .error {
+    color: rgb(182, 7, 7);
+    font-size: 0.9em;
+}
