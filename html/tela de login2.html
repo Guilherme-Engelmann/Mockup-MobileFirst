@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tela de Login</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="index.js">
+    setTimeout(() => {
+      window.location.href = "dashboard3.html"; 
+    }, 3000);
+  </script>
+  
 </head>
 <body>
 
@@ -89,13 +95,22 @@
           valido = false;
         }
 
-        if (valido) {
-          // Tudo certo, redireciona para outra página!
-          alert("Login efetuado com sucesso!");
-          window.location.href = "dashboard3.html"; // 🔁 Troque para o caminho desejado
-        }
-      });
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailRegex.test(email)) {
+        document.getElementById("erroEmail").textContent = "E-mail Inválido.";
+        valido = false;
+    }
+
+    if(valido) {
+        alert("Formulário enviado com sucesso!");
+        formulario.reset();
+        window.location.href= "menu.html";
+    }
+
+
     });
+});
   </script>
 
 </body>
