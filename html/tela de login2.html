@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tela de Login</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <script src="index.js">
-    setTimeout(() => {
-      window.location.href = "dashboard3.html"; 
-    }, 3000);
-  </script>
-  
 </head>
 <body>
 
@@ -34,85 +28,75 @@
           <h2>Tela de login</h2>
         </div>
       </div>
-  
-    <div class="notch">
-      <div class="speaker"></div>
-      <div class="camera"></div>
-    </div>
-    <div class="login-box">
-      <div class="avatar">
-        <img src="../imagens/perfil.png" alt="Avatar">
+
+      <div class="login-box">
+        <div class="avatar">
+          <img src="../imagens/perfil.png" alt="Avatar">
+        </div>
+
+        <form class="login-form" id="meuFormulario">
+          <h2>Login</h2>
+
+          <div class="input-group">
+            <span class="icon">📧</span>
+            <input type="email" placeholder="Usuário ou e-mail" id="email" required />
+            <div class="error" id="erroEmail"></div>
+          </div>
+
+          <div class="input-group">
+            <input type="password" placeholder="Senha..." id="senha" required />
+            <div class="error" id="erroSenha"></div>
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
+            <a href="#">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="btn-login">Login</button>
+          <p class="register">Não tem uma conta ainda? <a href="#">Inscrever-se</a></p>
+        </form>
       </div>
-      <form class="login-form">
-        <h2>Login</h2>
-        <div class="input-group">
-          <span class="icon">📧</span>
-          <input type="email" placeholder="Usuário ou e-mail" required />
-          <div class="error" id="erroEmail"></div>
-        </div>
-        <div class="input-group">
-          <input type="password" placeholder="Senha..." required />
-          <div class="error" id="erroSenha"></div>
-        </div>
-        <div class="options">
-          <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-          <a href="#">Esqueceu a senha?</a>
-        </div>
-        <button type="submit" class="btn-login">Login</button>
-        <p class="register">Não tem uma conta ainda? <a href="#">Inscrever-se</a></p>
-      </form>
     </div>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
-    const formulario = document.getElementById("meuFormulario");
-    
-    formulario.addEventListener("submit", function(e){
-    e.preventDefault();
+    document.addEventListener("DOMContentLoaded", function() {
+      const formulario = document.getElementById("meuFormulario");
 
-    let valido = true;
+      formulario.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    // para limpar os erros
-    document.getElementById("erroNome").textContent = "";
-    document.getElementById("erroEmail").textContent = "";
-    document.getElementById("erroSenha").textContent = "";
+        let valido = true;
 
-    const nome = document .getElementById("nome").value.trim();
-    const email = document .getElementById("email").value.trim();
-    const senha = document .getElementById("senha").value.trim();
+        // Limpa mensagens de erro
+        document.getElementById("erroEmail").textContent = "";
+        document.getElementById("erroSenha").textContent = "";
 
-    console.log(nome);
-    console.log(email);
-    console.log(senha);
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value.trim();
 
-    if (nome.length < 3){
-        document.getElementById("erroNome").textContent = "O nome deve ter pelo menos 3 caracteres";
-        valido = false;
-    }
+        // Valida e-mail
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          document.getElementById("erroEmail").textContent = "E-mail inválido.";
+          valido = false;
+        }
 
-    if (senha.length < 6){
-        document.getElementById("erroSenha").textContent = "O senha deve ter pelo menos 6 caracteres";
-        valido = false;
-    }
+        // Valida senha
+        if (senha.length < 6) {
+          document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 6 caracteres.";
+          valido = false;
+        }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(!emailRegex.test(email)) {
-        document.getElementById("erroEmail").textContent = "E-mail Inválido.";
-        valido = false;
-    }
-
-    if(valido) {
-        alert("Formulário enviado com sucesso!");
-        formulario.reset();
-        window.location.href= "menu.html";
-    }
-
-
+        if (valido) {
+          // Tudo certo, redireciona para outra página!
+          alert("Login efetuado com sucesso!");
+          window.location.href = "dashboard3.html"; // 🔁 Troque para o caminho desejado
+        }
+      });
     });
-});
   </script>
+
 </body>
 </html>
-
