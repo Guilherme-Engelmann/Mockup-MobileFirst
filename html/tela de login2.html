@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tela de Login</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <script src="index.js">
-    setTimeout(() => {
-      window.location.href = "dashboard3.html"; 
-    }, 3000);
-  </script>
-  
 </head>
 <body>
 
@@ -56,11 +50,11 @@
 
           <div class="options">
             <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-            <a href="#">Esqueceu a senha?</a>
+            <a href="esqueceuasenha.html">Esqueceu a senha?</a> <!-- 🔁 Link funcionando -->
           </div>
 
           <button type="submit" class="btn-login">Login</button>
-          <p class="register">Não tem uma conta ainda? <a href="#">Inscrever-se</a></p>
+          <p class="register">Não tem uma conta ainda? <a href="inscreverse.html">Inscrever-se</a></p> <!-- 🔁 Link funcionando -->
         </form>
       </div>
     </div>
@@ -95,22 +89,13 @@
           valido = false;
         }
 
-    
-
-    if(!emailRegex.test(email)) {
-        document.getElementById("erroEmail").textContent = "E-mail Inválido.";
-        valido = false;
-    }
-
-    if(valido) {
-        alert("Formulário enviado com sucesso!");
-        formulario.reset();
-        window.location.href= "dashboard3.html";
-    }
-
-
+        // Se tudo ok, redireciona
+        if (valido) {
+          alert("Login efetuado com sucesso!");
+          window.location.href = "dashboard3.html"; // ✅ Alterar se necessário
+        }
+      });
     });
-});
   </script>
 
 </body>
