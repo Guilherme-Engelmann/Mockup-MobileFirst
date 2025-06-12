@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tela de Carregamento</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <script>
+    // Redireciona para login.html após 3 segundos
+    setTimeout(() => {
+      window.location.href = "login.html"; // 👈 Verifique se o nome do seu arquivo é login.html
+    }, 3000);
+  </script>
 </head>
 <body>
   <div class="device-frame">
@@ -13,7 +19,9 @@
       <div class="camera"></div>
       <span class="time">09:00</span>
       <div class="status-icons">
-
+        <span>📶</span>
+        <span>📡</span>
+        <span>🔋</span>
       </div>
     </div>
 
@@ -25,33 +33,18 @@
           <h2>Tela inicial</h2>
         </div>
       </div>
-  
-    <div class="notch">
-      <div class="speaker"></div>
-      <div class="camera"></div>
+
+      <div class="container">
+        <img src="../imagens/pngtrem.png" alt="Trem" class="trem" />
+        <div class="tracktrain-title">
+          <span class="track">TRACK</span><span class="train">TRAIN</span>
+        </div>
+        <p class="loading-text">Carregando...</p>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
     </div>
-<div class="container">
-  <img src="../imagens/pngtrem.png" alt="Trem" class="trem">
-  <div class="tracktrain-title">
-    <span class="track">TRACK</span><span class="train">TRAIN</span>
-  </div>
-  <p class="loading-text">Carregando...</p>
-  <div class="progress-bar">
-    <div class="progress"></div>
-  </div>
-</div>
   </div>
 </body>
 </html>
-
-<style>body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
-}
-.phone-content {
-  height: 100vh; 
-  overflow: hidden; 
-}
-</style>
