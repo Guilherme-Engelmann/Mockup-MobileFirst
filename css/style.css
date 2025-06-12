@@ -1269,3 +1269,25 @@ top-bar {
     color: rgb(182, 7, 7);
     font-size: 0.9em;
 }
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 10px;
+  padding: 10px;
+}
+
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.app-item img {
+  width: 50px; /* Tamanho menor */
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
