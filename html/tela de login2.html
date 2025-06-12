@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tela de Login</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="index.js"></script>
 </head>
 <body>
 
@@ -41,10 +42,12 @@
         <h2>Login</h2>
         <div class="input-group">
           <span class="icon">📧</span>
-          <input type="text" placeholder="Usuário ou e-mail" required />
+          <input type="email" placeholder="Usuário ou e-mail" required />
+          <div class="error" id="erroEmail"></div>
         </div>
         <div class="input-group">
           <input type="password" placeholder="Senha..." required />
+          <div class="error" id="erroSenha"></div>
         </div>
         <div class="options">
           <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
@@ -55,6 +58,56 @@
       </form>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+    const formulario = document.getElementById("meuFormulario");
+    
+    formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let valido = true;
+
+    // para limpar os erros
+    document.getElementById("erroNome").textContent = "";
+    document.getElementById("erroEmail").textContent = "";
+    document.getElementById("erroSenha").textContent = "";
+
+    const nome = document .getElementById("nome").value.trim();
+    const email = document .getElementById("email").value.trim();
+    const senha = document .getElementById("senha").value.trim();
+
+    console.log(nome);
+    console.log(email);
+    console.log(senha);
+
+    if (nome.length < 3){
+        document.getElementById("erroNome").textContent = "O nome deve ter pelo menos 3 caracteres";
+        valido = false;
+    }
+
+    if (senha.length < 6){
+        document.getElementById("erroSenha").textContent = "O senha deve ter pelo menos 6 caracteres";
+        valido = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailRegex.test(email)) {
+        document.getElementById("erroEmail").textContent = "E-mail Inválido.";
+        valido = false;
+    }
+
+    if(valido) {
+        alert("Formulário enviado com sucesso!");
+        formulario.reset();
+        window.location.href= "menu.html";
+    }
+
+
+    });
+});
+  </script>
 </body>
 </html>
 
