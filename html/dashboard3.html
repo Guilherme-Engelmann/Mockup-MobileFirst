@@ -39,7 +39,7 @@
 
     <div class="phone-content">
       <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Dashboard</h2>
@@ -86,6 +86,9 @@
   </div>
 
   <script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = "telaInicial.html";
+    });
     document.querySelectorAll('.app-item a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
