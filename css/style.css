@@ -1291,3 +1291,31 @@ top-bar {
   object-fit: contain;
   margin-bottom: 5px;
 }
+.header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .back-icon {
+      position: absolute;
+      left: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .icon-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-title h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
