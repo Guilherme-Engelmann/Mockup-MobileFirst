@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscrever-se</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="signup-container">
@@ -22,7 +23,6 @@
         </div>
       </div>
       
-  
       <div class="phone-content">
         <div class="header">
           <i class="fas fa-arrow-left back-icon"></i>
@@ -31,14 +31,26 @@
             <h2>Inscrever-se</h2>
           </div>
         </div>
-    <form action="/register" method="POST">
-      <input type="text" name="name" placeholder="Digite seu nome" required>
-      <input type="email" name="email" placeholder="Digite seu e-mail" required>
-      <input type="password" name="password" placeholder="Digite sua senha" required>
-      <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
-      <button type="submit">Criar Conta</button>
-    </form>
+
+        <form id="signup-form">
+          <input type="text" name="name" placeholder="Digite seu nome" required>
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
+          <input type="password" name="password" placeholder="Digite sua senha" required>
+          <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
+          <button type="submit">Criar Conta</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Aqui você pode fazer validações e simular envio
+      // Sucesso fictício, redireciona para a tela de login
+      window.location.href = 'tela de login2.html'; // Caminho da sua página de login
+    });
+  </script>
 </body>
 </html>
