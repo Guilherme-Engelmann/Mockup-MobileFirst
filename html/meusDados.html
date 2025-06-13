@@ -22,6 +22,7 @@
 
     <div class="phone-content">
       <div class="header">
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
         <i class="fas fa-arrow-left back-icon"></i>
         <div class="profile-section">
           <i class="fas fa-user-circle profile-icon"></i>
@@ -53,6 +54,11 @@
       </div>
     </div>
   </div>
+   <script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = "dashboard3.html";
+    });
+  </script>
 </body>
 </html>
 

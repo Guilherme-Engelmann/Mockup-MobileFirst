@@ -1319,3 +1319,26 @@ top-bar {
       margin: 0;
     }
 
+    .back-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+      color: #fdfdfd;
+      transition: transform 0.2s;
+    }
+
+    .back-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .alert-icon {
+      width: 24px;
+      margin-right: 10px;
+    }
+
+    header.header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
