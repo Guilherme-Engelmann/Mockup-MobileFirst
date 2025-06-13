@@ -3,40 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esqueceu a Senha</title>
+  <title>Inscrever-se</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="device-frame">
+  <div class="signup-container">
+    <h2>Inscrever-se</h2>
+    <div class="device-frame">
     
-    <div class="notch">
-      <div class="speaker"></div>
-      <div class="camera"></div>
-      <span class="time">09:00</span>
-      <div class="status-icons">
-        <span>📶</span>
-        <span>📡</span>
-        <span>🔋</span>
-      </div>
-    </div>
-    
-
-    <div class="phone-content">
-      <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
-        <div class="icon-title">
-          <i class="fas fa-clipboard-list header-icon"></i>
-          <h2>Esqueceu a senha</h2>
+      <div class="notch">
+        <div class="speaker"></div>
+        <div class="camera"></div>
+        <span class="time">09:00</span>
+        <div class="status-icons">
+          <span>📶</span>
+          <span>📡</span>
+          <span>🔋</span>
         </div>
       </div>
-  <div class="forgot-password-container">
-    <h2>Esqueceu a Senha?</h2>
-    <p>Digite seu e-mail para receber um link de redefinição de senha.</p>
-    <form action="/reset-password" method="POST">
-      <input type="email" name="email" placeholder="Digite seu e-mail" required>
-      <button type="submit">Enviar</button>
-    </form>
+      
+      <div class="phone-content">
+        <div class="header">
+          <i class="fas fa-arrow-left back-icon"></i>
+          <div class="icon-title">
+            <i class="fas fa-clipboard-list header-icon"></i>
+            <h2>Inscrever-se</h2>
+          </div>
+        </div>
+
+        <form id="signup-form">
+          <input type="text" name="name" placeholder="Digite seu nome" required>
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
+          <input type="password" name="password" placeholder="Digite sua senha" required>
+          <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
+          <button type="submit">Criar Conta</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      window.location.href = 'tela de login2.html'; 
+    });
+  </script>
 </body>
 </html>
