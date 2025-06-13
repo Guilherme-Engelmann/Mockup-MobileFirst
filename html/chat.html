@@ -5,6 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrackTrain Chat</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .back-icon {
+      position: absolute;
+      left: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .icon-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-title h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,35 +50,39 @@
         <span>🔋</span>
       </div>
     </div>
-    
 
     <div class="phone-content">
       <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
+        <i class="fas fa-arrow-left back-icon" onclick="history.back()"></i>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Chat com Atendente</h2>
         </div>
       </div>
-  
-    <div class="notch">
-      <div class="speaker"></div>
-      <div class="camera"></div>
+
+      <div class="chat-container">
+        <div class="chat-header">
+          Chat TrackTrain
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="message received">Olá! Como posso ajudar você hoje?</div>
+        </div>
+        <form class="chat-input-area" id="chatForm" autocomplete="off">
+          <input type="text" id="chatInput" placeholder="Digite sua mensagem..." required />
+          <button type="submit">&#9658;</button>
+        </form>
+      </div>
     </div>
-  <div class="chat-container">
-    <div class="chat-header">
-      Chat TrackTrain
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="message received">Olá! Como posso ajudar você hoje?</div>
-    
-    </div>
-    <form class="chat-input-area" id="chatForm" autocomplete="off">
-      <input type="text" id="chatInput" placeholder="Digite sua mensagem..." required />
-      <button type="submit">&#9658;</button>
-    </form>
   </div>
+
   <script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "dashboard3.html";
+      }
+    });
     const chatForm = document.getElementById('chatForm');
     const chatInput = document.getElementById('chatInput');
     const chatMessages = document.getElementById('chatMessages');
@@ -57,13 +91,11 @@
       e.preventDefault();
       const text = chatInput.value.trim();
       if (text) {
-  
         const sentMsg = document.createElement('div');
         sentMsg.className = 'message sent';
         sentMsg.textContent = text;
         chatMessages.appendChild(sentMsg);
 
-       
         setTimeout(() => {
           const receivedMsg = document.createElement('div');
           receivedMsg.className = 'message received';
@@ -77,6 +109,7 @@
       }
     });
   </script>
+
 </body>
 </html>
 
