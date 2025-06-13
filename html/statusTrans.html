@@ -6,6 +6,20 @@
   <title>Status dos Trens</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .back-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+      color: #f5f5f5;
+      transition: transform 0.2s;
+    }
+
+    .back-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
   <div class="device-frame">
@@ -22,7 +36,7 @@
 
     <div class="phone-content">
       <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Status dos trens</h2>
@@ -58,7 +72,6 @@
           </div>
         </div>
 
-        
         <div class="train-card">
           <div class="train-icon">
             <i class="fas fa-subway"></i>
@@ -85,7 +98,6 @@
           </div>
         </div>
 
-     
         <div class="train-card">
           <div class="train-icon">
             <i class="fas fa-subway"></i>
@@ -114,5 +126,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = "dashboard3.html";
+    });
+  </script>
 </body>
 </html>
