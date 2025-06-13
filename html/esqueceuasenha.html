@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Esqueceu a Senha</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="device-frame">
@@ -20,7 +21,6 @@
       </div>
     </div>
     
-
     <div class="phone-content">
       <div class="header">
         <i class="fas fa-arrow-left back-icon"></i>
@@ -29,14 +29,27 @@
           <h2>Esqueceu a senha</h2>
         </div>
       </div>
-  <div class="forgot-password-container">
-    <h2>Esqueceu a Senha?</h2>
-    <p>Digite seu e-mail para receber um link de redefinição de senha.</p>
-    <form action="/reset-password" method="POST">
-      <input type="email" name="email" placeholder="Digite seu e-mail" required>
-      <button type="submit">Enviar</button>
-    </form>
+
+      <div class="forgot-password-container">
+        <h2>Esqueceu a Senha?</h2>
+        <p>Digite seu e-mail para receber um link de redefinição de senha.</p>
+        <form id="reset-form">
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+  <script>
+    document.getElementById('reset-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Simular envio do e-mail de redefinição
+      // Após simulação, redirecionar para a tela de login
+      alert('Link de redefinição enviado!'); // mensagem de feedback
+      window.location.href = 'tela de login2.html'; // Redirecionar para a tela de login
+    });
+  </script>
 </body>
 </html>
