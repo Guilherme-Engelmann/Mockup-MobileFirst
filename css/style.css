@@ -1342,3 +1342,31 @@ top-bar {
       padding: 10px;
     }
 
+
+    .app-item a {
+      display: inline-block;
+      margin-top: 5px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .app-item a.clicked {
+      transform: scale(0.95);
+      opacity: 0.6;
+    }
+
+  
+    .back-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+      color: #f7f7f7;
+      transition: transform 0.2s;
+    }
+
+    .back-icon:hover {
+      transform: scale(1.1);
+    }
