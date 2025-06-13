@@ -50,11 +50,11 @@
 
           <div class="options">
             <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-            <a href="esqueceuasenha.html">Esqueceu a senha?</a> <!-- 🔁 Link funcionando -->
+            <a href="esqueceuasenha.html">Esqueceu a senha?</a> 
           </div>
 
           <button type="submit" class="btn-login">Login</button>
-          <p class="register">Não tem uma conta ainda? <a href="inscreverse.html">Inscrever-se</a></p> <!-- 🔁 Link funcionando -->
+          <p class="register">Não tem uma conta ainda? <a href="inscreverse.html">Inscrever-se</a></p> 
         </form>
       </div>
     </div>
@@ -69,30 +69,30 @@
 
         let valido = true;
 
-        // Limpa mensagens de erro
+       
         document.getElementById("erroEmail").textContent = "";
         document.getElementById("erroSenha").textContent = "";
 
         const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value.trim();
 
-        // Valida e-mail
+        
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
           document.getElementById("erroEmail").textContent = "E-mail inválido.";
           valido = false;
         }
 
-        // Valida senha
+       
         if (senha.length < 6) {
           document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 6 caracteres.";
           valido = false;
         }
 
-        // Se tudo ok, redireciona
+       
         if (valido) {
           alert("Login efetuado com sucesso!");
-          window.location.href = "dashboard3.html"; // ✅ Alterar se necessário
+          window.location.href = "dashboard3.html";
         }
       });
     });
