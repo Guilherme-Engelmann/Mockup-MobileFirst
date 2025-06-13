@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,24 +19,36 @@
         <span>🔋</span>
       </div>
     </div>
-    
 
     <div class="phone-content">
       <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
+        <!-- Botão de voltar -->
+        <button onclick="goBack()" class="back-icon" style="background: none; border: none; cursor: pointer;">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Esqueceu a senha</h2>
         </div>
       </div>
-  <div class="forgot-password-container">
-    <h2>Esqueceu a Senha?</h2>
-    <p>Digite seu e-mail para receber um link de redefinição de senha.</p>
-    <form action="/reset-password" method="POST">
-      <input type="email" name="email" placeholder="Digite seu e-mail" required>
-      <button type="submit">Enviar</button>
-    </form>
+
+      <div class="forgot-password-container">
+        <h2>Esqueceu a Senha?</h2>
+        <p>Digite seu e-mail para receber um link de redefinição de senha.</p>
+        <form action="/reset-password" method="POST">
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- Script de voltar -->
+  <script>
+    function goBack() {
+      window.history.back = "tela de login2.html";
+    }
+  </script>
 </body>
 </html>
