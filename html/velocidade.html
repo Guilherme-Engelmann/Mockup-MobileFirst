@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velocidade dos Trens</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
 </head>
 <body>
@@ -22,7 +23,7 @@
 
     <div class="phone-content">
       <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Velocidade</h2>
@@ -184,6 +185,9 @@
  
 
   <script>
+     document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = "dashboard3.html";
+    });
     function changeSpeed(id, delta) {
       const el = document.getElementById(id);
       let value = parseInt(el.textContent, 10);
