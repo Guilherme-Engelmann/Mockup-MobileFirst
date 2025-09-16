@@ -16,22 +16,21 @@ if ($conn->connect_error) {
 
 $message = "";
 
-// Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = trim($_POST['email']); // assuming email is used as login
-    $senha = trim($_POST['senha']);
+    $login = trim($_POST['username']); // matches form input name
+    $senha = trim($_POST['password']);
 
     // Validação simples
     if (empty($login) || empty($senha)) {
         $message = "Preencha todos os campos!";
-        header("Location: html/tela de login2.php?error=" . urlencode($message));
+        header("Location: html/index.php?error=" . urlencode($message));
         exit();
     } else {
-        // Busca usuário
-        $sql = "SELECT senha FROM usuarios WHERE login = ?";
+        // Busca usuário por nomeUsuario ou email
+        $sql = "SELECT Senha FROM Usuarios WHERE nomeUsuario = ? OR email = ?";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("s", $login);
+            $stmt->bind_param("ss", $login, $login);
             $stmt->execute();
             $stmt->store_result();
 
@@ -42,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (password_verify($senha, $senha_hash)) {
                     // Login sucesso
                     $_SESSION['loggedin'] = true;
-                    $_SESSION['login'] = $login;
+                    $_SESSION['username'] = $login;
                     header("Location: html/dashboard3.php");
                     exit();
                 } else {
@@ -58,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (!empty($message)) {
-            header("Location: html/tela de login2.php?error=" . urlencode($message));
+            header("Location: html/index.php?error=" . urlencode($message));
             exit();
         }
     }

@@ -19,22 +19,24 @@
       </div>
       <div class="login-form">
         <h2>Login</h2>
-        <div class="input-group">
-          <span class="icon">📧</span>
-          <input type="text" placeholder="Usuário ou e-mail" />
-        </div>
+        <form method="POST" action="login.php">
+          <div class="input-group">
+            <span class="icon">📧</span>
+            <input type="text" name="username" placeholder="Usuário ou e-mail" required />
+          </div>
 
-        <div class="input-group">
-          <span class="icon">🔒</span>
-          <input type="password" placeholder="Senha..." />
-        </div>
+          <div class="input-group">
+            <span class="icon">🔒</span>
+            <input type="password" name="password" placeholder="Senha..." required />
+          </div>
 
-        <div class="options">
-          <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-          <a href="esqueceuasenha.php">Esqueceu a senha?</a>
-        </div>
+          <div class="options">
+            <label><input type="checkbox" name="remember" checked /> Mantenha-me Conectado</label>
+            <a href="esqueceuasenha.php">Esqueceu a senha?</a>
+          </div>
 
-        <button class="btn-login">Login</button>
+          <button type="submit" class="btn-login">Login</button>
+        </form>
 
         <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p>
       </div>
