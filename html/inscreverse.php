@@ -15,13 +15,16 @@
 
       <div class="phone-content">
         <div class="header">
-          <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <a href="tela de login2.php"><i class="fas fa-arrow-left back-icon"></i></a>
           <div class="icon-title">
             <i class="fas fa-clipboard-list header-icon"></i>
             <h2>Inscrever-se</h2>
           </div>
         </div>
 
+        <?php if (isset($_GET['error'])): ?>
+          <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
         <form action="../create.php" method="POST" id="signup-form">
           <input type="text" name="login" placeholder="Digite seu login" required>
           <input type="password" name="senha" placeholder="Digite sua senha" required>
@@ -32,10 +35,6 @@
     </div>
   </div>
 
-  <script>
-        document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "tela de login2.html";
-    });
-  </script>
+
 </body>
 </html>

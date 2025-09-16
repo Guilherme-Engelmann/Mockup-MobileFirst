@@ -36,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ss", $login, $senha_hash);
 
             if ($stmt->execute()) {
-                $message = "Usuário criado com sucesso!";
+                header("Location: html/tela de login2.php?message=Usuário criado com sucesso!");
+                exit();
             } else {
                 $message = "Erro ao criar usuário: " . $stmt->error;
             }
@@ -49,27 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Criar Usuário</title>
-</head>
-<body>
-    <?php if (!empty($message)): ?>
-        <p><?php echo htmlspecialchars($message); ?></p>
-    <?php endif; ?>
-
-    <form method="POST" action="">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" required>
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
-        <br>
-        <button type="submit">Criar Usuário</button>
-    </form>
-</body>
-</html>
+// If there's an error message, redirect back with error
+if (!empty($message)) {
+    header("Location: html/inscreverse.php?error=" . urlencode($message));
+    exit();
+}

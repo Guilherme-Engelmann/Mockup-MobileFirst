@@ -3,4 +3,6 @@
 - [x] Criar login.php para autenticação
 - [x] Modificar html/tela de login2.php para submeter ao login.php
 - [x] Modificar html/inscreverse.php para submeter ao create.php
-- [ ] Testar funcionalidade
+- [x] Remover scripts JavaScript dos arquivos PHP
+- [x] Transformar create.php em script backend puro
+- [x] Testar funcionalidade

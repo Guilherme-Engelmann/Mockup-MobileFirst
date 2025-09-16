@@ -20,6 +20,9 @@
       </div>
 
       <div class="login-box">
+        <?php if (isset($_GET['message'])): ?>
+          <p style="color: green;"><?php echo htmlspecialchars($_GET['message']); ?></p>
+        <?php endif; ?>
         <div class="avatar">
           <img src="../imagens/perfil.png" alt="Avatar">
         </div>
@@ -50,36 +53,7 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const formulario = document.getElementById("meuFormulario");
 
-      formulario.addEventListener("submit", function(e) {
-        let valido = true;
-
-        document.getElementById("erroLogin").textContent = "";
-        document.getElementById("erroSenha").textContent = "";
-
-        const login = document.getElementById("login").value.trim();
-        const senha = document.getElementById("senha").value.trim();
-
-        if (login === "") {
-          document.getElementById("erroLogin").textContent = "Login é obrigatório.";
-          valido = false;
-        }
-
-        if (senha.length < 6) {
-          document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 6 caracteres.";
-          valido = false;
-        }
-
-        if (!valido) {
-          e.preventDefault();
-        }
-        // If valid, allow form to submit to login.php
-      });
-    });
-  </script>
 
 </body>
 </html>
