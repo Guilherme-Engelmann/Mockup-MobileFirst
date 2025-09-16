@@ -75,5 +75,34 @@ CREATE TABLE Segmentos (
     estacaoFim INT NOT NULL,
     comprimento REAL(10,2) NOT NULL,
     velocidadeMaxima INT NOT NULL
+    FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
+    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao);
+    FOREIGN KEY (estacaoInicio) REFERENCES Estacoes(idEstacao)
+    FOREIGN KEY (estacaoFim) REFERENCES Estacoes(idEstacao);
 );
 
+CREATE TABLE Sensores (
+    idSensor INT AUTO_INCREMENT PRIMARY KEY,
+    tipoSensor VARCHAR(50) NOT NULL,
+    localizacao VARCHAR(120) NOT NULL,
+    tipoLocalizacao VARCHAR(50) NOT NULL,
+    unidadeMedida VARCHAR(100) NOT NULL,
+    frequenciaLeitura INT NOT NULL
+);
+
+CREATE TABLE Leituras (
+    idLeitura INT AUTO_INCREMENT PRIMARY KEY,
+    idSensor INT NOT NULL,
+    valor INT NOT NULL,
+    tempoLeitura DATETIME NOT NULL,
+    statusAnomalia INT NOT NULL
+);
+
+CREATE TABLE Usuarios (
+    idUsuario INT NOT NULL,
+    nomeUsuario VARCHAR(120) NOT NULL UNIQUE,
+    tipoUsuario VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    Senha VARCHAR(30) NOT NULL,
+    ultimoLogin DATETIME NOT NULL
+)
