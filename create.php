@@ -1,5 +1,4 @@
 <?php
-<?php
 // Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
@@ -13,14 +12,16 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
+$message = "";
+
 // Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
+    $login = trim($_POST['login']);
+    $senha = trim($_POST['senha']);
 
     // Validação simples
     if (empty($login) || empty($senha)) {
-        echo "Preencha todos os campos!";
+        $message = "Preencha todos os campos!";
     } else {
         // Hash da senha
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -28,28 +29,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insere no banco
         $sql = "INSERT INTO usuarios (login, senha) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $login, $senha_hash);
+        if ($stmt) {
+            $stmt->bind_param("ss", $login, $senha_hash);
 
-        if ($stmt->execute()) {
-            echo "Usuário criado com sucesso!";
+            if ($stmt->execute()) {
+                $message = "Usuário criado com sucesso!";
+            } else {
+                $message = "Erro ao criar usuário: " . $stmt->error;
+            }
+
+            $stmt->close();
         } else {
-            echo "Erro ao criar usuário: " . $conn->error;
+            $message = "Erro na preparação da consulta: " . $conn->error;
         }
-
-        $stmt->close();
     }
 }
 
 $conn->close();
 ?>
 
-<!-- Formulário HTML -->
-<form method="POST">
-    <label>Login:</label>
-    <input type="text" name="login" required>
-    <br>
-    <label>Senha:</label>
-    <input type="password" name="senha" required>
-    <br>
-    <button type="submit">Criar Usuário</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Usuário</title>
+</head>
+<body>
+    <?php if (!empty($message)): ?>
+        <p><?php echo htmlspecialchars($message); ?></p>
+    <?php endif; ?>
+
+    <form method="POST" action="">
+        <label for="login">Login:</label>
+        <input type="text" id="login" name="login" required>
+        <br>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        <br>
+        <button type="submit">Criar Usuário</button>
+    </form>
+</body>
+</html>
