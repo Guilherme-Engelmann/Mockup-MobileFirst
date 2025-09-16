@@ -40,11 +40,11 @@
 
           <div class="options">
             <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-            <a href="esqueceuasenha.html">Esqueceu a senha?</a> 
+            <a href="esqueceuasenha.php">Esqueceu a senha?</a> 
           </div>
 
           <button type="submit" class="btn-login">Login</button>
-          <p class="register">Não tem uma conta ainda? <a href="inscreverse.html">Inscrever-se</a></p> 
+          <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p> 
         </form>
       </div>
     </div>
