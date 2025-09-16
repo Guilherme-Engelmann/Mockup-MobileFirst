@@ -4,7 +4,7 @@ session_start();
 // Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "tracktrain";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -35,7 +35,9 @@
             <a href="esqueceuasenha.php">Esqueceu a senha?</a>
           </div>
 
-        <button class="btn-login">Login</button>
+          <button type="submit" class="btn-login">Login</button>
+
+        </form>
 
         <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p>
       </div>

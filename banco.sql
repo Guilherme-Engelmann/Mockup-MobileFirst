@@ -1,20 +1,28 @@
 CREATE DATABASE tracktrain;
-
 USE tracktrain;
 
-
-CREATE TABLE Manutencoes (
-    idManutencoes INT AUTO_INCREMENT PRIMARY KEY,
-    idTrem INT NOT NULL,
-    tipoManutencoes VARCHAR(50) NOT NULL,
-    descricaoManutencoes VARCHAR(255) NOT NULL,
-    data_agendada DATE NOT NULL,
-    data_conclusao DATE NOT NULL,
-    statusManutencoes VARCHAR(50) NOT NULL,
-    custoManutencoes DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (idTrem) REFERENCES Trens(idTrem)
+-- 1) Estações
+CREATE TABLE Estacoes (
+    idEstacao INT AUTO_INCREMENT PRIMARY KEY,
+    nomeEstacao VARCHAR(120) NOT NULL UNIQUE,
+    latitude DECIMAL(10,2) NOT NULL,
+    longitude DECIMAL(10,2) NOT NULL,
+    tipoEstacao VARCHAR(50) NOT NULL
 );
 
+-- 2) Rotas
+CREATE TABLE Rotas (
+    idRota INT AUTO_INCREMENT PRIMARY KEY,
+    estacaoDestino INT NOT NULL,
+    estacaoOrigem INT NOT NULL,
+    nomeRota VARCHAR(120) NOT NULL UNIQUE,
+    distanciaTotal FLOAT(10,2) NOT NULL,
+    tempoMedioPercurso TIME NOT NULL,
+    FOREIGN KEY (estacaoDestino) REFERENCES Estacoes(idEstacao),
+    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao)
+);
+
+-- 3) Trens
 CREATE TABLE Trens (
     idTrem INT AUTO_INCREMENT PRIMARY KEY,
     numero_serie INT NOT NULL,
@@ -25,6 +33,7 @@ CREATE TABLE Trens (
     status_operacional  VARCHAR(50) NOT NULL
 );
 
+-- 4) Viagens
 CREATE TABLE Viagens (
     idViagem INT AUTO_INCREMENT PRIMARY KEY,
     idTrem INT NOT NULL,
@@ -38,6 +47,7 @@ CREATE TABLE Viagens (
     FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
 );
 
+-- 5) Alertas
 CREATE TABLE Alertas (
     idAlerta INT AUTO_INCREMENT PRIMARY KEY,
     idViagem INT NOT NULL,
@@ -49,25 +59,20 @@ CREATE TABLE Alertas (
     FOREIGN KEY (idViagem) REFERENCES Viagens(idViagem)
 );
 
-CREATE TABLE Rotas (
-    idRota INT AUTO_INCREMENT PRIMARY KEY,
-    estacaoDestino INT NOT NULL,
-    estacaoOrigem INT NOT NULL,
-    nomeRota VARCHAR(120) NOT NULL UNIQUE,
-    distanciaTotal FLOAT(10,2) NOT NULL,
-    tempoMedioPercurso TIME NOT NULL,
-    FOREIGN KEY (estacaoDestino) REFERENCES Estacoes(idEstacao),
-    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao)
+-- 6) Manutenções
+CREATE TABLE Manutencoes (
+    idManutencoes INT AUTO_INCREMENT PRIMARY KEY,
+    idTrem INT NOT NULL,
+    tipoManutencoes VARCHAR(50) NOT NULL,
+    descricaoManutencoes VARCHAR(255) NOT NULL,
+    data_agendada DATE NOT NULL,
+    data_conclusao DATE NOT NULL,
+    statusManutencoes VARCHAR(50) NOT NULL,
+    custoManutencoes DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (idTrem) REFERENCES Trens(idTrem)
 );
 
-CREATE TABLE Estacoes (
-    idEstacao INT AUTO_INCREMENT PRIMARY KEY,
-    nomeEstacao VARCHAR(120) NOT NULL UNIQUE,
-    latitude DECIMAL(10,2) NOT NULL,
-    longitude DECIMAL(10,2) NOT NULL,
-    tipoEstacao VARCHAR(50) NOT NULL
-);
-
+-- 7) Segmentos
 CREATE TABLE Segmentos (
     idSegmento INT AUTO_INCREMENT PRIMARY KEY,
     idRota INT NOT NULL,
@@ -80,6 +85,7 @@ CREATE TABLE Segmentos (
     FOREIGN KEY (estacaoFim) REFERENCES Estacoes(idEstacao)
 );
 
+-- 8) Sensores
 CREATE TABLE Sensores (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
     tipoSensor VARCHAR(50) NOT NULL,
@@ -89,6 +95,7 @@ CREATE TABLE Sensores (
     frequenciaLeitura INT NOT NULL
 );
 
+-- 9) Leituras
 CREATE TABLE Leituras (
     idLeitura INT AUTO_INCREMENT PRIMARY KEY,
     idSensor INT NOT NULL,
@@ -98,6 +105,7 @@ CREATE TABLE Leituras (
     FOREIGN KEY (idSensor) REFERENCES Sensores(idSensor)
 );
 
+-- 10) Usuários
 CREATE TABLE Usuarios (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nomeUsuario VARCHAR(120) NOT NULL UNIQUE,
@@ -106,4 +114,8 @@ CREATE TABLE Usuarios (
     Senha VARCHAR(255) NOT NULL,
     ultimoLogin DATETIME
 );
+
+-- Inserir um usuário
+INSERT INTO Usuarios (nomeUsuario, tipoUsuario, email, Senha, ultimoLogin)
+VALUES ('admin', 'Administrador', 'admin@tracktrain.com', '123456', NOW());
 

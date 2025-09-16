@@ -2,7 +2,7 @@
 // Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "tracktrain"; // Altere para o nome do seu banco
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,12 +16,13 @@ $message = "";
 
 // Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomeUsuario = trim($_POST['nomeUsuario']);
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
     $confirm_senha = trim($_POST['confirm_senha']);
 
     // Validação simples
-    if (empty($email) || empty($senha) || empty($confirm_senha)) {
+    if (empty($nomeUsuario) || empty($email) || empty($senha) || empty($confirm_senha)) {
         $message = "Preencha todos os campos!";
     } elseif ($senha !== $confirm_senha) {
         $message = "As senhas não coincidem!";
@@ -32,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
         // Insere no banco
-        $sql = "INSERT INTO usuarios (login, senha) VALUES (?, ?)";
+        $sql = "INSERT INTO Usuarios (nomeUsuario, email, Senha, tipoUsuario) VALUES (?, ?, ?, 'user')";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("ss", $email, $senha_hash);
+            $stmt->bind_param("sss", $nomeUsuario, $email, $senha_hash);
 
             if ($stmt->execute()) {
                 header("Location: html/tela de login2.php?message=Usuário criado com sucesso!");
