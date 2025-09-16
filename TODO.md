@@ -1,0 +1,7 @@
+- [x] Fix missing comma in Rotas table after tempomedidaPercuso
+- [x] Fix missing comma in Segmentos table after velocidadeMaxima
+- [x] Correct foreign key in Manutencoes from Trem to Trens
+- [x] Fix foreign keys in Segmentos to reference estacaoInicio and estacaoFim
+- [x] Add foreign key in Leituras to Sensores
+- [x] Standardize IdViagem to idViagem in Alertas
+- [x] Rename tempomedidaPercuso to tempoMedioPercurso in Rotas

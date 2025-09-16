@@ -15,34 +15,26 @@
 
       <div class="phone-content">
         <div class="header">
-          <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <a href="tela de login2.php"><i class="fas fa-arrow-left back-icon"></i></a>
           <div class="icon-title">
             <i class="fas fa-clipboard-list header-icon"></i>
             <h2>Inscrever-se</h2>
           </div>
         </div>
 
-        <form id="signup-form">
-          <input type="text" name="name" placeholder="Digite seu nome" required>
+        <?php if (isset($_GET['error'])): ?>
+          <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
+        <form action="../create.php" method="POST" id="signup-form">
           <input type="email" name="email" placeholder="Digite seu e-mail" required>
-          <input type="password" name="password" placeholder="Digite sua senha" required>
-          <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
+          <input type="password" name="senha" placeholder="Digite sua senha" required>
+          <input type="password" name="confirm_senha" placeholder="Confirme sua senha" required>
           <button type="submit">Criar Conta</button>
         </form>
       </div>
     </div>
   </div>
 
-  <script>
-        document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "tela de login2.html";
-    });
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault();
 
-    
-      window.location.href = 'tela de login2.html';
-    });
-  </script>
 </body>
 </html>

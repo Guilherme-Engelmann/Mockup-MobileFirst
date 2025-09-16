@@ -12,7 +12,7 @@ CREATE TABLE Manutencoes (
     data_conclusao DATE NOT NULL,
     statusManutencoes VARCHAR(50) NOT NULL,
     custoManutencoes DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (idTrem) REFERENCES Trem(idTrem)
+    FOREIGN KEY (idTrem) REFERENCES Trens(idTrem)
 );
 
 CREATE TABLE Trens (
@@ -40,7 +40,7 @@ CREATE TABLE Viagens (
 
 CREATE TABLE Alertas (
     idAlerta INT AUTO_INCREMENT PRIMARY KEY,
-    IdViagem INT NOT NULL,
+    idViagem INT NOT NULL,
     tipoAlerta VARCHAR(50) NOT NULL,
     severidadeAlerta VARCHAR(50) NOT NULL,
     descricaoAlerta VARCHAR(225) NOT NULL,
@@ -54,10 +54,10 @@ CREATE TABLE Rotas (
     estacaoDestino INT NOT NULL,
     estacaoOrigem INT NOT NULL,
     nomeRota VARCHAR(120) NOT NULL UNIQUE,
-    distanciatotal FLOAT(10,2) NOT NULL,
-    tempomedidaPercuso TIME NOT NULL
-    FOREIGN KEY (estacaoDestino) REFERENCES Estacoes(idEstacao)
-    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao);
+    distanciaTotal FLOAT(10,2) NOT NULL,
+    tempoMedioPercurso TIME NOT NULL,
+    FOREIGN KEY (estacaoDestino) REFERENCES Estacoes(idEstacao),
+    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao)
 );
 
 CREATE TABLE Estacoes (
@@ -73,12 +73,11 @@ CREATE TABLE Segmentos (
     idRota INT NOT NULL,
     estacaoInicio INT NOT NULL,
     estacaoFim INT NOT NULL,
-    comprimento REAL(10,2) NOT NULL,
-    velocidadeMaxima INT NOT NULL
-    FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
-    FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao);
-    FOREIGN KEY (estacaoInicio) REFERENCES Estacoes(idEstacao)
-    FOREIGN KEY (estacaoFim) REFERENCES Estacoes(idEstacao);
+    comprimento DECIMAL(10,2) NOT NULL,
+    velocidadeMaxima INT NOT NULL,
+    FOREIGN KEY (idRota) REFERENCES Rotas(idRota),
+    FOREIGN KEY (estacaoInicio) REFERENCES Estacoes(idEstacao),
+    FOREIGN KEY (estacaoFim) REFERENCES Estacoes(idEstacao)
 );
 
 CREATE TABLE Sensores (
@@ -95,14 +94,16 @@ CREATE TABLE Leituras (
     idSensor INT NOT NULL,
     valor INT NOT NULL,
     tempoLeitura DATETIME NOT NULL,
-    statusAnomalia INT NOT NULL
+    statusAnomalia INT NOT NULL,
+    FOREIGN KEY (idSensor) REFERENCES Sensores(idSensor)
 );
 
 CREATE TABLE Usuarios (
-    idUsuario INT NOT NULL,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nomeUsuario VARCHAR(120) NOT NULL UNIQUE,
     tipoUsuario VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    Senha VARCHAR(30) NOT NULL,
-    ultimoLogin DATETIME NOT NULL
+    email VARCHAR(100) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
+    ultimoLogin DATETIME
 );
+

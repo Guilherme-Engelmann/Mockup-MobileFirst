@@ -909,14 +909,26 @@ top-bar {
       border-radius: 50%;
     }
     
-    .phone-content {
-      width: 100%;
-      height: 100%;
-      background-color: #cccccc; 
-      padding-top: 40px;
-      position: relative;
-      z-index: 1;
-    }
+.phone-content {
+  width: 100%;
+  height: auto;
+  background-color: #1e88e5; /* Blue background */
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.login-box {
+  margin-top: 80px; /* To avoid overlap with fixed header */
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+  text-align: center;
+}
     
     .header {
       background-color: #222;
