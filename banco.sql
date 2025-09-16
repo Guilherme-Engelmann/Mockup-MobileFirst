@@ -99,10 +99,16 @@ CREATE TABLE Leituras (
 );
 
 CREATE TABLE Usuarios (
-    idUsuario INT NOT NULL,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nomeUsuario VARCHAR(120) NOT NULL UNIQUE,
     tipoUsuario VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    Senha VARCHAR(30) NOT NULL,
-    ultimoLogin DATETIME NOT NULL
-)
+    email VARCHAR(100) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
+    ultimoLogin DATETIME
+);
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);

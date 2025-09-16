@@ -1,44 +1,45 @@
 <?php
-// Conexão com o banco de dados
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "tracktrain"; // Altere para o nome do seu banco
+$dbname = "tracktrain";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
 $message = "";
 
-// Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = trim($_POST['login']);
     $senha = trim($_POST['senha']);
-    $confirm_senha = trim($_POST['confirm_senha']);
 
-    // Validação simples
-    if (empty($login) || empty($senha) || empty($confirm_senha)) {
+    if (empty($login) || empty($senha)) {
         $message = "Preencha todos os campos!";
-    } elseif ($senha !== $confirm_senha) {
-        $message = "As senhas não coincidem!";
     } else {
-        // Hash da senha
-        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-
-        // Insere no banco
-        $sql = "INSERT INTO usuarios (login, senha) VALUES (?, ?)";
+        $sql = "SELECT senha FROM usuarios WHERE login = ?";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("ss", $login, $senha_hash);
+            $stmt->bind_param("s", $login);
+            $stmt->execute();
+            $stmt->store_result();
 
-            if ($stmt->execute()) {
-                $message = "Usuário criado com sucesso!";
+            if ($stmt->num_rows == 1) {
+                $stmt->bind_result($senha_hash);
+                $stmt->fetch();
+
+                if (password_verify($senha, $senha_hash)) {
+                    $_SESSION['login'] = $login;
+                    header("Location: html/dashboard3.php");
+                    exit();
+                } else {
+                    $message = "Senha incorreta!";
+                }
             } else {
-                $message = "Erro ao criar usuário: " . $stmt->error;
+                $message = "Usuário não encontrado!";
             }
 
             $stmt->close();
@@ -55,7 +56,7 @@ $conn->close();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Criar Usuário</title>
+    <title>Login</title>
 </head>
 <body>
     <?php if (!empty($message)): ?>
@@ -69,7 +70,7 @@ $conn->close();
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
         <br>
-        <button type="submit">Criar Usuário</button>
+        <button type="submit">Entrar</button>
     </form>
 </body>
 </html>

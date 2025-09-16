@@ -22,11 +22,10 @@
           </div>
         </div>
 
-        <form id="signup-form">
-          <input type="text" name="name" placeholder="Digite seu nome" required>
-          <input type="email" name="email" placeholder="Digite seu e-mail" required>
-          <input type="password" name="password" placeholder="Digite sua senha" required>
-          <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
+        <form action="../create.php" method="POST" id="signup-form">
+          <input type="text" name="login" placeholder="Digite seu login" required>
+          <input type="password" name="senha" placeholder="Digite sua senha" required>
+          <input type="password" name="confirm_senha" placeholder="Confirme sua senha" required>
           <button type="submit">Criar Conta</button>
         </form>
       </div>
@@ -36,12 +35,6 @@
   <script>
         document.getElementById('backBtn').addEventListener('click', () => {
       window.location.href = "tela de login2.html";
-    });
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-    
-      window.location.href = 'tela de login2.html';
     });
   </script>
 </body>

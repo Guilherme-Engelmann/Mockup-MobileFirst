@@ -1,0 +1,6 @@
+- [x] Corrigir create.php: alterar dbname para "tracktrain"
+- [x] Adicionar tabela usuarios ao banco.sql
+- [x] Criar login.php para autenticação
+- [x] Modificar html/tela de login2.php para submeter ao login.php
+- [x] Modificar html/inscreverse.php para submeter ao create.php
+- [ ] Testar funcionalidade

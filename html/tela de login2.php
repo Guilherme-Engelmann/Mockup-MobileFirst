@@ -24,27 +24,27 @@
           <img src="../imagens/perfil.png" alt="Avatar">
         </div>
 
-        <form class="login-form" id="meuFormulario">
+        <form class="login-form" action="../login.php" method="POST" id="meuFormulario">
           <h2>Login</h2>
 
           <div class="input-group">
             <span class="icon">📧</span>
-            <input type="email" placeholder="Usuário ou e-mail" id="email" required />
-            <div class="error" id="erroEmail"></div>
+            <input type="text" placeholder="Login" name="login" id="login" required />
+            <div class="error" id="erroLogin"></div>
           </div>
 
           <div class="input-group">
-            <input type="password" placeholder="Senha..." id="senha" required />
+            <input type="password" placeholder="Senha..." name="senha" id="senha" required />
             <div class="error" id="erroSenha"></div>
           </div>
 
           <div class="options">
             <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-            <a href="esqueceuasenha.php">Esqueceu a senha?</a> 
+            <a href="esqueceuasenha.php">Esqueceu a senha?</a>
           </div>
 
           <button type="submit" class="btn-login">Login</button>
-          <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p> 
+          <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p>
         </form>
       </div>
     </div>
@@ -55,35 +55,28 @@
       const formulario = document.getElementById("meuFormulario");
 
       formulario.addEventListener("submit", function(e) {
-        e.preventDefault();
-
         let valido = true;
 
-       
-        document.getElementById("erroEmail").textContent = "";
+        document.getElementById("erroLogin").textContent = "";
         document.getElementById("erroSenha").textContent = "";
 
-        const email = document.getElementById("email").value.trim();
+        const login = document.getElementById("login").value.trim();
         const senha = document.getElementById("senha").value.trim();
 
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          document.getElementById("erroEmail").textContent = "E-mail inválido.";
+        if (login === "") {
+          document.getElementById("erroLogin").textContent = "Login é obrigatório.";
           valido = false;
         }
 
-       
         if (senha.length < 6) {
           document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 6 caracteres.";
           valido = false;
         }
 
-       
-        if (valido) {
-          alert("Login efetuado com sucesso!");
-          window.location.href = "dashboard3.html";
+        if (!valido) {
+          e.preventDefault();
         }
+        // If valid, allow form to submit to login.php
       });
     });
   </script>
