@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,19 +9,25 @@ $dbname = "tracktrain";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Verifica conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
 $message = "";
 
+// Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = trim($_POST['login']);
+    $login = trim($_POST['email']); // assuming email is used as login
     $senha = trim($_POST['senha']);
 
+    // Validação simples
     if (empty($login) || empty($senha)) {
         $message = "Preencha todos os campos!";
+        header("Location: html/tela de login2.php?error=" . urlencode($message));
+        exit();
     } else {
+        // Busca usuário
         $sql = "SELECT senha FROM usuarios WHERE login = ?";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
@@ -27,11 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
             $stmt->store_result();
 
-            if ($stmt->num_rows == 1) {
+            if ($stmt->num_rows > 0) {
                 $stmt->bind_result($senha_hash);
                 $stmt->fetch();
 
                 if (password_verify($senha, $senha_hash)) {
+                    // Login sucesso
+                    $_SESSION['loggedin'] = true;
                     $_SESSION['login'] = $login;
                     header("Location: html/dashboard3.php");
                     exit();
@@ -44,33 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmt->close();
         } else {
-            $message = "Erro na preparação da consulta: " . $conn->error;
+            $message = "Erro na consulta: " . $conn->error;
+        }
+
+        if (!empty($message)) {
+            header("Location: html/tela de login2.php?error=" . urlencode($message));
+            exit();
         }
     }
 }
 
 $conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <?php if (!empty($message)): ?>
-        <p><?php echo htmlspecialchars($message); ?></p>
-    <?php endif; ?>
-
-    <form method="POST" action="">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" required>
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
-        <br>
-        <button type="submit">Entrar</button>
-    </form>
-</body>
-</html>

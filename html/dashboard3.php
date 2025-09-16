@@ -12,7 +12,7 @@
 
     <div class="phone-content">
       <div class="header">
-        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <a href="telaInicial.php"><i class="fas fa-arrow-left back-icon"></i></a>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Dashboard</h2>
@@ -24,33 +24,33 @@
           <div class="top-icon">
             <div class="app-item">
               <img src="../imagens/dashboard.png" alt="Dashboard">
-              <a data-destino="dashboardGeral.html">Dashboard</a>
+              <a href="dashboardGeral.php">Dashboard</a>
             </div>
           </div>
           <div class="app-grid">
             <div class="app-item">
               <img src="../imagens/velocimetro.jpg" alt="Velocidade">
-              <a data-destino="velocidade.html">Velocidade</a>
+              <a href="velocidade.php">Velocidade</a>
             </div>
             <div class="app-item">
               <img src="../imagens/rota.png" alt="Rotas">
-              <a data-destino="rotas.html">Rotas</a>
+              <a href="rotas.php">Rotas</a>
             </div>
             <div class="app-item">
               <img src="../imagens/meusdados_logo.png" alt="Meus dados">
-              <a data-destino="meusDados.html">Meus dados</a>
+              <a href="meusDados.php">Meus dados</a>
             </div>
             <div class="app-item">
               <img src="../imagens/statustrem.jpg" alt="Status dos trens">
-              <a data-destino="statusTrans.html">Status do trem</a>
+              <a href="statusTrans.php">Status do trem</a>
             </div>
             <div class="app-item">
               <img src="../imagens/chat.png" alt="Chat">
-              <a data-destino="chat.html">Chat</a>
+              <a href="chat.php">Chat</a>
             </div>
             <div class="app-item">
               <img src="../imagens/notificação.avif" alt="Alertas">
-              <a data-destino="alertas.html">Alertas e notificações</a>
+              <a href="alertas.php">Alertas e notificações</a>
             </div>
           </div>
         </div>

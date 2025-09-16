@@ -26,7 +26,7 @@
           <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
         <?php endif; ?>
         <form action="../create.php" method="POST" id="signup-form">
-          <input type="text" name="login" placeholder="Digite seu login" required>
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
           <input type="password" name="senha" placeholder="Digite sua senha" required>
           <input type="password" name="confirm_senha" placeholder="Confirme sua senha" required>
           <button type="submit">Criar Conta</button>

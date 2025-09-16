@@ -16,15 +16,17 @@ $message = "";
 
 // Recebe dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = trim($_POST['login']);
+    $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
     $confirm_senha = trim($_POST['confirm_senha']);
 
     // Validação simples
-    if (empty($login) || empty($senha) || empty($confirm_senha)) {
+    if (empty($email) || empty($senha) || empty($confirm_senha)) {
         $message = "Preencha todos os campos!";
     } elseif ($senha !== $confirm_senha) {
         $message = "As senhas não coincidem!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message = "E-mail inválido!";
     } else {
         // Hash da senha
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -33,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO usuarios (login, senha) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("ss", $login, $senha_hash);
+            $stmt->bind_param("ss", $email, $senha_hash);
 
             if ($stmt->execute()) {
                 header("Location: html/tela de login2.php?message=Usuário criado com sucesso!");

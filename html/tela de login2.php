@@ -23,6 +23,9 @@
         <?php if (isset($_GET['message'])): ?>
           <p style="color: green;"><?php echo htmlspecialchars($_GET['message']); ?></p>
         <?php endif; ?>
+        <?php if (isset($_GET['error'])): ?>
+          <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
         <div class="avatar">
           <img src="../imagens/perfil.png" alt="Avatar">
         </div>
@@ -32,8 +35,7 @@
 
           <div class="input-group">
             <span class="icon">📧</span>
-            <input type="text" placeholder="Login" name="login" id="login" required />
-            <div class="error" id="erroLogin"></div>
+            <input type="email" placeholder="E-mail" name="email" required />
           </div>
 
           <div class="input-group">
