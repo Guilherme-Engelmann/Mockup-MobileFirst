@@ -35,6 +35,7 @@
         </div>
 
         <button class="btn-login">Login</button>
+        <a href="dashboardGeral.php"></a>
 
         <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p>
       </div>

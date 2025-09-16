@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/style.css" />
   <script>
     setTimeout(() => {
-      window.location.href = "tela de login2.html"; 
+      window.location.href = "tela de login2.php"; 
     }, 3000);
   </script>
 </head>
