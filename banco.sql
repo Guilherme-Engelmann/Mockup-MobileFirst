@@ -105,4 +105,4 @@ CREATE TABLE Usuarios (
     email VARCHAR(100) NOT NULL,
     Senha VARCHAR(30) NOT NULL,
     ultimoLogin DATETIME NOT NULL
-)
+);
