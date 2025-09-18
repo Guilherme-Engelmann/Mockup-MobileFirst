@@ -1,3 +1,33 @@
+<?php
+session_start();
+include 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE email = ? AND Senha = ?");
+    $stmt->bind_param("ss", $email, $senha);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['email'] = $email;
+        // Proceed to dashboard
+    } else {
+        header("Location: index.php?error=Credenciais inválidas");
+        exit();
+    }
+    $stmt->close();
+} else {
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        header("Location: index.php?error=Acesso negado");
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
