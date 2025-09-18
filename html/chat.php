@@ -14,7 +14,7 @@
 
     <div class="phone-content">
       <div class="header">
-        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <a href="dashboard3.php"><i class="fas fa-arrow-left back-icon"></i></a>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Chat com Atendente</h2>
