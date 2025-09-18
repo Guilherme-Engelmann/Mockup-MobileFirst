@@ -6,15 +6,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE email = ? AND Senha = ?");
-    $stmt->bind_param("ss", $email, $senha);
+    $stmt = $mysqli->prepare("SELECT idUsuario, Senha FROM Usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['email'] = $email;
-        // Proceed to dashboard
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        if (password_verify($senha, $user['Senha'])) {
+            session_regenerate_id(true);
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $email;
+            header("Location: dashboard3.php");
+            exit();
+        } else {
+            header("Location: index.php?error=Credenciais inválidas");
+            exit();
+        }
     } else {
         header("Location: index.php?error=Credenciais inválidas");
         exit();
