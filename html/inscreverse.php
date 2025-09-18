@@ -15,7 +15,7 @@
 
       <div class="phone-content">
         <div class="header">
-        <a href="tela de login2.php"><i class="fas fa-arrow-left back-icon"></i></a>
+        <a href="index.php"><i class="fas fa-arrow-left back-icon"></i></a>
           <div class="icon-title">
             <i class="fas fa-clipboard-list header-icon"></i>
             <h2>Inscrever-se</h2>
