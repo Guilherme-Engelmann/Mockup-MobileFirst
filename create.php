@@ -1,6 +1,5 @@
 <?php
-session_start();
-include 'html/db.php';
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomeUsuario = $_POST['nomeUsuario'];
