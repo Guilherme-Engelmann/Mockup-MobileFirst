@@ -1,1384 +1,154 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('https://i.pinimg.com/736x/cf/3c/82/cf3c827e94daede62d82c30f28f5aab2.jpg') no-repeat center center/cover;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.login-box {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.avatar {
-  background-color: #fff;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 15px;
-  overflow: hidden;
-}
-
-.avatar img {
-  width: 100%;
-  height: auto;
-}
-
-.user, .senha {
-  display: flex;
-  align-items: center;
-  background-color: #000;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 10px 0;
-  color: white;
-}
-
-.options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  margin: 10px 0;
-}
-
-.botao-login {
-  background-color: #2baa40;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 10px 0;
-}
-
-.mapa img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.info {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.linha, .velocidade {
-  text-align: center;
-}
-
-.linha img, .velocidade img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 5px;
-}
-
-.cartao {
-  background: #f2f2f2;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.nome {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.nome span {
-  font-weight: normal;
-}
-
-.codigo-barra img {
-  width: 80%;
-  margin-bottom: 5px;
-}
-
-.codigo-barra p {
-  font-size: 14px;
-  letter-spacing: 2px;
-}
-
-.grafico img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.fundotelavelocidade {
-  width: 300px;
-  height: 100px;
-  background-color: black;
-  color: aliceblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.train-card {
-  background: #444;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-
-.train-card img {
-  width: 50px;
-  vertical-align: middle;
-}
-.train-info {
-  margin-top: 10px;
-}
-.train-info p {
-  margin: 5px 0;
-}
-
-.performance {
-  margin-top: 10px;
-}
-.performance label {
-  margin-right: 10px;
-}
-.checkbox-group input {
-  margin-right: 5px;
-}
-.battery {
-  text-align: right;
-  font-size: 14px;
-}
-.desempenho-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: #555;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.train {  
-  width: 100px;
-  margin: 0 auto;  
-  background: url('path_to_train_image.png') no-repeat center center;  
-  background-size: contain;  
-}  
-
-.sun {  
-  width: 50px;
-  height: 50px;
-  background-color: orange;
-  border-radius: 50%;
-  position: relative;  
-  top: -20px;  
-  left: -20px;  
-  z-index: -1;  
-}
-
-.loading-bar {  
-  width: 200px;  
-  height: 10px;  
-  background-color: #ddd;  
-  border-radius: 5px;  
-  overflow: hidden;  
-  margin: 20px auto;  
-  position: relative;  
-}
-
-.loading-progress {  
-  height: 100%;  
-  background-color: #449246;  
-  animation: loading 2s infinite;  
-}
-
-@keyframes loading {  
-  0% { width: 0%; }  
-  50% { width: 100%; }  
-  100% { width: 0%; }  
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  width: 300px;
-}
-
-.icon {
-  background-color: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.icon.active {
-  background-color: #d1c4f0;
-  border-color: #673ab7;
-}
-
-.icon:hover {
-  background-color: #e0e0e0;
-}
-
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: linear-gradient(#c1c1c1, #a0a0a0);
-}
-
-.trem {
-  width: 150px;
-  margin-bottom: 30px;
-}
-
-.loading-text {
-  font-size: 18px;
-  margin-bottom: 15px;
-  font-weight: bold;
-  color: #000;
-}
-
-.progress-bar {
-  width: 70%;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  width: 0%;
-  background-color: #000;
-  border-radius: 10px;
-  animation: load 3s linear forwards;
-}
-
-@keyframes load {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-
-.tracktrain-title {
   font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 2.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-align: center;
-  margin: 20px 0 10px 0;
-  background: linear-gradient(90deg, #005bea 30%, #00c6fb 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: #f2f6fa;
+  color: #222;
+  min-height: 100vh;
 }
 
-.track {
-  letter-spacing: 3px;
-}
-
-.train {
-  color: #ffb300;
-  text-shadow: 1px 1px 8px #ffb30055;
-}
-
-
-
-/*Parte do Guilherme Kraisch*/
-    body {
-      background: #f4f4f4;
-      font-family: Arial, sans-serif;
-    }
-    .chat-container {
-      max-width: 400px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      height: 600px;
-      overflow: hidden;
-    }
-    .chat-header {
-      background: #1e88e5;
-      color: #fff;
-      padding: 16px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    .chat-messages {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: #f9f9f9;
-    }
-    .message {
-      max-width: 70%;
-      padding: 10px 14px;
-      border-radius: 18px;
-      font-size: 1em;
-      line-height: 1.4;
-      word-break: break-word;
-    }
-    .message.sent {
-      align-self: flex-end;
-      background: #1e88e5;
-      color: #fff;
-      border-bottom-right-radius: 4px;
-    }
-    .message.received {
-      align-self: flex-start;
-      background: #e3e3e3;
-      color: #222;
-      border-bottom-left-radius: 4px;
-    }
-    .chat-input-area {
-      display: flex;
-      border-top: 1px solid #eee;
-      background: #fafafa;
-      padding: 10px;
-    }
-    .chat-input-area input {
-      flex: 1;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 16px;
-      font-size: 1em;
-      outline: none;
-      background: #f1f1f1;
-      margin-right: 8px;
-    }
-    .chat-input-area button {
-      background: #1e88e5;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2em;
-      cursor: pointer;
-      transition:  0.2s;
-    }
-    .chat-input-area button:hover {
-      background: #1565c0;
-    }
-  
-  
-.speed-card {
-  background: #222;
-  border-radius: 20px;
-  color: #fff;
-  padding: 10px 20px;
-  margin-bottom: 15px;
-  width: 320px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  font-family: Arial, sans-serif;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.card-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.icon-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.train-icon {
-  width: 48px;
-  height: 48px;
-}
-
-.line-number {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-top: 2px;
-}
-
-.speedometer-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.speedometer-icon {
-  width: 60px;
-  height: 60px;
-}
-
-.speed-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.speed-value {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.arrows {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2px;
-}
-
-.arrow-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.1rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-
-top-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.top-bar .icons {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-}
-
-.top-bar h1 {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.route-box {
-  background-color: #2a2a2a;
-  padding: 15px;
-  border-radius: 16px;
-  margin-top: 10px;
-}
-
-.map-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.linha-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-}
-
-.train-icon {
-  font-size: 32px;
-}
-
-.linha-num {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.mapa {
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.info {
-  margin-top: 20px;
-}
-
-.data {
-  color: #73a1ff;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.hora-bloco {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.hora {
-  font-size: 14px;
-  color: #ccc;
-  width: 50px;
-}
-
-.acao {
-  background-color: #3a3a3a;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 13px;
-}
-
-.pontos {
-  text-align: center;
-  font-size: 20px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.trocar-rota {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.trocar-rota button {
-  background-color: #0a68f0;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 14px;
-}
-
-
-    body {
-      background: #f4f4f4;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .login-box {
-      background: #fff;
-      padding: 32px 28px 24px 28px;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      width: 100%;
-      max-width: 350px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .avatar img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 16px;
-      border: 2px solid #1e88e5;
-      background: #e3e3e3;
-    }
-    .login-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .login-form h2 {
-      margin-bottom: 18px;
-      color: #1e88e5;
-      font-weight: bold;
-    }
-    .input-group {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 16px;
-      background: #f1f1f1;
-      border-radius: 20px;
-      padding: 8px 14px;
-    }
-    .input-group .icon {
-      margin-right: 8px;
-      font-size: 1.2em;
-      color: #1e88e5;
-    }
-    .input-group input {
-      border: none;
-      background: transparent;
-      outline: none;
-      width: 100%;
-      font-size: 1em;
-      padding: 6px 0;
-    }
-    .options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 18px;
-      font-size: 0.95em;
-    }
-    .options label {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .options a {
-      color: #1e88e5;
-      text-decoration: none;
-      font-size: 0.95em;
-    }
-    .btn-login {
-      width: 100%;
-      background: #1e88e5;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 0;
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 12px;
-      transition:  0.2s;
-    }
-    .btn-login:hover {
-      background: #1565c0;
-    }
-    .register {
-      font-size: 0.97em;
-      color: #333;
-      margin-top: 6px;
-    }
-    .register a {
-      color: #1e88e5;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    @media (max-width: 400px) {
-      .login-box {
-        padding: 18px 6px 16px 6px;
-      }
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    
-    .phone {
-      height: 720px;
-      background-color: #ffffff;
-      border: 8px solid #d7c7b6;
-      border-radius: 40px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      color: black;
-      padding: 8px 15px;
-      font-size: 14px;
-      background-color: #e0e0e0;
-    }
-    
-    .screen {
-      height: 100%;
-      overflow-y: auto;
-      background-color: #ffffff;
-      padding: 10px 15px 30px;
-    }
-    
-    .header {
-      text-align: center;
-      position: relative;
-      color: black;
-      margin-bottom: 10px;
-      padding-top: 0px;
-    }
-    
-    .back-button {
-      position: absolute;
-      left: 0;
-      top: 10px;
-      font-size: 20px;
-      background: none;
-      border: none;
-      color: black;
-      cursor: pointer;
-    }
-    
-    .alert-icon {
-      width: 30px;
-      margin-bottom: 5px;
-    }
-    
-    .header h1 {
-      font-size: 16px;
-    }
-    
-    section {
-      margin-top: 20px;
-    }
-    
-    h2 {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      border-radius: 20px;
-      text-align: center;
-      font-size: 14px;
-    }
-    
-    .seta {
-      text-align: center;
-      margin: 5px 0;
-      font-size: 18px;
-      color: #333;
-    }
-    
-    .linha-card {
-      background-color: #f5f5f5;
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 15px;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .linha-icon {
-      font-size: 30px;
-      text-align: center;
-      flex-shrink: 0;
-      color: #444;
-    }
-    .linha-icon span {
-      display: block;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    
-    .linha-info p {
-      font-size: 14px;
-      margin: 2px 0;
-      color: #333;
-    }
-    
-    .atraso {
-      color: #e5a900;
-      font-weight: bold;
-    }
-    
-    .notificacao {
-      background-color: #fff3cd;
-      color: #856404;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 15px;
-      font-size: 14px;
-      text-align: center;
-      border: 1px solid #ffeeba;
-    }
-    
-
-    body {
-      background-color: #121212;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    
-    .device-frame {
-      width: 375px;
-      height: 812px;
-      background: #000;
-      border: 10px solid #ccc;
-      border-radius: 50px;
-      position: relative;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
-    }
-    
-    .notch {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 30px;
-      width: 210px;
-      background-color: #000;
-      border-radius: 0 0 20px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
-    
-    .speaker {
-      width: 60px;
-      height: 6px;
-      background: #444;
-      border-radius: 3px;
-      margin-right: 10px;
-    }
-    
-    .camera {
-      width: 12px;
-      height: 12px;
-      background: #444;
-      border-radius: 50%;
-    }
-    
+/* Container principal do "celular" */
 .phone-content {
-  width: 100%;
-  height: auto;
-  background-color: #1e88e5; /* Blue background */
-  padding: 10px 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  max-width: 420px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.09);
+  overflow: hidden;
 }
 
-.login-box {
-  margin-top: 80px; /* To avoid overlap with fixed header */
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-  text-align: center;
-}
-    
-    .header {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: relative;
-      padding-top: 0px;
-    }
-    
-    .back-icon {
-      position: absolute;
-      left: 15px;
-      top: 15px;
-      font-size: 20px;
-      color: white;
-    }
-    
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-    }
-    
-    .profile-icon {
-      font-size: 50px;
-      margin-bottom: 5px;
-    }
-    
-    h2 {
-      margin: 0;
-      font-size: 18px;
-    }
-    
-    .tabs {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px 0 10px;
-    }
-    
-    .tabs a {
-      color: #333;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    
-    .tabs a.active {
-      color: #000;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-    
-    .contact-card {
-      background-color: #2b2b2b;
-      border-radius: 20px;
-      margin: 20px auto;
-      padding: 20px;
-      width: 80%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    }
-    
-    .icon {
-      text-align: center;
-      font-size: 24px;
-      color: white;
-      margin-bottom: 15px;
-    }
-    
-    .input-group {
-      margin-bottom: 15px;
-    }
-    
-    .input-group label {
-      display: block;
-      color: black;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    .input-group input {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      font-size: 14px;
-    }
-    
-
-    body {
-      background-color: #121212;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    
-    .device-frame {
-      width: 375px;
-      height: 812px;
-      background: #000;
-      border: 10px solid #ccc;
-      border-radius: 50px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .notch {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 30px;
-      width: 210px;
-      background-color: #000;
-      border-radius: 0 0 20px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
-    
-    .speaker {
-      width: 60px;
-      height: 6px;
-      background: #444;
-      border-radius: 3px;
-      margin-right: 10px;
-    }
-    
-    .camera {
-      width: 12px;
-      height: 12px;
-      background: #444;
-      border-radius: 50%;
-    }
-    
-    .phone-content {
-      background-color: #cccccc; 
-      height: 100%;
-      overflow-y: auto;
-      padding-top: 40px;
-      z-index: 1;
-      position: relative;
-    }
-    
-    .header {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 0px;
-      position: relative;
-    }
-    
-    .back-icon {
-      position: absolute;
-      left: 15px;
-      top: 15px;
-      font-size: 20px;
-      color: white;
-    }
-    
-    .icon-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .header-icon {
-      font-size: 30px;
-      margin-bottom: 5px;
-    }
-    
-    .train-list {
-      padding: 10px 15px 30px;
-    }
-    
-    .train-card {
-      display: flex;
-      background-color: #2b2b2b;
-      color: white;
-      border-radius: 20px;
-      padding: 15px;
-      margin-bottom: 20px;
-      align-items: flex-start;
-    }
-    
-    .train-icon {
-      text-align: center;
-      margin-right: 10px;
-    }
-    
-    .train-icon i {
-      font-size: 40px;
-    }
-    
-    .train-id {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 5px;
-    }
-    
-    .train-info {
-      flex: 1;
-    }
-    
-    .train-info p {
-      margin: 5px 0;
-    }
-    
-    .desempenho {
-      margin-top: 10px;
-    }
-    
-    .desempenho .label {
-      display: inline-block;
-      margin-bottom: 5px;
-      padding: 5px 10px;
-      background-color: #444;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-    
-    .desempenho .label.active {
-      background-color: #fff;
-      color: #222;
-      border: 2px solid #8b5cf6;
-    }
-    
-    .options label {
-      margin-right: 10px;
-      font-size: 14px;
-    }
-    
-    .battery {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #aaa;
-    }
-    
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .forgot-password-container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(230, 227, 227, 0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
-    }
-    .forgot-password-container h2 {
-      margin-bottom: 20px;
-      color: #d1c5c5;
-    }
-    .forgot-password-container input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .forgot-password-container button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-    .forgot-password-container button:hover {
-      background-color: #0056b3;
-    }
-    .forgot-password-container a {
-      display: block;
-      margin-top: 15px;
-      color: #007bff;
-      text-decoration: none;
-    }
-    .forgot-password-container a:hover {
-      text-decoration: underline;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .signup-container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(235, 221, 221, 0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
-    }
-    .signup-container h2 {
-      margin-bottom: 20px;
-      color: #ececec;
-    }
-    .signup-container input[type="text"],
-    .signup-container input[type="email"],
-    .signup-container input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .signup-container button {
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-    .signup-container button:hover {
-      background-color: #218838;
-    }
-    .signup-container a {
-      display: block;
-      margin-top: 15px;
-      color: #007bff;
-      text-decoration: none;
-    }
-    .signup-container a:hover {
-      text-decoration: underline;
-    }
-
-  .error {
-    color: rgb(182, 7, 7);
-    font-size: 0.9em;
-}
-
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 10px;
-  padding: 10px;
-}
-
-.app-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-size: 0.9em;
-}
-
-.app-item img {
-  width: 50px; /* Tamanho menor */
-  height: 50px;
-  object-fit: contain;
-  margin-bottom: 5px;
-}
+/* Header */
 .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background-color: #333;
-      color: white;
-      padding: 10px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #1452e3;
+  color: #fff;
+  padding: 20px 18px;
+  border-bottom: 1px solid #e6ecf2;
+}
 
-    .back-icon {
-      position: absolute;
-      left: 10px;
-      font-size: 20px;
-      cursor: pointer;
-    }
+.header a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
 
-    .icon-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    .icon-title h2 {
-      font-size: 18px;
-      margin: 0;
-    }
+.header-icon {
+  font-size: 28px;
+}
 
-    .back-icon {
-      font-size: 24px;
-      cursor: pointer;
-      margin-right: 10px;
-      color: #fdfdfd;
-      transition: transform 0.2s;
-    }
+.header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 
-    .back-icon:hover {
-      transform: scale(1.1);
-    }
+/* Conteúdo principal */
+.screen {
+  padding: 24px 18px 32px 18px;
+}
 
-    .alert-icon {
-      width: 24px;
-      margin-right: 10px;
-    }
+/* Sessão de problemas */
+.problemas, .notificacoes {
+  background: #f7faff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(20, 82, 227, 0.08);
+  margin-bottom: 22px;
+  padding: 16px 14px;
+}
 
-    header.header {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-    }
+.problemas h2, .notificacoes h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1452e3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
+.seta {
+  font-size: 18px;
+  color: #1452e3;
+  margin-bottom: 13px;
+}
 
-    .app-item a {
-      display: inline-block;
-      margin-top: 5px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      cursor: pointer;
-    }
+/* Cards de linha */
+.linha-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  background: #eaf0fa;
+  border-radius: 10px;
+  padding: 14px 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(20, 82, 227, 0.05);
+}
 
-    .app-item a.clicked {
-      transform: scale(0.95);
-      opacity: 0.6;
-    }
+.linha-icon {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1452e3;
+  font-weight: bold;
+}
 
-  
-    .back-icon {
-      font-size: 24px;
-      cursor: pointer;
-      margin-right: 10px;
-      color: #f7f7f7;
-      transition: transform 0.2s;
-    }
+.linha-icon span {
+  background: #fff;
+  color: #1452e3;
+  border-radius: 6px;
+  padding: 2px 9px;
+  font-size: 16px;
+  margin-left: 4px;
+  border: 1px solid #c6d6f7;
+}
 
-    .back-icon:hover {
-      transform: scale(1.1);
-    }
+.linha-info p {
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: #444;
+}
+.linha-info p strong {
+  color: #d13438;
+}
+.linha-info .atraso {
+  color: #d13438;
+  font-weight: 600;
+}
+
+/* Notificações */
+.notificacoes .notificacao {
+  background: #fff3b0;
+  color: #7c4a00;
+  border-left: 3px solid #ffcb05;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-top: 7px;
+  font-size: 15px;
+  box-shadow: 0 1px 4px rgba(255, 203, 5, 0.07);
+}
+
+/* Responsivo */
+@media (max-width: 430px) {
+  .phone-content {
+    max-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+  .screen {
+    padding: 16px 7px 24px 7px;
+  }
+}
