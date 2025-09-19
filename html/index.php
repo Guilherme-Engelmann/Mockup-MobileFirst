@@ -5,37 +5,19 @@ include "db.php";
 //inicia a sessao
 session_start();
 
-//logout
-if(isset($_GET['logout'])){
-    session_destroy();
-    header("Location: index.php");
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'];
+    $senha   = $_POST['senha'];
 
-$msg = "";
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $user = $_POST["username"] ?? "";
-    $pass = $_POST["senha"] ?? "";
-
-    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM usuarios WHERE username=? AND senha=?");
-    $stmt-> bind_param("ss", $user, $pass);
+    // consulta usuário (pode ser nome ou email)
+    $stmt = $mysqli->prepare("SELECT idUsuario, nomeUsuario, email, senha FROM Usuarios WHERE nomeUsuario = ? OR email = ?");
+    $stmt->bind_param("ss", $usuario, $usuario);
     $stmt->execute();
 
     $result = $stmt->get_result();
     $dados = $result -> fetch_assoc();
     $stmt->close();
-
-    if($dados){
-        $_SESSION["user_pk"] = $dados["pk"];
-        $_SESSION["username"] = $dados["username"];
-        header("Location: index.php");
-        exit;
-
-    }else{
-        $msg = "Usuário ou senha incorretos!";
-    }
-};
-
+}
 ?>
 
 
@@ -46,44 +28,30 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <title>Login Simples</title>
 </head>
 <body>
+  <div class="login-container">
+    <img src="user-icon.png" alt="Usuário">
+    <h2>Login</h2>
 
-<?php if(!empty($_SESSION["user_pk"])): ?>
+    <?php if (!empty($error)) { echo "<p class='error'>$error</p>"; } ?>
+    <?php if (!empty($_GET['message'])) { echo "<p style='color:green;font-size:14px;'>" . $_GET['message'] . "</p>"; } ?>
 
-    <div>
-        <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
-        <p>Sessão Ativa</p>
-        <form action="cadastro.php" method="get">
-            <button type="submit">Cadastrar novos usuários.</button>
-        </form>
-        <p><a href="?logout=1">Sair</a></p>
-    </div>
+    <form method="POST" action="">
+      <div class="input-group">
+        <input type="text" name="usuario" placeholder="Usuário ou e-mail" required>
+        <i>📧</i>
+      </div>
+      <div class="input-group">
+        <input type="password" name="senha" placeholder="Senha..." required>
+        <i>🔒</i>
+      </div>
 
-<?php else: ?>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
 
-    <div>
-        <h3>Login</h3>
-        <form method="POST">
-
-            <?php if($msg): ?> 
-                <p> <?= $msg ?> </p> 
-            <?php endif; ?>
-
-            <input type="text" name="username" placeholder="Usuário" required>
-            <br>
-            <br>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <br>
-            <br>
-            <button type="submit">Entrar</button>
-            <p><small>Dica: admin / 123</small></p>
-
-            <a href="esqueceuasenha.php">Esqueceu a senha?</a>
-             <a href="inscreverse.php">Criar conta</a>
-        </form>
-
-          </div>
-
-        </form>
+    <div class="options">
+      <label><input type="checkbox"> Mantenha-me Conectado</label><br>
+      <a href="#">Esqueceu a senha?</a><br><br>
+      <span>Não tem uma conta ainda? <a href="inscreverse.php">Inscreva-se</a></span>
     </div>
 
 <?php endif; ?> 
