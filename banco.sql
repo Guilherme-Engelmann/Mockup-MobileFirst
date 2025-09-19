@@ -73,8 +73,7 @@ CREATE TABLE Manutencoes (
 );
 
 -- 7) Segmentos
-CREATE TABLE Segmentos (
-    idSegmento INT AUTO_INCREMENT PRIMARY KEY,
+     idSegmento INT AUTO_INCREMENT PRIMARY KEY,
     idRota INT NOT NULL,
     estacaoInicio INT NOT NULL,
     estacaoFim INT NOT NULL,
