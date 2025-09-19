@@ -216,41 +216,6 @@ body {
 
 /* Chat */
 
-.phone-content {
-  max-width: 390px;
-  height: 844px;
-  margin: 40px auto;
-  background: #222;
-  border-radius: 48px;
-  box-shadow: 0 0 0 8px #222, 0 4px 32px #0008;
-  border: 4px solid #d4bfa1;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Header */
-.header {
-  background: #222;
-  padding: 32px 20px 0 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.5rem;
-  border-top-left-radius: 48px;
-  border-top-right-radius: 48px;
-  position: relative;
-}
-
-.back-icon {
-  color: #fff;
-  font-size: 2rem;
-  margin-right: 12px;
-  cursor: pointer;
-  position: absolute;
-  left: 20px;
-  top: 40px;
-}
-
 .icon-title {
   display: flex;
   flex-direction: column;
@@ -507,40 +472,6 @@ body {
 
 /* Velocidade*/
 
-.phone-content {
-  max-width: 390px;
-  height: 844px;
-  margin: 40px auto;
-  background: #222;
-  border-radius: 48px;
-  box-shadow: 0 0 0 8px #222, 0 4px 32px #0008;
-  border: 4px solid #d4bfa1;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Header */
-.header {
-  background: #222;
-  padding: 32px 20px 0 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.5rem;
-  border-top-left-radius: 48px;
-  border-top-right-radius: 48px;
-  position: relative;
-}
-
-.back-icon {
-  color: #fff;
-  font-size: 2rem;
-  margin-right: 12px;
-  cursor: pointer;
-  position: absolute;
-  left: 20px;
-  top: 40px;
-}
 
 .icon-title {
   display: flex;
