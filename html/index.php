@@ -75,6 +75,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             <br>
             <br>
             <button type="submit">Entrar</button>
+            <br>
+            <a href="esqueceuasenha.php">Esqueceu a senha?</a>
+            <br>
+             <a href="inscreverse.php">Criar conta</a>
             <p><small>Dica: admin / 123</small></p>
         </form>
     </div>
