@@ -1,4 +1,4 @@
-CREATE DATABASE tracktrain;
+CREATE DATABASE IF NOT EXISTS tracktrain;
 USE tracktrain;
 
 -- 1) Estações
@@ -29,8 +29,8 @@ CREATE TABLE Trens (
     modeloTrem VARCHAR(75) NOT NULL,
     data_fabricacao DATE NOT NULL,
     capacidade_passageiros INT NOT NULL,
-    capacidade_carga  VARCHAR(120) NOT NULL,
-    status_operacional  VARCHAR(50) NOT NULL
+    capacidade_carga VARCHAR(120) NOT NULL,
+    status_operacional VARCHAR(50) NOT NULL
 );
 
 -- 4) Viagens
@@ -40,8 +40,8 @@ CREATE TABLE Viagens (
     idRota INT NOT NULL,
     horario_partida_previsto TIME NOT NULL,
     horario_chegada_previsto TIME NOT NULL,
-    horario_partida_real TIME NOT NULL,
-    horario_chegada_real TIME NOT NULL,
+    horario_partida_real TIME NULL,
+    horario_chegada_real TIME NULL,
     statusViagens VARCHAR(50) NOT NULL,
     FOREIGN KEY (idTrem) REFERENCES Trens(idTrem),
     FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
@@ -66,14 +66,15 @@ CREATE TABLE Manutencoes (
     tipoManutencoes VARCHAR(50) NOT NULL,
     descricaoManutencoes VARCHAR(255) NOT NULL,
     data_agendada DATE NOT NULL,
-    data_conclusao DATE NOT NULL,
+    data_conclusao DATE NULL,
     statusManutencoes VARCHAR(50) NOT NULL,
     custoManutencoes DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (idTrem) REFERENCES Trens(idTrem)
 );
 
 -- 7) Segmentos
-     idSegmento INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Segmentos (
+    idSegmento INT AUTO_INCREMENT PRIMARY KEY,
     idRota INT NOT NULL,
     estacaoInicio INT NOT NULL,
     estacaoFim INT NOT NULL,
@@ -106,10 +107,10 @@ CREATE TABLE Leituras (
 
 -- 10) Usuários
 CREATE TABLE usuarios (
-	pk INT AUTO_INCREMENT PRIMARY KEY,
+    pk INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(120) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     cargo ENUM('adm','func') NOT NULL
 );
 
-INSERT INTO usuarios (username, senha) VALUES ('admin','123');
+INSERT INTO usuarios (username, senha, cargo) VALUES ('admin','123','adm');
