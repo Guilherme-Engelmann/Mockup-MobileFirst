@@ -105,15 +105,11 @@ CREATE TABLE Leituras (
 );
 
 -- 10) Usuários
-CREATE TABLE Usuarios (
-    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
-    nomeUsuario VARCHAR(120) NOT NULL UNIQUE,
-    tipoUsuario VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    Senha VARCHAR(255) NOT NULL,
-    ultimoLogin DATETIME
+CREATE TABLE usuarios (
+	pk INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(120) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    cargo ENUM('adm','func') NOT NULL
 );
 
--- Inserir um usuário com senha hash para '123456'
-INSERT INTO Usuarios (nomeUsuario, tipoUsuario, email, Senha, ultimoLogin)
-VALUES ('admin', 'Administrador', 'admin@tracktrain.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NOW());
+INSERT INTO usuarios (username, senha) VALUES ('admin','123');
