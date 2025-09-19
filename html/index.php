@@ -14,10 +14,10 @@ if(isset($_GET['logout'])){
 
 $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $user = $_POST["username"] ?? "";
-    $pass = $_POST["senha"] ?? "";
+    $user = $_POST["nomeUsuario"] ?? "";
+    $pass = $_POST["Senha"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM usuarios WHERE username=? AND senha=?");
+    $stmt =$mysqli->prepare("SELECT idUsuario, nomeUsuario, Senha FROM Usuarios WHERE nomeUsuario=? AND senha=?");
     $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
 
@@ -26,8 +26,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $stmt->close();
 
     if($dados){
-        $_SESSION["user_pk"] = $dados["pk"];
-        $_SESSION["username"] = $dados["username"];
+        $_SESSION["user_id"] = $dados["id"];
+        $_SESSION["nomeUsuario"] = $dados["=nomeUsuario"];
         header("Location: index.php");
         exit;
 
@@ -47,10 +47,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 </head>
 <body>
 
-<?php if(!empty($_SESSION["user_pk"])): ?>
+<?php if(!empty($_SESSION["user_id"])): ?>
 
     <div>
-        <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
+        <h3>Bem-vindo, <?= $_SESSION["nomeUsuario"] ?>!</h3>
         <p>Sessão Ativa</p>
         <form action="cadastro.php" method="get">
             <button type="submit">Cadastrar novos usuários.</button>
@@ -68,10 +68,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 <p> <?= $msg ?> </p> 
             <?php endif; ?>
 
-            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="text" name="nomeUsuario" placeholder="Usuário" required>
             <br>
             <br>
-            <input type="password" name="senha" placeholder="Senha" required>
+            <input type="password" name="Senha" placeholder="Senha" required>
             <br>
             <br>
             <button type="submit">Entrar</button>
