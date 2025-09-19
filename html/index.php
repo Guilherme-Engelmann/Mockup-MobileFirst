@@ -1,61 +1,84 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php
+
+//faz a conexao
+include "db.php";
+//inicia a sessao
+session_start();
+
+//logout
+if(isset($_GET['logout'])){
+    session_destroy();
+    header("Location: index.php");
+    exit;
+}
+
+$msg = "";
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $user = $_POST["username"] ?? "";
+    $pass = $_POST["senha"] ?? "";
+
+    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM usuarios WHERE username=? AND senha=?");
+    $stmt-> bind_param("ss", $user, $pass);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $dados = $result -> fetch_assoc();
+    $stmt->close();
+
+    if($dados){
+        $_SESSION["user_pk"] = $dados["pk"];
+        $_SESSION["username"] = $dados["username"];
+        header("Location: index.php");
+        exit;
+
+    }else{
+        $msg = "Usuário ou senha incorretos!";
+    }
+};
+
+?>
+
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tela de Login</title>
-  <link rel="stylesheet" href="../css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Simples</title>
 </head>
 <body>
 
- 
+<?php if(!empty($_SESSION["user_pk"])): ?>
 
-    <div class="phone-content">
-      <div class="header">
-        <i class="fas fa-arrow-left back-icon"></i>
-        <div class="icon-title">
-          <i class="fas fa-clipboard-list header-icon"></i>
-          <h2>Tela de login</h2>
-        </div>
-      </div>
-
-      <div class="login-box">
-        <?php if (isset($_GET['message'])): ?>
-          <p style="color: green;"><?php echo htmlspecialchars($_GET['message']); ?></p>
-        <?php endif; ?>
-        <?php if (isset($_GET['error'])): ?>
-          <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
-        <?php endif; ?>
-        <div class="avatar">
-          <img src="../imagens/perfil.png" alt="Avatar">
-        </div>
-
-        <form class="login-form" action="dashboard3.php" method="POST" id="meuFormulario">
-          <h2>Login</h2>
-
-          <div class="input-group">
-            <span class="icon">📧</span>
-            <input type="email" placeholder="E-mail" name="email" required />
-          </div>
-
-          <div class="input-group">
-            <input type="password" placeholder="Senha..." name="senha" id="senha" required />
-            <div class="error" id="erroSenha"></div>
-          </div>
-
-          <div class="options">
-            <label><input type="checkbox" checked /> Mantenha-me Conectado</label>
-            <a href="esqueceuasenha.php">Esqueceu a senha?</a>
-          </div>
-
-          <button type="submit" class="btn-login">Login</button>
-          <p class="register">Não tem uma conta ainda? <a href="inscreverse.php">Inscrever-se</a></p>
+    <div>
+        <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
+        <p>Sessão Ativa</p>
+        <form action="cadastro.php" method="get">
+            <button type="submit">Cadastrar novos usuários.</button>
         </form>
-      </div>
+        <p><a href="?logout=1">Sair</a></p>
     </div>
-  </div>
 
+<?php else: ?>
 
+    <div>
+        <h3>Login</h3>
+        <form method="POST">
 
+            <?php if($msg): ?> 
+                <p> <?= $msg ?> </p> 
+            <?php endif; ?>
+
+            <input type="text" name="username" placeholder="Usuário" required>
+            <br>
+            <br>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <br>
+            <br>
+            <button type="submit">Entrar</button>
+            <p><small>Dica: admin / 123</small></p>
+        </form>
+    </div>
+
+<?php endif; ?> 
 </body>
 </html>
