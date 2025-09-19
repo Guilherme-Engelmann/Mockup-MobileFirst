@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if($dados){
         $_SESSION["user_id"] = $dados["id"];
         $_SESSION["nomeUsuario"] = $dados["=nomeUsuario"];
-        header("Location: index.php");
+        header("Location: dashboard3.php");
         exit;
 
     }else{
