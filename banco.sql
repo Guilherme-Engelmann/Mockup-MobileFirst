@@ -114,7 +114,6 @@ CREATE TABLE Usuarios (
     ultimoLogin DATETIME
 );
 
--- Inserir um usuário
+-- Inserir um usuário com senha hash para '123456'
 INSERT INTO Usuarios (nomeUsuario, tipoUsuario, email, Senha, ultimoLogin)
-VALUES ('admin', 'Administrador', 'admin@tracktrain.com', '123456', NOW());
-
+VALUES ('admin', 'Administrador', 'admin@tracktrain.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NOW());
