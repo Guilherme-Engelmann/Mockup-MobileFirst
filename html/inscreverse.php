@@ -9,10 +9,6 @@
 </head>
 <body>
   <div class="signup-container">
-    <h2>Inscrever-se</h2>
- 
-    
-
       <div class="phone-content">
         <div class="header">
         <a href="index.php"><i class="fas fa-arrow-left back-icon"></i></a>
