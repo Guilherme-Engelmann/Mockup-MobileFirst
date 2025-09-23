@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: tela de login2.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,10 +18,10 @@
 </head>
 <body>
 
-    
+
         <div class="phone-content">
           <div class="header">
-            <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+            <i id="logoutBtn" class="fas fa-sign-out-alt back-icon"></i>
             <div class="icon-title">
               <i class="fas fa-clipboard-list header-icon"></i>
               <h2>Dash Board Geral</h2>
@@ -49,8 +58,8 @@
         </div>
     </div>
     <script>
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "dashboard3.html";
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = "logout.php";
     });
   </script>
 </body>

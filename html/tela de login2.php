@@ -24,7 +24,7 @@
           <img src="../imagens/perfil.png" alt="Avatar">
         </div>
 
-        <form class="login-form" id="meuFormulario">
+        <form class="login-form" action="login.php" method="POST">
           <h2>Login</h2>
 
           <div class="input-group">
@@ -50,43 +50,7 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const formulario = document.getElementById("meuFormulario");
 
-      formulario.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        let valido = true;
-
-       
-        document.getElementById("erroEmail").textContent = "";
-        document.getElementById("erroSenha").textContent = "";
-
-        const email = document.getElementById("email").value.trim();
-        const senha = document.getElementById("senha").value.trim();
-
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          document.getElementById("erroEmail").textContent = "E-mail inválido.";
-          valido = false;
-        }
-
-       
-        if (senha.length < 6) {
-          document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 6 caracteres.";
-          valido = false;
-        }
-
-       
-        if (valido) {
-          alert("Login efetuado com sucesso!");
-          window.location.href = "dashboard3.html";
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
