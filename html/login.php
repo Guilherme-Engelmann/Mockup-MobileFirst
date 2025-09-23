@@ -46,9 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on user type
             if ($row['tipoUsuario'] == 'admin') {
-                header("Location: html/dashboard3.php");
+                header("Location: ../create.php");
+            } elseif ($row['tipoUsuario'] == 'funcionario') {
+                header("Location: dashboardGeral.php");
             } else {
-                header("Location: html/dashboardGeral.php");
+                header("Location: dashboardGeral.php");
             }
             exit();
         } else {
