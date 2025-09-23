@@ -4,6 +4,10 @@ include "db.php";
 
 session_start();
 
+if(empty($_SESSION["user_pk"])){
+    header("Location: index.php");
+    exit;
+};
 
 $register_msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
@@ -38,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
 <body>
     
     <form method="post">
-        <h2>Bem-vindo</h2>
+        <h2>Bem-vindo, <?= $_SESSION["username"] ?>!</h2>
         <h3>Cadastro Novo Usuário</h3>
         <?php if($register_msg):  ?> <p> <?= $register_msg ?> </p> <?php endif; ?>
         <input type="text" name="new_username" placeholder="Novo Usuário" required>

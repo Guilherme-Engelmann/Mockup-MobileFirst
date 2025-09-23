@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="phone-content">
           <div class="header">
-            <i id="logoutBtn" class="fas fa-sign-out-alt back-icon"></i>
+            <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
             <div class="icon-title">
               <i class="fas fa-clipboard-list header-icon"></i>
               <h2>Dash Board Geral</h2>
