@@ -54,7 +54,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
         <p>Sessão Ativa</p>
         <form action="cadastro.php" method="get">
-            <button type="submit">Cadastrar novos usuários.</button>
+            <button type="submit">ADM</button>
+        </form>
+         <form action="dashboard3.php" method="get">
+            <button type="submit">FUNCIONÁRIO</button>
         </form>
         <p><a href="?logout=1">Sair</a></p>
     </div>

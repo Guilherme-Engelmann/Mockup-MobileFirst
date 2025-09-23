@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: tela de login2.php");
-    exit();
-}
+
 ?>
 
 <!DOCTYPE html>
