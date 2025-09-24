@@ -737,3 +737,600 @@ a:hover {
     padding: 15px;
   }
 }
+
+
+/* Dashboard Gearal */
+
+body {
+  background: #232323;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.phone-content {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #232323;
+  border: 7px solid #e5d3c5;
+  border-radius: 40px;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.6);
+  padding: 0;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  padding: 26px 28px 10px 28px;
+  border-radius: 40px 40px 0 0;
+}
+
+.back-icon {
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+.header h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.container {
+  padding: 18px 24px 28px 24px;
+  background: url("../imagens/bg-textura.png"), linear-gradient(135deg, #aaa 0%, #bdbdbd 100%);
+  background-size: cover;
+  min-height: 600px;
+  border-radius: 0 0 40px 40px;
+}
+
+.mapa {
+  width: 100%;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+}
+.mapa img {
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.linha, .velocidade {
+  background: #232323;
+  color: #fff;
+  border-radius: 18px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.linha img, .velocidade img {
+  width: 32px;
+  height: 32px;
+}
+
+.cartao {
+  background: #232323;
+  color: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nome {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.nome span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #bdbdbd;
+}
+.codigo-barra {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.codigo-barra img {
+  width: 42px;
+  height: 42px;
+}
+.codigo-barra p {
+  font-size: 13px;
+  margin: 0;
+}
+
+.grafico {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grafico img {
+  width: 90%;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+/* Estilo dos botões dashboard (sem HTML mas inspirado na imagem) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 28px 0;
+}
+.dashboard-btn {
+  background: #232323;
+  border-radius: 22px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.19);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.dashboard-btn:hover {
+  background: #111;
+}
+.dashboard-btn img, .dashboard-btn i {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.dashboard-btn span {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 6px;
+  text-shadow: 1px 1px 2px #222;
+  letter-spacing: 0.5px;
+}
+
+/* Para links, ícones e botões */
+a, button {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Status Trem */
+
+body {
+  background: #232323;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.phone-content {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #232323;
+  border: 7px solid #e5d3c5;
+  border-radius: 40px;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.6);
+  padding: 0;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background: #232323;
+  padding: 26px 28px 10px 28px;
+  border-radius: 40px 40px 0 0;
+}
+
+.back-icon {
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.header-icon {
+  font-size: 54px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.header h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.train-list {
+  background: url("../imagens/bg-textura.png"), linear-gradient(135deg, #aaa 0%, #bdbdbd 100%);
+  background-size: cover;
+  min-height: 600px;
+  border-radius: 0 0 40px 40px;
+  padding: 18px 24px 28px 24px;
+}
+
+.train-card {
+  display: flex;
+  align-items: flex-start;
+  background: transparent;
+  margin-bottom: 28px;
+  gap: 18px;
+}
+
+.train-icon {
+  width: 110px;
+  min-width: 110px;
+  height: 140px;
+  background: #232323;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.train-icon i {
+  font-size: 62px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.train-icon img {
+  display: none; /* Oculta a imagem caso não queira usar */
+  width: 52px;
+  height: 52px;
+  margin-bottom: 8px;
+}
+
+.train-id {
+  position: static;
+  background: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.train-info {
+  flex: 1;
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.train-info p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #232323;
+  background: #ececec;
+  border-radius: 18px;
+  padding: 7px 18px;
+  letter-spacing: 0.3px;
+}
+
+.train-info p strong {
+  color: #232323;
+  font-weight: 700;
+}
+
+.train-info p:last-child {
+  background: none;
+  padding: 0;
+}
+
+.desempenho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.label {
+  background: #fff;
+  color: #232323;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 6px 22px;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.options label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #232323;
+  cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 3px;
+  accent-color: #232323;
+  border-radius: 8px;
+  border: 2px solid #232323;
+  background: #fff;
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.options input[type="checkbox"]:checked {
+  background: #232323;
+  border: 2px solid #232323;
+}
+
+.options input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  left: 4px;
+  top: 0px;
+}
+
+.battery {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 8px;
+  gap: 5px;
+}
+
+.battery i {
+  font-size: 22px;
+  color: #232323;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Meus Dados */
+
+body {
+  background: #232323;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.phone-content {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #232323;
+  border: 7px solid #e5d3c5;
+  border-radius: 40px;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.6);
+  padding: 0;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background: #232323;
+  padding: 26px 28px 10px 28px;
+  border-radius: 40px 40px 0 0;
+}
+
+.back-icon {
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.header-icon {
+  font-size: 54px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.header h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.content {
+  background: url("../imagens/bg-textura.png"), linear-gradient(135deg, #aaa 0%, #bdbdbd 100%);
+  background-size: cover;
+  min-height: 600px;
+  border-radius: 0 0 40px 40px;
+  padding: 28px 24px 28px 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+  margin-bottom: 22px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.tabs a {
+  color: #232323;
+  text-decoration: none;
+  padding-bottom: 3px;
+  transition: color 0.2s;
+  position: relative;
+  font-weight: 600;
+}
+
+.tabs a:first-child {
+  color: #232323;
+  font-weight: 700;
+}
+
+.tabs a.active, .tabs a:first-child {
+  color: #232323;
+}
+.tabs a:first-child::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  height: 4px;
+  width: 80%;
+  background: #54a0ff;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+}
+
+.contact-card {
+  background: #232323;
+  border-radius: 34px;
+  padding: 32px 22px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 350px;
+  margin: 38px auto 0 auto;
+}
+
+.contact-card .icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+}
+.contact-card .icon i {
+  font-size: 38px;
+  color: #fff;
+  background: none;
+  margin-right: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+  letter-spacing: 0.3px;
+}
+
+.input-group input {
+  background: #ececec;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 18px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #232323;
+  outline: none;
+  margin-top: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 500px) {
+  .phone-content {
+    max-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+    border-width: 0;
+  }
+  .contact-card {
+    max-width: 96vw;
+    padding: 18px 4vw;
+  }
+  .content {
+    padding: 18px 4vw;
+  }
+}
