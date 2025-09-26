@@ -14,21 +14,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
         if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
             $register_msg = "E-mail inválido.";
         } else {
-            // Hash password
-            $hashed_pass = password_hash($new_pass, PASSWORD_DEFAULT);
-
-            $stmt = $mysqli->prepare("INSERT INTO usuarios (username, senha, cargo, email) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $new_user, $hashed_pass, $new_func, $new_email);
-
-            if ($stmt->execute()) {
-                $register_msg = "Usuário cadastrado com sucesso!";
-                // Redirect to login after success
-                header("Location: login.php?msg=" . urlencode($register_msg));
-                exit();
+            // Check if username or email already exists
+            $check_stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE nomeUsuario = ? OR email = ?");
+            $check_stmt->bind_param("ss", $new_user, $new_email);
+            $check_stmt->execute();
+            $check_stmt->store_result();
+            if ($check_stmt->num_rows > 0) {
+                $register_msg = "Nome de usuário ou e-mail já existe.";
             } else {
-                $register_msg = "Erro ao cadastrar: usuário ou e-mail já existe.";
+                // Hash password
+                $hashed_pass = password_hash($new_pass, PASSWORD_DEFAULT);
+
+                // Map cargo
+                $tipoUsuario = ($new_func === 'adm') ? 'admin' : 'funcionario';
+
+                $stmt = $mysqli->prepare("INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, email) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $new_user, $hashed_pass, $tipoUsuario, $new_email);
+
+                if ($stmt->execute()) {
+                    $register_msg = "Usuário cadastrado com sucesso!";
+                    // Redirect to login after success
+                    header("Location: login.php?msg=" . urlencode($register_msg));
+                    exit();
+                } else {
+                    $register_msg = "Erro ao cadastrar usuário.";
+                }
+                $stmt->close();
             }
-            $stmt->close();
+            $check_stmt->close();
         }
     } else {
         $register_msg = "Preencha todos os campos.";

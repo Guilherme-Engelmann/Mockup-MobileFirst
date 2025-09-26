@@ -4,56 +4,120 @@ include "db.php";
 
 session_start();
 
-if(empty($_SESSION["user_pk"])){
+if(empty($_SESSION["user_id"])){
     header("Location: index.php");
     exit;
 };
 
 $register_msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
-    $new_user = $_POST['new_username'] ?? "";
+    $new_user = trim($_POST['new_username'] ?? "");
     $new_pass = $_POST['new_password'] ?? "";
+    $new_email = trim($_POST['new_email'] ?? "");
     $new_func = $_POST['new_func'] ?? "";
-    if($new_user && $new_pass){
-        $stmt = $mysqli -> prepare("INSERT INTO usuarios (username, senha, cargo) VALUES (?,?,?)");
-        $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
-        
-        if($stmt->execute()) {
-            $register_msg = "Usuário cadastrado com sucesso!";
-        }else{
-            $register_msg = "Erro ao cadastrar novo usuário.";
-        };
+    if($new_user && $new_pass && $new_email && $new_func){
+        // Validate email
+        if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+            $register_msg = "E-mail inválido.";
+        } else {
+            // Check if username or email already exists
+            $check_stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE nomeUsuario = ? OR email = ?");
+            $check_stmt->bind_param("ss", $new_user, $new_email);
+            $check_stmt->execute();
+            $check_stmt->store_result();
+            if ($check_stmt->num_rows > 0) {
+                $register_msg = "Nome de usuário ou e-mail já existe.";
+            } else {
+                // Hash password
+                $hashed_pass = password_hash($new_pass, PASSWORD_DEFAULT);
 
-        $stmt->close();
+                // Map cargo
+                $tipoUsuario = ($new_func === 'adm') ? 'admin' : 'funcionario';
+
+                $stmt = $mysqli->prepare("INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, email) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $new_user, $hashed_pass, $tipoUsuario, $new_email);
+
+                if($stmt->execute()) {
+                    $register_msg = "Usuário cadastrado com sucesso!";
+                }else{
+                    $register_msg = "Erro ao cadastrar novo usuário.";
+                };
+
+                $stmt->close();
+            }
+            $check_stmt->close();
+        }
     }else{
-        $register = "Preencha todos os campos.";
+        $register_msg = "Preencha todos os campos.";
     };
 };
 
 ?>
 
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Novo Usuário do Sistema</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
-    <form method="post">
-        <h2>Bem-vindo, <?= $_SESSION["username"] ?>!</h2>
-        <h3>Cadastro Novo Usuário</h3>
-        <?php if($register_msg):  ?> <p> <?= $register_msg ?> </p> <?php endif; ?>
-        <input type="text" name="new_username" placeholder="Novo Usuário" required>
-        <input type="password" name="new_password" placeholder="Nova Senha" required>
-        <select name="new_func">
-            <option value="adm">ADM</option>
-            <option value="func" selected>FUNC</option>
-        </select>
-        <button type="submit" name="register" value="1"> Cadastrar</button>
-    </form>
-    <p><a href="index.php">Voltar</a></p>
-    
+    <div class="phone-content">
+        <div class="header">
+            <a href="index.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <div class="icon-title">
+                <i class="fas fa-user-plus header-icon"></i>
+                <h2>Cadastro de Usuário</h2>
+            </div>
+        </div>
+
+        <div class="signup-bg">
+            <div class="signup-content">
+                <div class="signup-card">
+                    <h2>Bem-vindo, <?= htmlspecialchars($_SESSION["user_name"]) ?>!</h2>
+                    <p>Cadastro Novo Usuário</p>
+                    <?php if($register_msg): ?>
+                        <p class="message"><?php echo htmlspecialchars($register_msg); ?></p>
+                    <?php endif; ?>
+                    <form method="post" id="signup-form">
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="new_username" placeholder="Nome de Usuário" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="new_email" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="new_password" placeholder="Senha" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-briefcase"></i>
+                            <select name="new_func" required>
+                                <option value="adm">ADM</option>
+                                <option value="func" selected>FUNC</option>
+                            </select>
+                        </div>
+                        <button type="submit" name="register" class="signup-btn">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic client-side validation
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            const password = document.querySelector('input[name="new_password"]').value;
+            if (password.length < 6) {
+                alert('A senha deve ter pelo menos 6 caracteres.');
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

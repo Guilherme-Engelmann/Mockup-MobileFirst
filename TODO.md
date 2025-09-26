@@ -1,23 +1,26 @@
-# TODO: Fix Forgot Password and Sign-Up Screens
+# TODO: Align User Registration and Login Systems
 
 ## Database Fixes
-- [x] Update Usuarios table in banco.sql: Add AUTO_INCREMENT PRIMARY KEY, align fields (username, senha, cargo, email), add index on email.
+- [x] Update Usuarios table in banco.sql: Change fields to nomeUsuario, Senha, tipoUsuario, email, ultimoLogin; add index on nomeUsuario.
 
 ## Sign-Up (inscreverse.php)
-- [x] Update PHP: Add password hashing, email input, validation, error handling, redirect on success.
-- [x] Update HTML: Add full structure, CSS link, mobile-first layout (phone-content, header, form card).
-- [x] Add JS for client-side validation if needed.
+- [x] Update PHP: Align fields to nomeUsuario, Senha (hashed), tipoUsuario, email; add duplicate checks for nomeUsuario/email; map cargo to admin/funcionario.
+- [x] HTML/JS: Already functional.
 
-## Forgot Password (esqueceuasenha.php)
-- [x] Fix HTML: Remove duplicates, complete structure, fix JS (backBtn, form submit).
-- [x] Add PHP backend: Check email, generate token, send email (demo alert), redirect.
-- [x] Update layout to match mobile-first design.
+## Admin Registration (cadastro.php)
+- [x] Update PHP: Add email field, password hashing, duplicate checks, align fields/schema, map cargo.
+- [x] Update HTML: Add mobile-first structure, CSS, icons, JS validation to match inscreverse.php.
+
+## Login (login.php)
+- [x] Update PHP: Use db.php for connection, improve error handling with $login_msg.
+- [x] Update HTML: Add full mobile-first structure, form with icons, links to forgot password and sign-up.
 
 ## CSS (style.css)
-- [x] Add styles for .forgot-password-container and .signup-container: Adapt from login styles (cards, inputs, buttons).
-- [x] Ensure mobile responsiveness.
+- [ ] Verify/add styles for .login-bg, .login-content, .login-card, .message.error, .forgot-link, .signup-link if missing.
 
 ## Testing
-- [ ] Test sign-up: Register user, check DB.
-- [ ] Test forgot password: Submit email, check response.
-- [ ] Verify layouts in browser.
+- [ ] Apply banco.sql changes to database (run SQL or migrate existing data).
+- [ ] Test sign-up via inscreverse.php: Register user, verify hashed password in DB, login works.
+- [ ] Test admin registration via cadastro.php: Ensure only logged-in users can access, new users can login.
+- [ ] Test login: Proper redirects, error messages displayed.
+- [ ] Verify all layouts in browser for mobile responsiveness.
