@@ -10,20 +10,30 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     $new_pass = $_POST['new_password'] ?? "";
     $new_func = $_POST['new_func'] ?? "";
     if($new_user && $new_pass){
-        $stmt = $mysqli -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
-        $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
-        
-        if($stmt->execute()) {
-            $register_msg = "Usuário cadastrado com sucesso!";
-            header("Location: index.php");
-            exit();
-        }else{
-            $register_msg = "Erro ao cadastrar novo usuário.";
-        };
+        // Check if username already exists
+        $check_stmt = $mysqli->prepare("SELECT pk FROM Usuarios WHERE username = ?");
+        $check_stmt->bind_param("s", $new_user);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        if ($check_stmt->num_rows > 0) {
+            $register_msg = "Usuário já cadastrado.";
+        } else {
+            $stmt = $mysqli -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
+            $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
+            
+            if($stmt->execute()) {
+                $register_msg = "Usuário cadastrado com sucesso!";
+                header("Location: index.php");
+                exit();
+            }else{
+                $register_msg = "Erro ao cadastrar novo usuário.";
+            };
 
-        $stmt->close();
+            $stmt->close();
+        }
+        $check_stmt->close();
     }else{
-        $register = "Preencha todos os campos.";
+        $register_msg = "Preencha todos os campos.";
     };
 };
 
