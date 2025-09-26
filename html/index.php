@@ -17,9 +17,10 @@ $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $user = $_POST["username"] ?? "";
     $pass = $_POST["senha"] ?? "";
+    $email = $_POST["email"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM Usuarios WHERE username=? AND senha=?");
-    $stmt-> bind_param("ss", $user, $pass);
+    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM Usuarios WHERE username=? AND senha=? AND email=?");
+    $stmt-> bind_param("sss", $user, $pass, $email);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -33,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         exit;
 
     }else{
-        $msg = "Usuário ou senha incorretos!";
+        $msg = "Usuário, senha ou e-mail incorretos!";
     }
 };
 
@@ -76,6 +77,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             <br>
             <br>
             <input type="password" name="senha" placeholder="Senha" required>
+            <br>
+            <br>
+            <input type="email" name="email" placeholder="E-mail" required>
             <br>
             <br>
             <button type="submit">Entrar</button>
