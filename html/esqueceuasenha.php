@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
             $reset_msg = "E-mail inválido.";
         } else {
             // Check if email exists
-            $stmt = $mysqli->prepare("SELECT idUsuario FROM usuarios WHERE email = ?");
+            $stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
 <body>
     <div class="phone-content">
         <div class="header">
-            <a href="login.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="index.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
             <div class="icon-title">
                 <i class="fas fa-key header-icon"></i>
                 <h2>Esqueceu a Senha</h2>

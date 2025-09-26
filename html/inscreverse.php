@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
                 if ($stmt->execute()) {
                     $register_msg = "Usuário cadastrado com sucesso!";
                     // Redirect to login after success
-                    header("Location: login.php?msg=" . urlencode($register_msg));
+                    header("Location: index.php?msg=" . urlencode($register_msg));
                     exit();
                 } else {
                     $register_msg = "Erro ao cadastrar usuário.";
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
 <body>
     <div class="phone-content">
         <div class="header">
-            <a href="login.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="index.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
             <div class="icon-title">
                 <i class="fas fa-user-plus header-icon"></i>
                 <h2>Inscrever-se</h2>
