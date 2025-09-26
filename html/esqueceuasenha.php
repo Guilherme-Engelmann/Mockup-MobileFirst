@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
             $reset_msg = "E-mail inválido.";
         } else {
             // Check if email exists
-            $stmt = $mysqli->prepare("SELECT idUsuario FROM Usuarios WHERE email = ?");
+            $stmt = $mysqli->prepare("SELECT pk FROM usuarios WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
