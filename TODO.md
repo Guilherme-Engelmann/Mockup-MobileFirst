@@ -1,25 +1,23 @@
-# TODO - Role-Based Access Control Implementation
+# TODO: Fix Forgot Password and Sign-Up Screens
 
-## Completed Tasks
-- [x] Created login.php script for server-side authentication
-- [x] Modified login form to submit to login.php
-- [x] Added session-based authentication
-- [x] Protected admin page (create.php) with session checks
-- [x] Protected employee page (dashboardGeral.php) with session checks
-- [x] Added logout functionality
-- [x] Updated database schema for Usuarios table
-- [x] Updated create.php to support user types and admin interface
-- [x] Modified redirect logic: Admin -> create.php, Employee -> dashboardGeral.php
+## Database Fixes
+- [x] Update Usuarios table in banco.sql: Add AUTO_INCREMENT PRIMARY KEY, align fields (username, senha, cargo, email), add index on email.
 
-## Next Steps
-- [ ] Test the authentication system
-- [ ] Create sample admin and employee accounts in the database
-- [ ] Ensure all pages are properly protected
-- [ ] Add error handling for login failures
-- [ ] Consider adding password reset functionality
+## Sign-Up (inscreverse.php)
+- [x] Update PHP: Add password hashing, email input, validation, error handling, redirect on success.
+- [x] Update HTML: Add full structure, CSS link, mobile-first layout (phone-content, header, form card).
+- [x] Add JS for client-side validation if needed.
 
-## Notes
-- Admin users are redirected to create.php (employee registration page)
-- Employee users are redirected to dashboardGeral.php
-- Logout destroys the session and redirects to login page
-- Database connection uses localhost, root user, and tracktrain database
+## Forgot Password (esqueceuasenha.php)
+- [x] Fix HTML: Remove duplicates, complete structure, fix JS (backBtn, form submit).
+- [x] Add PHP backend: Check email, generate token, send email (demo alert), redirect.
+- [x] Update layout to match mobile-first design.
+
+## CSS (style.css)
+- [x] Add styles for .forgot-password-container and .signup-container: Adapt from login styles (cards, inputs, buttons).
+- [x] Ensure mobile responsiveness.
+
+## Testing
+- [ ] Test sign-up: Register user, check DB.
+- [ ] Test forgot password: Submit email, check response.
+- [ ] Verify layouts in browser.
