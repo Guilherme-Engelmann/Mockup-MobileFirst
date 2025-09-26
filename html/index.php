@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $user = $_POST["username"] ?? "";
     $pass = $_POST["senha"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM usuarios WHERE username=? AND senha=?");
+    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM Usuarios WHERE username=? AND senha=?");
     $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
 

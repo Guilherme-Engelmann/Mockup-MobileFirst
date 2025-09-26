@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     $new_pass = $_POST['new_password'] ?? "";
     $new_func = $_POST['new_func'] ?? "";
     if($new_user && $new_pass){
-        $stmt = $mysqli -> prepare("INSERT INTO usuarios (username, senha, cargo) VALUES (?,?,?)");
+        $stmt = $mysqli -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
         $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
         
         if($stmt->execute()) {

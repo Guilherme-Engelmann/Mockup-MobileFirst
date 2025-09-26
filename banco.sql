@@ -105,13 +105,13 @@ CREATE TABLE Leituras (
     FOREIGN KEY (idSensor) REFERENCES Sensores(idSensor)
 );
 
-CREATE TABLE usuarios (
+CREATE TABLE Usuarios (
     pk INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     cargo VARCHAR(20) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(100) NULL UNIQUE,
     ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_email ON usuarios(email);
+CREATE INDEX idx_email ON Usuarios(email);
