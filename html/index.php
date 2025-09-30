@@ -1,4 +1,3 @@
-
 <?php
 
 //faz a conexao
@@ -18,15 +17,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $user = $_POST["username"] ?? "";
     $pass = $_POST["senha"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=?");
-    $stmt-> bind_param("s", $user);
+    $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
+    $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
 
     $result = $stmt->get_result();
     $dados = $result -> fetch_assoc();
     $stmt->close();
 
-    if($dados && password_verify($pass, $dados["senha"])){
+    if($dados){
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];
         $_SESSION["cargo"] = $dados["cargo"];
