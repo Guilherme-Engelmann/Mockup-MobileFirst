@@ -6,4 +6,4 @@
 - [x] Add role-based redirection logic after successful login
 - [x] Update input field name to nomeUsuario for consistency
 - [x] Update session variables to include tipoUsuario
-- [ ] Test login with different user types (funcionario and admin)
+- [x] Test login with different user types (funcionario and admin)
