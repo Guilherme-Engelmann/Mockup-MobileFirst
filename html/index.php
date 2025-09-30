@@ -15,22 +15,22 @@ if(isset($_GET['logout'])){
 
 $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $user = $_POST["nomeUsuario"] ?? "";
+    $user = $_POST["username"] ?? "";
     $pass = $_POST["senha"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, nomeUsuario, Senha, tipoUsuario FROM Usuarios WHERE nomeUsuario=? AND Senha=?");
-    $stmt-> bind_param("ss", $user, $pass);
+    $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=?");
+    $stmt-> bind_param("s", $user);
     $stmt->execute();
 
     $result = $stmt->get_result();
     $dados = $result -> fetch_assoc();
     $stmt->close();
 
-    if($dados){
+    if($dados && password_verify($pass, $dados["senha"])){
         $_SESSION["user_pk"] = $dados["pk"];
-        $_SESSION["nomeUsuario"] = $dados["nomeUsuario"];
-        $_SESSION["tipoUsuario"] = $dados["tipoUsuario"];
-        if($dados["tipoUsuario"] == "funcionario"){
+        $_SESSION["username"] = $dados["username"];
+        $_SESSION["cargo"] = $dados["cargo"];
+        if($dados["cargo"] == "funcionario"){
             header("Location: dashboard3.php");
         }else{
             header("Location: cadastro.php");
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php if(!empty($_SESSION["user_pk"])): ?>
 
     <div>
-        <h3>Bem-vindo, <?= $_SESSION["nomeUsuario"] ?>!</h3>
+        <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
         <p>Sessão Ativa</p>
         <form action="cadastro.php" method="get">
             <button type="submit">ADM</button>
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 <p> <?= $msg ?> </p> 
             <?php endif; ?>
 
-            <input type="text" name="nomeUsuario" placeholder="Usuário" required>
+            <input type="text" name="username" placeholder="Usuário" required>
             <br>
             <br>
             <input type="password" name="senha" placeholder="Senha" required>
