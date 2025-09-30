@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];
         $_SESSION["cargo"] = $dados["cargo"];
-        if($dados["cargo"] == "funcionario"){
+        if($dados["cargo"] == "func"){
             header("Location: dashboard3.php");
         }else{
             header("Location: cadastro.php");
