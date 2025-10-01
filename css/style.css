@@ -728,6 +728,80 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Dashboard Geral */
+.mapa img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0;
+}
+
+.linha, .velocidade {
+  display: flex;
+  align-items: center;
+  background: #222;
+  border-radius: 24px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px #0003;
+  gap: 12px;
+}
+
+.linha img, .velocidade img {
+  width: 40px;
+  height: 40px;
+}
+
+.linha span, .velocidade span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.cartao {
+  background: #222;
+  border-radius: 24px;
+  padding: 18px 16px;
+  margin: 18px 0;
+  box-shadow: 0 2px 8px #0003;
+  text-align: center;
+}
+
+.cartao .nome {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.cartao .nome span {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.cartao .codigo-barra img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.cartao .codigo-barra p {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.grafico img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
 /* Responsive */
 @media (max-width: 450px) {
   body {

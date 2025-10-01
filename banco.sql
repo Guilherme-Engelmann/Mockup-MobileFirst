@@ -110,7 +110,13 @@ CREATE TABLE usuarios (
     pk INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(120) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    cargo ENUM('adm','func') NOT NULL
+    cargo ENUM('adm','func') NOT NULL,
+    nome VARCHAR(255),
+    funcao VARCHAR(100),
+    linha INT,
+    velocidade INT,
+    codigo_barra VARCHAR(20)
 );
 
-INSERT INTO usuarios (username, senha, cargo) VALUES ('admin','123','adm');
+INSERT INTO usuarios (username, senha, cargo, nome, funcao, linha, velocidade, codigo_barra) VALUES ('admin','123','adm', 'Administrador', 'Administrador', NULL, NULL, NULL);
+INSERT INTO usuarios (username, senha, cargo, nome, funcao, linha, velocidade, codigo_barra) VALUES ('funcionario','123','func', 'Sergio Conceição', 'Maquinista', 157, 60, '0123456789');
