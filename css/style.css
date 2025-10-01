@@ -1,805 +1,252 @@
-/* Alertas */
-
-/* Reset and base styles */
+/* Background and container setup */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #222;
-  color: #fff;
-}
-
-/* Container for the phone content */
-.phone-content {
-  max-width: 390px;
-  height: 844px;
-  margin: 40px auto;
-  background: #222;
-  border-radius: 48px;
-  box-shadow: 0 0 0 8px #222, 0 4px 32px #0008;
-  position: relative;
-  border: 4px solid #d4bfa1;
-  overflow: hidden;
-}
-
-/* Header styles */
-.header {
-  background: #222;
-  padding: 32px 20px 0 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.5rem;
-  border-top-left-radius: 48px;
-  border-top-right-radius: 48px;
-  position: relative;
-}
-
-.back-icon {
-  color: #fff;
-  font-size: 2rem;
-  margin-right: 12px;
-  cursor: pointer;
-  position: absolute;
-  left: 20px;
-  top: 40px;
-}
-
-.icon-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.header-icon {
-  font-size: 3rem;
-  margin-bottom: 0.25rem;
-  color: #fff;
-}
-
-.header h2 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  margin: 0;
-  text-align: center;
-  letter-spacing: 1px;
-}
-
-/* Main screen area */
-.screen {
-  background: url('../img/bg-texture.png'), linear-gradient(to bottom, #9e9e9e 0%, #666 100%);
-  background-blend-mode: multiply;
-  background-size: cover;
-  padding: 24px 22px 24px 22px;
-  min-height: 640px;
-}
-
-/* Section titles and expand arrow */
-.problemas h2,
-.notificacoes h2 {
-  background: #222;
-  color: #fff;
-  border-radius: 24px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 8px 0;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
-}
-
-.seta {
-  text-align: center;
-  font-size: 2rem;
-  color: #222;
-  margin-bottom: 16px;
-  user-select: none;
-}
-
-/* Linha card styles */
-.linha-card {
-  background: #222;
-  border-radius: 32px;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  padding: 18px 16px;
-  box-shadow: 0 2px 8px #0003;
-  gap: 16px;
-}
-
-.linha-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2.6rem;
-  color: #fff;
-  margin-right: 12px;
-}
-
-.linha-icon span {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-top: 3px;
-  letter-spacing: 1px;
-}
-
-.linha-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.linha-info p {
-  background: #fff;
-  color: #222;
-  border-radius: 18px;
-  padding: 6px 14px;
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.linha-info p strong {
-  font-weight: bold;
-}
-
-.linha-info .atraso {
-  background: #fff;
-  color: #e74c3c;
-  font-weight: bold;
-  border-radius: 18px;
-  font-size: 1rem;
-  padding: 6px 14px;
-  margin-top: 4px;
-}
-
-/* Notificações section */
-.notificacoes h2 {
-  margin-top: 28px;
-}
-
-.notificacao {
-  background: #222;
-  border-radius: 24px;
-  margin-top: 10px;
-  padding: 8px 0 8px 0;
-  display: flex;
-  align-items: center;
-  font-size: 1.18rem;
-  font-weight: 600;
-  color: #fff;
-  position: relative;
-}
-
-.notificacao::before {
-  content: "⚠️";
-  font-size: 1.5rem;
-  margin: 0 10px 0 18px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.notificacao span,
-.notificacao strong {
-  background: #fff;
-  color: #222;
-  border-radius: 16px;
-  padding: 6px 14px;
-  font-weight: bold;
-  margin-left: 10px;
-  font-size: 1rem;
-}
-
-/* Responsive */
-@media (max-width: 450px) {
-  .phone-content {
-    max-width: 100vw;
-    height: 100vh;
-    border-radius: 0;
+    background: #232323;
+    min-height: 100vh;
     margin: 0;
-  }
-  .header {
-    padding-top: 20px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  .screen {
-    padding: 14px 8px 14px 8px;
-  }
+    padding: 0;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Chat */
-
-.icon-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.login-wrapper {
+    background: url('bg-blue-texture.jpg') center center/cover no-repeat; /* Use a blue textured image if available, otherwise use a solid color */
+    width: 375px;
+    height: 812px;
+    border-radius: 36px;
+    box-shadow: 0 0 35px 0 rgba(0,0,0,0.65);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 60px;
 }
 
-.header-icon {
-  font-size: 3rem;
-  margin-bottom: 0.25rem;
-  color: #fff;
+/* User icon */
+.user-icon {
+    background: #fff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 36px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-.header h2 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  margin: 0;
-  text-align: center;
-  letter-spacing: 1px;
+.user-icon svg {
+    width: 70px;
+    height: 70px;
+    fill: #232323;
 }
 
-/* Chat container and header */
-.chat-container {
-  padding: 0 22px;
-  background: url('../img/bg-texture.png'), linear-gradient(to bottom, #9e9e9e 0%, #666 100%);
-  background-blend-mode: multiply;
-  background-size: cover;
-  min-height: 640px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+/* Login card */
+.login-card {
+    background: #fff;
+    border-radius: 28px;
+    padding: 32px 24px 24px 24px;
+    width: 90%;
+    max-width: 325px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
-.chat-header {
-  background: #222;
-  color: #fff;
-  border-radius: 24px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 10px 0;
-  margin: 20px 0 16px 0;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.login-card h3 {
+    margin: 0 0 14px 0;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #232323;
+    letter-spacing: 0.5px;
 }
 
-.chat-header::before {
-  content: "\f075";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-size: 2.1rem;
-  color: #fff;
-  margin-right: 10px;
+/* Input groups with icons */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
 }
 
-/* Monitoramento de manutenção box */
-.monitoramento-box {
-  background: #222;
-  border-radius: 32px;
-  padding: 18px 16px;
-  margin-bottom: 18px;
-  margin-top: 0;
-  box-shadow: 0 2px 8px #0003;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.input-group .icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.monitoramento-box h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 16px;
+.input-group input {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    background: #232323;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
-.radio-group {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+.input-group input::placeholder {
+    color: #bdbdbd;
+    font-weight: 400;
 }
 
-.radio-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.1rem;
-  color: #fff;
+.login-card .error {
+    color: #b80036;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
 }
 
-.radio-circle {
-  width: 26px;
-  height: 26px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-  transition: border 0.2s;
+/* Extra options */
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2px 10px 2px;
+    font-size: 0.98rem;
 }
 
-.radio-circle.checked {
-  background: #fff;
-  border-color: #fff;
+.options .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.radio-circle.checked::after {
-  content: '';
-  display: block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #222;
-}
-
-.radio-label {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-/* Chat messages */
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-}
-
-.message {
-  max-width: 80%;
-  font-size: 1.05rem;
-  border-radius: 18px;
-  padding: 9px 16px;
-  margin-bottom: 4px;
-  background: #fff;
-  color: #222;
-  font-weight: 500;
-  align-self: flex-end;
-  display: flex;
-  align-items: center;
-  word-break: break-word;
-  box-shadow: 0 2px 8px #0002;
-}
-
-.message.received {
-  align-self: flex-start;
-  background: #222;
-  color: #fff;
-  font-weight: 500;
-}
-
-.message.sent {
-  align-self: flex-end;
-  background: #fff;
-  color: #222;
-  font-weight: 600;
-}
-
-.message .fa-user {
-  margin-left: 10px;
-  font-size: 1.3rem;
-  color: #222;
-}
-
-/* Objetivo da mensagem cards */
-.objetivo-msg {
-  background: #fff;
-  color: #222;
-  border-radius: 18px;
-  padding: 8px 16px;
-  margin-bottom: 9px;
-  font-size: 1.08rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px #0002;
-}
-
-.objetivo-msg .fa-user {
-  font-size: 1.3rem;
-  color: #222;
-  margin-left: 10px;
-}
-
-/* Chat input styles */
-.chat-input-area {
-  display: flex;
-  align-items: center;
-  background: #9e9e9e;
-  border-radius: 0 0 32px 32px;
-  padding: 13px 12px 13px 12px;
-  font-size: 1.1rem;
-  margin-top: auto;
-  gap: 8px;
-}
-
-.chat-input-area input[type="text"] {
-  flex: 1;
-  border: none;
-  border-radius: 9px;
-  padding: 10px 15px;
-  font-size: 1.1rem;
-  background: #e5e5e5;
-  color: #222;
-  outline: none;
-}
-
-.chat-input-area button {
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 1.45rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.chat-input-area button:hover {
-  background: #444;
-}
-
-/* Responsive */
-@media (max-width: 450px) {
-  .phone-content {
-    max-width: 100vw;
-    height: 100vh;
-    border-radius: 0;
+.options input[type="checkbox"] {
+    accent-color: #30b35a;
+    width: 18px;
+    height: 18px;
     margin: 0;
-  }
-  .header {
-    padding-top: 20px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  .chat-container {
-    padding: 14px 8px 14px 8px;
-  }
 }
 
-/* Velocidade*/
-
-
-.icon-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.options label {
+    color: #e2e2e2;
+    font-size: 0.98rem;
 }
 
-.header-icon {
-  font-size: 3rem;
-  margin-bottom: 0.25rem;
-  color: #fff;
+.options a {
+    color: #2188c0;
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
-.header h2 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  margin: 0;
-  text-align: center;
-  letter-spacing: 1px;
+.options a:hover {
+    color: #1e6fa4;
+    text-decoration: underline;
 }
 
-/* Container for the cards */
-.container {
-  background: url('../img/bg-texture.png'), linear-gradient(to bottom, #9e9e9e 0%, #666 100%);
-  background-blend-mode: multiply;
-  background-size: cover;
-  min-height: 640px;
-  padding: 24px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+/* Login button */
+.login-btn {
+    width: 100%;
+    background: #30b35a;
+    color: #fff;
+    font-size: 1.12rem;
+    font-weight: 600;
+    border: none;
+    padding: 14px 0;
+    border-radius: 24px;
+    margin: 18px 0 7px 0;
+    cursor: pointer;
+    transition: background 0.25s;
+    box-shadow: 0 2px 16px rgba(48,179,90,0.13);
 }
 
-/* Card styles */
-.card {
-  background: #222;
-  border-radius: 32px;
-  box-shadow: 0 2px 8px #0003;
-  margin-bottom: 0;
-  padding: 0;
-  position: relative;
+.login-btn:hover,
+.login-btn:focus {
+    background: #269143;
 }
 
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: none;
-  padding: 12px 22px 0 22px;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 1px;
+/* Register link */
+.register {
+    text-align: center;
+    margin-top: 6px;
+    color: #e2e2e2;
+    font-size: 0.98rem;
 }
 
-.card-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0;
-  padding: 10px 10px 18px 10px;
+.register a {
+    color: #2188c0;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-/* Train Icon Section */
-.icon-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 76px;
-}
-
-.icon-section svg {
-  display: block;
-  margin-bottom: 0;
-}
-
-.line-number {
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-top: 4px;
-  letter-spacing: 2px;
-}
-
-/* Speedometer Section */
-.speedometer-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 90px;
-}
-
-.speedometer-section svg {
-  display: block;
-}
-
-/* Speed Section */
-.speed-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  min-width: 60px;
-  gap: 2px;
-  margin-left: auto;
-}
-
-.speed-value {
-  font-size: 2.1rem;
-  font-weight: bold;
-  color: #fff;
-  background: none;
-  text-align: right;
-  margin-bottom: 2px;
-  letter-spacing: 1px;
-  min-width: 50px;
-}
-
-.arrows {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.arrow-btn {
-  background: none;
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  font-size: 1.1rem;
-  width: 32px;
-  height: 32px;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  font-weight: bold;
-}
-
-.arrow-btn:hover {
-  background: #fff;
-  color: #222;
+.register a:hover {
+    color: #1e6fa4;
+    text-decoration: underline;
 }
 
 /* Responsive for mobile */
-@media (max-width: 450px) {
-  .phone-content {
-    max-width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    margin: 0;
-  }
-  .header {
-    padding-top: 20px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  .container {
-    padding: 14px 4px 14px 4px;
-    gap: 14px;
-  }
-  .card-header {
-    padding: 10px 8px 0 8px;
+@media (max-width: 500px) {
+    .login-wrapper {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding-top: 28px;
+    }
+    .login-card {
+        max-width: 96vw;
+        padding: 24px 8px;
+    }
+}
+
+/* For the "Bem-vindo" screen (after login) */
+.welcome-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.welcome-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.welcome-btns button {
+    background: #30b35a;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 0;
     font-size: 1rem;
-  }
-  .card-content {
-    padding: 8px 2px 12px 2px;
-  }
+    font-weight: 500;
+    width: 160px;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* Hide scrollbars for a clean mockup look */
-.container::-webkit-scrollbar,
-.card-content::-webkit-scrollbar {
-  display: none;
+.welcome-btns button:hover {
+    background: #269143;
 }
 
-/* Index Login Page */
-
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.welcome-msg a {
+    color: #2188c0;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 12px;
+    transition: color 0.2s;
 }
 
-div {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-h3 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input[type="text"],
-input[type="password"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button[type="submit"] {
-  padding: 10px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-button[type="submit"]:hover {
-  background: #0056b3;
-}
-
-p {
-  margin: 10px 0;
-}
-
-small {
-  color: #666;
-}
-
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Dashboard Geral */
-.mapa img {
-  width: 100%;
-  height: auto;
-  border-radius: 24px;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  margin: 18px 0;
-}
-
-.linha, .velocidade {
-  display: flex;
-  align-items: center;
-  background: #222;
-  border-radius: 24px;
-  padding: 12px 16px;
-  box-shadow: 0 2px 8px #0003;
-  gap: 12px;
-}
-
-.linha img, .velocidade img {
-  width: 40px;
-  height: 40px;
-}
-
-.linha span, .velocidade span {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.cartao {
-  background: #222;
-  border-radius: 24px;
-  padding: 18px 16px;
-  margin: 18px 0;
-  box-shadow: 0 2px 8px #0003;
-  text-align: center;
-}
-
-.cartao .nome {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-.cartao .nome span {
-  font-size: 1rem;
-  font-weight: normal;
-  color: #ccc;
-}
-
-.cartao .codigo-barra img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 8px;
-}
-
-.cartao .codigo-barra p {
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: bold;
-}
-
-.grafico img {
-  width: 100%;
-  height: auto;
-  border-radius: 24px;
+.welcome-msg a:hover {
+    color: #1e6fa4;
+    text-decoration: underline;
 }
 
 /* Responsive */

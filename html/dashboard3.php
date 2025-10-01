@@ -1,59 +1,21 @@
-<?php
-session_start();
-include 'db.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    $stmt = $mysqli->prepare("SELECT idUsuario, Senha FROM Usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        if (password_verify($senha, $user['Senha'])) {
-            session_regenerate_id(true);
-            $_SESSION['loggedin'] = true;
-            $_SESSION['email'] = $email;
-            header("Location: dashboard3.php");
-            exit();
-        } else {
-            header("Location: index.php?error=Credenciais inválidas");
-            exit();
-        }
-    } else {
-        header("Location: index.php?error=Credenciais inválidas");
-        exit();
-    }
-    $stmt->close();
-} else {
-    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-        header("Location: index.php?error=Acesso negado");
-        exit();
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.cs">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>App Trens</title>
+  <title>App Trens - Admin</title>
 </head>
 <body>
 
 
     <div class="phone-content">
       <div class="header">
-        <a href="index.php"><i class="fas fa-arrow-left back-icon"></i></a>
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
-          <h2>Dashboard</h2>
+          <h2>Dashboard Admin</h2>
         </div>
       </div>
 
@@ -97,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <script>
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "telaInicial.html";
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = "logout.php";
     });
     document.querySelectorAll('.app-item a').forEach(link => {
       link.addEventListener('click', (e) => {
@@ -107,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         link.classList.add('clicked');
         setTimeout(() => {
           window.location.href = destino;
-        }, 200); 
+        }, 200);
       });
     });
   </script>

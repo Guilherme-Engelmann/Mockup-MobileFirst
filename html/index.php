@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $user = $_POST["username"] ?? "";
     $pass = $_POST["senha"] ?? "";
 
-    $stmt =$mysqli->prepare("SELECT pk, username, senha FROM usuarios WHERE username=? AND senha=?");
+    $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
     $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
 
@@ -28,7 +28,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if($dados){
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];
-        header("Location: index.php");
+        $_SESSION["cargo"] = $dados["cargo"];
+        if($dados["cargo"] == "func"){
+            header("Location: dashboard3.php");
+        }else{
+            header("Location: cadastro.php");
+        }
         exit;
 
     }else{
@@ -44,6 +49,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Simples</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -53,7 +59,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
         <p>Sessão Ativa</p>
         <form action="cadastro.php" method="get">
-            <button type="submit">Cadastrar novos usuários.</button>
+            <button type="submit">ADM</button>
+        </form>
+         <form action="dashboard3.php" method="get">
+            <button type="submit">FUNCIONÁRIO</button>
         </form>
         <p><a href="?logout=1">Sair</a></p>
     </div>
