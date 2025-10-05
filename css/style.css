@@ -73,9 +73,9 @@ button[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Estilos para botões quando logado */
+
 form button[type="submit"] {
-    background-color: #27ae60; /* Verde para botão ADM/FUNC */
+    background-color: #27ae60; 
 }
 
 form button[type="submit"]:hover {
@@ -113,4 +113,327 @@ p[style*="color: red"] {
     h3 {
         font-size: 20px;
     }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container > div {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+.login-container p {
+    margin-bottom: 15px;
+    color: #7f8c8d;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.login-container button[type="submit"] {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+
+.login-container form button[type="submit"] {
+    background-color: #27ae60; 
+}
+
+.login-container form button[type="submit"]:hover {
+    background-color: #229954;
+}
+
+.login-container a,
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-container a:hover,
+a:hover {
+    text-decoration: underline;
+}
+
+.login-container small {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+
+.login-container p.error {
+    color: #e74c3c;
+    background-color: #fdf2f2;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #e74c3c;
+    margin-bottom: 15px;
+}
+
+.phone-content {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    background-color: #fff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.back-icon {
+    font-size: 20px;
+    color: #3498db;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-icon:hover {
+    background-color: #ecf0f1;
+    text-decoration: none;
+}
+
+.icon-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.header-icon {
+    color: #f39c12;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.header h2 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin: 0;
+}
+
+.forgot-bg {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f4f4f4 0%, #e8f4fd 100%);
+    min-height: calc(100vh - 70px); 
+}
+
+.forgot-content {
+    width: 100%;
+    max-width: 400px;
+}
+
+.forgot-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.forgot-card h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.forgot-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+#reset-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    color: #bdc3c7;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 15px 15px 15px 45px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+
+.reset-btn {
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
+}
+
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 10px;
+    }
+    
+    .login-container > div {
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .login-container h3 {
+        font-size: 20px;
+    }
+    
+    .header {
+        padding: 12px 15px;
+    }
+    
+    .forgot-card {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .forgot-bg {
+        padding: 10px;
+        min-height: calc(100vh - 60px);
+    }
+    
+    .form-group input[type="text"] {
+        padding: 12px 12px 12px 40px;
+        font-size: 16px; 
+    }
+}
+
+
+i.fas {
+    transition: color 0.3s ease;
 }
