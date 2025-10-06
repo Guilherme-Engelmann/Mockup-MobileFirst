@@ -35,10 +35,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Novo Usuário</title>
+    <link rel="stylesheet" href="../css/inscrever.css">
 </head>
 <body>
     
-    <form method="post">
+    <form method="post">                                                                                    
         <h2>Inscrever-se</h2>
         <h3>Cadastro Novo Usuário</h3>
         <?php if($register_msg):  ?> <p> <?= $register_msg ?> </p> <?php endif; ?>

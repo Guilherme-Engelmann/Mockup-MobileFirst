@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+button[type="submit"] {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+
+form button[type="submit"] {
+    background-color: #27ae60; 
+}
+
+form button[type="submit"]:hover {
+    background-color: #229954;
+}
+
+p[style*="color: red"] { 
+    background-color: #fdf2f2;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #e74c3c;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+p[style*="color: red"] { 
+    background-color: #fdf2f2;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #e74c3c;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #7f8c8d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    div {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+}
+
+
+
+form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    display: flex;
+}
+
+
