@@ -16,7 +16,7 @@ body {
 }
 
 div {
-    background-color: #fff;
+    background-color: linear-gradient(135deg, silver 0%, white 100%) ;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -75,11 +75,11 @@ button[type="submit"]:hover {
 
 
 form button[type="submit"] {
-    background-color: #27ae60; 
+    background-color: gray; 
 }
 
 form button[type="submit"]:hover {
-    background-color: #229954;
+    background-color: gray;
 }
 
 a {

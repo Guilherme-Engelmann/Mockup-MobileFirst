@@ -67,8 +67,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
         </div>
     </div>
 
-    <script>
-        // Optional: Add any client-side enhancements if needed
-    </script>
 </body>
 </html>

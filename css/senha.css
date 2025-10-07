@@ -75,7 +75,7 @@ body {
 }
 
 .login-container button[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #3498db;
 }
 
 
@@ -137,7 +137,7 @@ a:hover {
 
 .back-icon {
     font-size: 20px;
-    color: #3498db;
+    color: black;
     margin-right: 15px;
     padding: 10px;
     border-radius: 50%;
@@ -173,7 +173,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: linear-gradient(135deg, #f4f4f4 0%, #e8f4fd 100%);
+    background: llinear-gradient(135deg, white 0%, silver 100%);
     min-height: calc(100vh - 70px); 
 }
 
@@ -261,7 +261,7 @@ a:hover {
 
 .reset-btn {
     padding: 15px;
-    background-color: #3498db;
+    background-color: gray;
     color: white;
     border: none;
     border-radius: 8px;
@@ -272,7 +272,7 @@ a:hover {
 }
 
 .reset-btn:hover {
-    background-color: #2980b9;
+    background-color: gray;
     transform: translateY(-1px);
 }
 
