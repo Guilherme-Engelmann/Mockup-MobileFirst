@@ -2,10 +2,10 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "tracktrain";
 
-$mysqli = new mysqli("localhost","root","root","tracktrain");
+$mysqli = new mysqli($servername, $username, $password, $dbname);
 if($mysqli->connect_errno){
     die("Erro de conexão: " . $mysqli->connect_error);
 }
