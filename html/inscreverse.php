@@ -50,8 +50,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
             <option value="func" selected>FUNC</option>
         </select>
         <button type="submit" name="register" value="1"> Cadastrar</button>
+        <br>
+        <p><a href="index.php">Voltar</a></p>
     </form>
-    <p><a href="index.php">Voltar</a></p>
+   
     
 </body>
 </html>
