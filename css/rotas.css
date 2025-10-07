@@ -1,0 +1,262 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.phone-content {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: linear-gradient(135deg, silver 0%, silver 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.back-icon {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.back-icon:hover {
+    color: #e2e8f0;
+}
+
+.icon-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.header-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0;
+}
+
+.route-box {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.map-section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.linha-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.train-icon {
+    font-size: 2.5em;
+    margin-right: 15px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.linha-num {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1.2em;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.mapa {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.map-section:hover .mapa {
+    transform: scale(1.02);
+}
+
+.info {
+    background: #f8f9ff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.data {
+    text-align: center;
+    font-size: 1em;
+    color: #718096;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hora-bloco {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hora-bloco:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hora {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2d3748;
+    min-width: 60px;
+    margin-right: 15px;
+}
+
+.acao {
+    flex: 1;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.acao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.pontos {
+    text-align: center;
+    font-size: 2em;
+    color: #a0aec0;
+    margin: 10px 0;
+    font-weight: 300;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .phone-content {
+        max-width: 100%;
+        box-shadow: none;
+    }
+    
+    .header {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    .route-box {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .map-section {
+        padding: 15px;
+    }
+    
+    .mapa {
+        height: 150px;
+    }
+    
+    .info {
+        padding: 20px;
+    }
+    
+    .hora-bloco {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .hora {
+        font-size: 1.2em;
+        min-width: 50px;
+    }
+    
+    .acao {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.route-box > * {
+    animation: slideInUp 0.5s ease-out forwards;
+}
+
+.map-section { animation-delay: 0.1s; }
+.info { animation-delay: 0.2s; }

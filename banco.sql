@@ -107,11 +107,27 @@ CREATE TABLE Leituras (
 
 CREATE TABLE Usuarios (
     pk INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL,
-    cargo VARCHAR(20) NOT NULL,
+    nomeUsuario VARCHAR(50) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
+    tipoUsuario VARCHAR(20) NOT NULL,
+    nome VARCHAR(255),
+    funcao VARCHAR(100),
+    linha INT,
+    velocidade INT,
+    codigo_barra VARCHAR(20),
     email VARCHAR(100) NULL UNIQUE,
     ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, nome, funcao, linha, velocidade, codigo_barra) VALUES ('admin', '$2y$10$examplehashedpassword', 'admin', 'Administrador', 'Administrador', NULL, NULL, NULL);
+INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, nome, funcao, linha, velocidade, codigo_barra) VALUES ('funcionario', '$2y$10$examplehashedpassword2', 'funcionario', 'Sergio Conceição', 'Maquinista', 157, 60, '0123456789');
+
 CREATE INDEX idx_email ON Usuarios(email);
+=======
+    cargo VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NULL UNIQUE,
+    ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP
+
+
+CREATE INDEX idx_email ON Usuarios(email);
+>>>>>>> 2182640c2474daf5757047b327bfdb7db2692c35

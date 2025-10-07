@@ -1,7 +1,19 @@
 <?php
 session_start();
+include 'db.php';
 
+if (!isset($_SESSION['user_pk'])) {
+    header("Location: index.php");
+    exit;
+}
 
+$user_pk = $_SESSION['user_pk'];
+$stmt = $mysqli->prepare("SELECT nome, funcao, linha, velocidade, codigo_barra FROM Usuarios WHERE pk = ?");
+$stmt->bind_param("i", $user_pk);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -15,17 +27,15 @@ session_start();
 </head>
 <body>
 
+    <div class="phone-content">
+      <div class="header">
+        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <div class="icon-title">
+          <i class="fas fa-clipboard-list header-icon"></i>
+          <h2>Dash Board Geral</h2>
+        </div>
+      </div>
 
-        <div class="phone-content">
-          <div class="header">
-            <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
-            <div class="icon-title">
-              <i class="fas fa-clipboard-list header-icon"></i>
-              <h2>Dash Board Geral</h2>
-            </div>
-          </div>
-      
-      
     <div class="container">
         <div class="mapa">
             <img src="../imagens/mapa-rota.png" alt="Mapa da Linha">
@@ -34,19 +44,19 @@ session_start();
         <div class="info">
             <div class="linha">
                 <img src="../imagens/controle-linhas.png" alt="Ícone Trem">
-                <span>157</span>
+                <span><?php echo htmlspecialchars($user['linha']); ?></span>
             </div>
             <div class="velocidade">
                 <img src="../imagens/velocimetro.jpg" alt="Ícone Velocidade">
-                <span>60 Km/h</span>
+                <span><?php echo htmlspecialchars($user['velocidade']); ?> Km/h</span>
             </div>
         </div>
 
         <div class="cartao">
-            <p class="nome">Sergio Conceição<br><span>Maquinista</span></p>
+            <p class="nome"><?php echo htmlspecialchars($user['nome']); ?><br><span><?php echo htmlspecialchars($user['funcao']); ?></span></p>
             <div class="codigo-barra">
                 <img src="../imagens/cracha.png" alt="Código de Barras">
-                <p>0123456789</p>
+                <p><?php echo htmlspecialchars($user['codigo_barra']); ?></p>
             </div>
         </div>
 
