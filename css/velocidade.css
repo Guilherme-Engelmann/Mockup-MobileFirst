@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fff;
     color: #333;
     line-height: 1.6;
     padding: 0;
@@ -127,6 +127,7 @@ a:hover {
 }
 
 .header {
+    color: silver;
     background-color: #fff;
     padding: 15px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
