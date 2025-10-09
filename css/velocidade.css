@@ -314,7 +314,7 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #3498db;
+    background-color: gray;
     color: white;
     font-weight: bold;
     font-size: 14px;
@@ -332,6 +332,7 @@ a:hover {
     justify-content: space-between;
     padding: 20px;
     gap: 15px;
+    background-color: silver;
 }
 
 
@@ -386,7 +387,7 @@ a:hover {
 .speed-value {
     font-size: 32px;
     font-weight: bold;
-    color: #e74c3c; 
+    color: #333; 
     font-family: 'Courier New', monospace; 
 }
 
@@ -471,6 +472,7 @@ a:hover {
     .card-header {
         padding: 12px 15px;
         font-size: 12px;
+        
     }
     
     .speed-value {
@@ -501,10 +503,12 @@ a:hover {
 
 i.fas {
     transition: color 0.3s ease;
+    color: #333;
 }
 
 
 svg {
     max-width: 100%;
     height: auto;
+   
 }
