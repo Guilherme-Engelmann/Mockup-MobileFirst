@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
 </head>
 <body>
     
-    <form method="post">                                                                                    
+    <form method="post">                                                                                  
         <h2>Inscrever-se</h2>
         <h3>Cadastro Novo Usuário</h3>
         <?php if($register_msg):  ?> <p> <?= $register_msg ?> </p> <?php endif; ?>
