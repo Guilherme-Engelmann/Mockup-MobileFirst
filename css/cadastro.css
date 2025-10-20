@@ -112,3 +112,8 @@ a {
     transition: all 0.3s;
 }
 
+a:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
