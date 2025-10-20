@@ -61,3 +61,16 @@ select {
     font-size: 1em;
     transition: all 0.3s;
 }
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    outline: none;
+    border-color: #000000;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+select {
+    cursor: pointer;
+}
