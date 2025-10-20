@@ -97,3 +97,11 @@ h2 {
     word-wrap: break-word;
 }
 
+.message.received {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
