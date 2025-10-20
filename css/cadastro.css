@@ -32,3 +32,11 @@ h2 {
     font-weight: 600;
     font-size: 1.4em;
 }
+
+h3 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 1.2em;
+}
