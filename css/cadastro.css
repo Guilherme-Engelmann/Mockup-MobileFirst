@@ -126,3 +126,21 @@ p:not(:empty) {
     color: #333333;
     font-weight: 500;
 }
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    form {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    h3 {
+        font-size: 1.1em;
+    }
+}
