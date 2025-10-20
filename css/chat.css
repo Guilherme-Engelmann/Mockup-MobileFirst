@@ -132,3 +132,9 @@ h2 {
     transition: all 0.3s;
 }
 
+#chatInput:focus {
+    border-color: #000000;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
