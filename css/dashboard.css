@@ -143,3 +143,17 @@ h2 {
 .codigo-barra {
     text-align: center;
 }
+
+.codigo-barra img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    filter: contrast(0.9);
+}
+
+.codigo-barra p {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #333333;
+}
