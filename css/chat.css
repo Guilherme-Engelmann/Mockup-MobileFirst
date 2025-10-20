@@ -175,3 +175,8 @@ h2 {
     border-radius: 3px;
 }
 
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
