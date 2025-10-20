@@ -69,3 +69,17 @@ h2 {
     flex-direction: column;
     gap: 20px;
 }
+
+.mapa {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0;
+}
+
+.mapa img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
