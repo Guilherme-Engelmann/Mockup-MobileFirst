@@ -33,3 +33,10 @@ body {
     gap: 15px;
     color: white;
 }
+
+.back-icon {
+    font-size: 1.2em;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
