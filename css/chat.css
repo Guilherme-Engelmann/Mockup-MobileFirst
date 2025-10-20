@@ -138,3 +138,22 @@ h2 {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
+#chatInput::placeholder {
+    color: #999999;
+}
+
+.chat-input-area button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
