@@ -68,3 +68,13 @@ h2 {
     height: 600px;
 }
 
+.chat-header {
+    background: #333333;
+    color: #ffffff;
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1em;
+    border-bottom: 1px solid #e0e0e0;
+}
+
