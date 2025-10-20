@@ -74,3 +74,17 @@ select:focus {
 select {
     cursor: pointer;
 }
+
+button[type="submit"] {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
