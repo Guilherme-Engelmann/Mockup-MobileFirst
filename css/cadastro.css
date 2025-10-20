@@ -145,3 +145,6 @@ p:not(:empty) {
     }
 }
 
+input::placeholder {
+    color: #999999;
+}
