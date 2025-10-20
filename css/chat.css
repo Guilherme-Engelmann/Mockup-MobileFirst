@@ -166,3 +166,7 @@ h2 {
     transform: scale(0.95);
 }
 
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
