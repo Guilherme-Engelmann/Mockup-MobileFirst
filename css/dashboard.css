@@ -171,3 +171,9 @@ h2 {
     height: auto;
     display: block;
 }
+
+.linha:hover, .velocidade:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s;
+    background: #f0f0f0;
+}
