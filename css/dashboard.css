@@ -42,3 +42,17 @@ body {
     color: #ffffff;
 }
 
+.back-icon:hover {
+    transform: translateX(-3px);
+}
+
+.icon-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icon {
+    font-size: 1.5em;
+    color: #ffffff;
+}
