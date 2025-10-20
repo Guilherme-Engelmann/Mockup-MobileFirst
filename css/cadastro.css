@@ -47,3 +47,17 @@ p {
     color: #666666;
     font-size: 0.95em;
 }
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f8f8;
+    color: #333333;
+    font-size: 1em;
+    transition: all 0.3s;
+}
