@@ -48,6 +48,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Novo Usuário do Sistema</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 <body>
     
