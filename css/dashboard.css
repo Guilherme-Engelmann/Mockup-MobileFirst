@@ -127,3 +127,15 @@ h2 {
     color: #333333;
     border: 1px solid #e8e8e8;
 }
+
+.nome {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #000000;
+}
+
+.nome span {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #666666;
+}
