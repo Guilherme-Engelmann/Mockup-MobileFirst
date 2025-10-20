@@ -180,3 +180,12 @@ h2 {
     border-radius: 3px;
 }
 
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+
+.message {
+    animation: messageAppear 0.3s ease-out;
+}
+
