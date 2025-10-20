@@ -56,3 +56,16 @@ body {
     font-size: 1.5em;
     color: #ffffff;
 }
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
