@@ -1,4 +1,4 @@
-/* dashboard.css */
+
 * {
     margin: 0;
     padding: 0;
@@ -23,5 +23,22 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     border: 1px solid #e0e0e0;
+}
+
+
+.header {
+    background: #000000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.back-icon {
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: #ffffff;
 }
 
