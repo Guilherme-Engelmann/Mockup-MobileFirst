@@ -118,3 +118,11 @@ a:hover {
     border-color: #000000;
 }
 
+p:not(:empty) {
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    color: #333333;
+    font-weight: 500;
+}
