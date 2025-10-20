@@ -157,3 +157,12 @@ h2 {
     justify-content: center;
 }
 
+.chat-input-area button:hover {
+    background: #333333;
+    transform: scale(1.05);
+}
+
+.chat-input-area button:active {
+    transform: scale(0.95);
+}
+
