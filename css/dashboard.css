@@ -83,3 +83,23 @@ h2 {
     height: auto;
     display: block;
 }
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.linha, .velocidade {
+    flex: 1;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+    
+}
+
