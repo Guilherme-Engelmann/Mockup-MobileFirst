@@ -110,3 +110,12 @@ h2 {
     background: #f8f8f8;
 }
 
+.linha-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.5em;
+    min-width: 60px;
+}
+
