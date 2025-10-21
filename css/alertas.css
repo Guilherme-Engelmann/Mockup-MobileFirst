@@ -102,3 +102,7 @@ h2 {
     transition: background-color 0.3s;
 }
 
+.linha-card:last-child {
+    border-bottom: none;
+}
+
