@@ -126,3 +126,7 @@ h2 {
     margin-top: 5px;
 }
 
+.linha-info {
+    flex: 1;
+}
+
