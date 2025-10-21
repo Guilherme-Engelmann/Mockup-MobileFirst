@@ -130,3 +130,9 @@ h2 {
     flex: 1;
 }
 
+.linha-info p {
+    margin: 2px 0;
+    color: #333333;
+    font-size: 0.9em;
+}
+
