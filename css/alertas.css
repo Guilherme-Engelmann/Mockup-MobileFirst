@@ -136,3 +136,8 @@ h2 {
     font-size: 0.9em;
 }
 
+.linha-info strong {
+    color: #000000;
+    font-weight: 700;
+}
+
