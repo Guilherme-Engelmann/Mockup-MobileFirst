@@ -119,3 +119,10 @@ h2 {
     min-width: 60px;
 }
 
+.linha-icon span {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 5px;
+}
+
