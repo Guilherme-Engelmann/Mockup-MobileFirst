@@ -77,3 +77,15 @@ h2 {
     overflow: hidden;
 }
 
+.problemas h2, .notificacoes h2 {
+    background: #333333;
+    color: #ffffff;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
