@@ -10,7 +10,7 @@ CREATE TABLE Estacoes (
     tipoEstacao VARCHAR(50) NOT NULL
 );
 
--- 2) Rotas
+
 CREATE TABLE Rotas (
     idRota INT AUTO_INCREMENT PRIMARY KEY,
     estacaoDestino INT NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE Rotas (
     FOREIGN KEY (estacaoOrigem) REFERENCES Estacoes(idEstacao)
 );
 
--- 3) Trens
+
 CREATE TABLE Trens (
     idTrem INT AUTO_INCREMENT PRIMARY KEY,
     numero_serie INT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE Trens (
     status_operacional VARCHAR(50) NOT NULL
 );
 
--- 4) Viagens
+
 CREATE TABLE Viagens (
     idViagem INT AUTO_INCREMENT PRIMARY KEY,
     idTrem INT NOT NULL,
