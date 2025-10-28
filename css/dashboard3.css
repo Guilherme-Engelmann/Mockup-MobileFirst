@@ -72,3 +72,9 @@ h2 {
     gap: 25px;
 }
 
+.top-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
