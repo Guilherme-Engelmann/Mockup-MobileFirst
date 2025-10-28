@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Check if user is admin
+
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'admin') {
     header("Location: html/tela de login2.php");
     exit();
 }
 
-// Conexão com o banco de dados
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,12 +15,12 @@ $dbname = "tracktrain";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica conexão
+
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Recebe dados do formulário
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
