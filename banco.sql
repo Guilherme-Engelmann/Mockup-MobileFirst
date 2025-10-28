@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS tracktrain;
 USE tracktrain;
 
--- 1) Estações
+
 CREATE TABLE Estacoes (
     idEstacao INT AUTO_INCREMENT PRIMARY KEY,
     nomeEstacao VARCHAR(120) NOT NULL UNIQUE,
@@ -47,7 +47,7 @@ CREATE TABLE Viagens (
     FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
 );
 
--- 5) Alertas
+
 CREATE TABLE Alertas (
     idAlerta INT AUTO_INCREMENT PRIMARY KEY,
     idViagem INT NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE Alertas (
     FOREIGN KEY (idViagem) REFERENCES Viagens(idViagem)
 );
 
--- 6) Manutenções
+
 CREATE TABLE Manutencoes (
     idManutencoes INT AUTO_INCREMENT PRIMARY KEY,
     idTrem INT NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE Manutencoes (
     FOREIGN KEY (idTrem) REFERENCES Trens(idTrem)
 );
 
--- 7) Segmentos
+
 CREATE TABLE Segmentos (
     idSegmento INT AUTO_INCREMENT PRIMARY KEY,
     idRota INT NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE Segmentos (
     FOREIGN KEY (estacaoFim) REFERENCES Estacoes(idEstacao)
 );
 
--- 8) Sensores
+
 CREATE TABLE Sensores (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
     tipoSensor VARCHAR(50) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE Sensores (
     frequenciaLeitura INT NOT NULL
 );
 
--- 9) Leituras
+
 CREATE TABLE Leituras (
     idLeitura INT AUTO_INCREMENT PRIMARY KEY,
     idSensor INT NOT NULL,

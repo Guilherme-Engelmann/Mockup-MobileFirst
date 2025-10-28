@@ -45,6 +45,10 @@
             <label for="Endereco">Endereço</label>
             <input type="email" id="text" placeholder="Digite seu Endereço" />
           </div>
+           <div class="input-group">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" placeholder="Digite seu CEP" />
+          </div>
         </div>
       </div>
     </div>
