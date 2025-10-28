@@ -116,6 +116,10 @@ CREATE TABLE Usuarios (
     velocidade INT,
     codigo_barra VARCHAR(20),
     email VARCHAR(100) NULL UNIQUE,
+    telefone VARCHAR(20),
+    cpf VARCHAR(14),
+    endereco VARCHAR(255),
+    cep VARCHAR(10),
     ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -123,11 +127,13 @@ INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, nome, funcao, linha, velo
 INSERT INTO Usuarios (nomeUsuario, Senha, tipoUsuario, nome, funcao, linha, velocidade, codigo_barra) VALUES ('funcionario', '$2y$10$examplehashedpassword2', 'funcionario', 'Sergio Conceição', 'Maquinista', 157, 60, '0123456789');
 
 CREATE INDEX idx_email ON Usuarios(email);
-=======
-    cargo VARCHAR(20) NOT NULL,
-    email VARCHAR(100) NULL UNIQUE,
-    ultimo_login DATETIME DEFAULT CURRENT_TIMESTAMP
 
-
-CREATE INDEX idx_email ON Usuarios(email);
->>>>>>> 2182640c2474daf5757047b327bfdb7db2692c35
+CREATE TABLE Auditoria (
+    idAuditoria INT AUTO_INCREMENT PRIMARY KEY,
+    user_pk INT NOT NULL,
+    action VARCHAR(50) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(10) NOT NULL,
+    details TEXT,
+    FOREIGN KEY (user_pk) REFERENCES Usuarios(pk)
+);
