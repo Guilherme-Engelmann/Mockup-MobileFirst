@@ -66,3 +66,9 @@ h2 {
     padding: 20px;
 }
 
+.phone {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
