@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     <div>
         <div class="logo-container">
-            <img src="../imagens/perfil.png" alt="Logo TrackTrain" class="logo">
+            <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
         </div>
         <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
         <p>Sessão Ativa</p>
