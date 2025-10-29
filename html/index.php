@@ -70,9 +70,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php else: ?>
 
     <div>
-        <div class="logo-container">
-            <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
-        </div>
+        <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
         <h3>Login</h3>
         <form method="POST">
 
