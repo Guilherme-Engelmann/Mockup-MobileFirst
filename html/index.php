@@ -56,9 +56,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php if(!empty($_SESSION["user_pk"])): ?>
 
     <div>
-        <div class="logo-container">
-            <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
-        </div>
         <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
         <p>Sessão Ativa</p>
         <form action="cadastro.php" method="get">
@@ -73,13 +70,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php else: ?>
 
     <div>
+        <div class="logo-container">
+            <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
+        </div>
         <h3>Login</h3>
         <form method="POST">
 
             <?php if($msg): ?> 
                 <p> <?= $msg ?> </p> 
             <?php endif; ?>
-
+            
             <input type="text" name="username" placeholder="Usuário" required>
             <br>
             <br>

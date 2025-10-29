@@ -116,10 +116,15 @@ p[style*="color: red"] {
 .logo-container {
     text-align: center;
     margin-bottom: 20px;
+    background: transparent !important; 
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .logo {
     width: 80px;
     height: 80px;
-    border-radius: 8px;
+    border-radius: 50%;
+    object-fit: cover;
 }
