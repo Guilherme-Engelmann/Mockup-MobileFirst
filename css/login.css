@@ -112,3 +112,9 @@ p[style*="color: red"] {
         font-size: 20px;
     }
 }
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
