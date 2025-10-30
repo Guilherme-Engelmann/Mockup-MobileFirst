@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_pk'])) {
 $user_pk = $_SESSION['user_pk'];
 $msg = "";
 
-// Fetch current user data
+
 $stmt = $conn->prepare("SELECT nome, email, telefone, cpf, endereco, cep FROM Usuarios WHERE pk = ?");
 $stmt->bind_param("i", $user_pk);
 $stmt->execute();
@@ -28,40 +28,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
-    // Validate telefone
+    
     if (!validar_telefone($telefone)) {
         $errors[] = "Telefone inválido.";
     }
 
-    // Validate email (basic)
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Email inválido.";
     }
 
-    // Validate CPF
+    
     if (!validar_cpf($cpf)) {
         $errors[] = "CPF inválido.";
     }
 
-    // Validate endereco
+    
     if (!validar_endereco($endereco)) {
         $errors[] = "Endereço muito curto.";
     }
 
-    // Validate CEP
+    
     $cep_validation = validar_cep($cep);
     if (!$cep_validation['valid']) {
         $errors[] = $cep_validation['message'];
     }
 
     if (empty($errors)) {
-        // Update database
+        
         $stmt = $conn->prepare("UPDATE Usuarios SET telefone = ?, email = ?, cpf = ?, endereco = ?, cep = ? WHERE pk = ?");
         $stmt->bind_param("sssssi", $telefone, $email, $cpf, $endereco, $cep, $user_pk);
         if ($stmt->execute()) {
             $msg = "Dados atualizados com sucesso!";
             log_auditoria($conn, $user_pk, 'update_dados', 'ok', 'Dados pessoais atualizados');
-            // Refresh user data
+            
             $user['telefone'] = $telefone;
             $user['email'] = $email;
             $user['cpf'] = $cpf;
