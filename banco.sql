@@ -109,7 +109,7 @@ CREATE TABLE Usuarios (
     pk INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    tipoUsuario VARCHAR(20) NOT NULL,
+    cargo VARCHAR(20) NOT NULL,
     nome VARCHAR(255),
     funcao VARCHAR(100),
     linha INT,
