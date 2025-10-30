@@ -107,8 +107,8 @@ CREATE TABLE Leituras (
 
 CREATE TABLE Usuarios (
     pk INT AUTO_INCREMENT PRIMARY KEY,
-    nomeUsuario VARCHAR(50) NOT NULL UNIQUE,
-    Senha VARCHAR(255) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
     tipoUsuario VARCHAR(20) NOT NULL,
     nome VARCHAR(255),
     funcao VARCHAR(100),
