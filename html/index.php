@@ -14,9 +14,9 @@ if(isset($_GET['logout'])){
 
 $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $user = $_POST["username"] ?? "";
-    $pass = $_POST["senha"] ?? "";
-
+    // sanitize inputs
+    $user = trim($_POST["username"] ?? "");
+    $pass = trim($_POST["senha"] ?? "");
     $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
     $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
@@ -26,6 +26,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $stmt->close();
 
     if($dados){
+        // prevent session fixation
+        session_regenerate_id(true);
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];
         $_SESSION["cargo"] = $dados["cargo"];
@@ -56,14 +58,25 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php if(!empty($_SESSION["user_pk"])): ?>
 
     <div>
-        <h3>Bem-vindo, <?= $_SESSION["username"] ?>!</h3>
+        <h3>Bem-vindo, <?= htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?>!</h3>
         <p>Sessão Ativa</p>
-        <form action="cadastro.php" method="get">
-            <button type="submit">ADM</button>
-        </form>
-         <form action="dashboard3.php" method="get">
-            <button type="submit">FUNCIONÁRIO</button>
-        </form>
+        <?php if(isset($_SESSION["cargo"]) && $_SESSION["cargo"] === 'admin'): ?>
+            <form action="cadastro.php" method="get">
+                <button type="submit">ADM</button>
+            </form>
+        <?php elseif(isset($_SESSION["cargo"]) && $_SESSION["cargo"] === 'func'): ?>
+            <form action="dashboard3.php" method="get">
+                <button type="submit">FUNCIONÁRIO</button>
+            </form>
+        <?php else: ?>
+            <!-- fallback: show both if cargo is unexpected -->
+            <form action="cadastro.php" method="get">
+                <button type="submit">ADM</button>
+            </form>
+             <form action="dashboard3.php" method="get">
+                <button type="submit">FUNCIONÁRIO</button>
+            </form>
+        <?php endif; ?>
         <p><a href="?logout=1">Sair</a></p>
     </div>
 
