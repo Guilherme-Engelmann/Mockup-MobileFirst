@@ -17,7 +17,6 @@ body {
 
 .phone-content {
     width: 100%;
-    max-width: 400px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -26,7 +25,7 @@ body {
 }
 
 .header {
-    background: #000000;
+    background:silver;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -36,7 +35,7 @@ body {
 
 .back-icon {
     font-size: 1.2em;
-    color: #ffffff;
+    color: #000;
     text-decoration: none;
     transition: transform 0.3s;
 }
@@ -53,13 +52,13 @@ body {
 
 .header-icon {
     font-size: 1.5em;
-    color: #ffffff;
+    color:#000;
 }
 
 h2 {
     font-size: 1.2em;
     font-weight: 600;
-    color: #ffffff;
+    color: #000;
 }
 
 .screen {
