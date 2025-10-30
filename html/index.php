@@ -1,11 +1,11 @@
 <?php
 
-//faz a conexao
+
 include "db.php";
-//inicia a sessao
+
 session_start();
 
-//logout
+
 if(isset($_GET['logout'])){
     session_destroy();
     header("Location: index.php");
