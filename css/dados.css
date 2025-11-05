@@ -74,3 +74,13 @@ h2 {
     align-items: center;
 }
 
+form {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(128, 128, 128, 0.08);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
