@@ -43,3 +43,7 @@ main-wrapper {
     display: inline-block;
 }
 
+.back-icon:hover {
+    color: #404040;
+}
+
