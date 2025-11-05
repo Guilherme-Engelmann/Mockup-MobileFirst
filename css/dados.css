@@ -24,3 +24,13 @@ main-wrapper {
     overflow-x: hidden;
 }
 
+.header {
+    background: #f8f8f8;
+    color: #000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border-bottom: 1px solid #e0e0e0;
+}
+
