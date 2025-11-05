@@ -47,3 +47,9 @@ main-wrapper {
     color: #404040;
 }
 
+.icon-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
