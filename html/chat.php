@@ -6,12 +6,8 @@
   <title>TrackTrain Chat</title>
   <link rel="stylesheet" href="../css/chat.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- 
 </head>
 <body>
-
-  
-
     <div class="phone-content">
       <div class="header">
         <a href="dashboard3.php"><i class="fas fa-arrow-left back-icon"></i></a>
@@ -20,7 +16,6 @@
           <h2>Chat com Atendente</h2>
         </div>
       </div>
-
       <div class="chat-container">
         <div class="chat-header">
           Chat TrackTrain
@@ -34,17 +29,10 @@
         </form>
       </div>
     </div>
-  </div>
-
   <script>
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "dashboard3.html";
-    });
-
     const chatForm = document.getElementById('chatForm');
     const chatInput = document.getElementById('chatInput');
     const chatMessages = document.getElementById('chatMessages');
-
     chatForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const text = chatInput.value.trim();
@@ -53,7 +41,6 @@
         sentMsg.className = 'message sent';
         sentMsg.textContent = text;
         chatMessages.appendChild(sentMsg);
-
         setTimeout(() => {
           const receivedMsg = document.createElement('div');
           receivedMsg.className = 'message received';
@@ -61,12 +48,10 @@
           chatMessages.appendChild(receivedMsg);
           chatMessages.scrollTop = chatMessages.scrollHeight;
         }, 800);
-
         chatInput.value = '';
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
     });
   </script>
-
 </body>
 </html>

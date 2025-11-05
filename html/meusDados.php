@@ -55,23 +55,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (empty($errors)) {
-        
-        $stmt = $conn->prepare("UPDATE Usuarios SET telefone = ?, email = ?, cpf = ?, endereco = ?, cep = ? WHERE pk = ?");
-        $stmt->bind_param("sssssi", $telefone, $email, $cpf, $endereco, $cep, $user_pk);
-        if ($stmt->execute()) {
-            $msg = "Dados atualizados com sucesso!";
-            log_auditoria($conn, $user_pk, 'update_dados', 'ok', 'Dados pessoais atualizados');
-            
-            $user['telefone'] = $telefone;
-            $user['email'] = $email;
-            $user['cpf'] = $cpf;
-            $user['endereco'] = $endereco;
-            $user['cep'] = $cep;
+        // Verifica se já existe outro usuário com o mesmo email ou cpf
+        $check_stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE (email = ? OR cpf = ?) AND pk != ?");
+        $check_stmt->bind_param("ssi", $email, $cpf, $user_pk);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        if ($check_stmt->num_rows > 0) {
+            $msg = "E-mail ou CPF já cadastrado em outro usuário.";
+            $check_stmt->close();
         } else {
-            $msg = "Erro ao atualizar dados.";
-            log_auditoria($conn, $user_pk, 'update_dados', 'error', 'Erro ao atualizar dados: ' . $conn->error);
+            $check_stmt->close();
+            $stmt = $conn->prepare("UPDATE Usuarios SET telefone = ?, email = ?, cpf = ?, endereco = ?, cep = ? WHERE pk = ?");
+            $stmt->bind_param("sssssi", $telefone, $email, $cpf, $endereco, $cep, $user_pk);
+            if ($stmt->execute()) {
+                $msg = "Dados atualizados com sucesso!";
+                log_auditoria($conn, $user_pk, 'update_dados', 'ok', 'Dados pessoais atualizados');
+                $user['telefone'] = $telefone;
+                $user['email'] = $email;
+                $user['cpf'] = $cpf;
+                $user['endereco'] = $endereco;
+                $user['cep'] = $cep;
+            } else {
+                $msg = "Erro ao atualizar dados.";
+                log_auditoria($conn, $user_pk, 'update_dados', 'error', 'Erro ao atualizar dados: ' . $conn->error);
+            }
+            $stmt->close();
         }
-        $stmt->close();
     } else {
         $msg = implode("<br>", $errors);
         log_auditoria($conn, $user_pk, 'update_dados', 'error', 'Erros de validação: ' . $msg);
@@ -85,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meus Dados - Mockup Celular</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/meusdados.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -98,45 +107,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <h2>Meus dados</h2>
         </div>
       </div>
-
-      <div class="content">
-        <div class="tabs">
-          <a href="#">Informações gerais</a>
-        </div>
-
-        <?php if ($msg): ?>
-            <div class="message" style="color: red; margin-bottom: 10px;"><?php echo $msg; ?></div>
-        <?php endif; ?>
-
-        <form method="POST">
-          <div class="contact-card">
-            <div class="icon">
-              <i class="fas fa-id-card"></i>
-            </div>
-            <div class="input-group">
-              <label for="telefone">Telefone</label>
-              <input type="text" id="telefone" name="telefone" value="<?php echo htmlspecialchars($user['telefone'] ?? ''); ?>" placeholder="Digite seu telefone" required />
-            </div>
-            <div class="input-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email'] ?? ''); ?>" placeholder="Digite seu email" required />
-            </div>
-            <div class="input-group">
-              <label for="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($user['cpf'] ?? ''); ?>" placeholder="Digite seu CPF" required />
-            </div>
-            <div class="input-group">
-              <label for="endereco">Endereço</label>
-              <input type="text" id="endereco" name="endereco" value="<?php echo htmlspecialchars($user['endereco'] ?? ''); ?>" placeholder="Digite seu Endereço" required />
-            </div>
-            <div class="input-group">
-              <label for="cep">CEP</label>
-              <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($user['cep'] ?? ''); ?>" placeholder="Digite seu CEP" required />
-            </div>
-            <button type="submit" style="margin-top: 20px; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">Salvar</button>
-          </div>
-        </form>
-      </div>
+      <form method="post" style="padding: 0 20px;">
+        <h3>Atualize seus dados</h3>
+        <?php if($msg): ?> <p><?= $msg ?></p> <?php endif; ?>
+        <input type="text" name="telefone" placeholder="Telefone" value="<?= htmlspecialchars($user['telefone'] ?? '') ?>">
+        <input type="text" name="email" placeholder="E-mail" value="<?= htmlspecialchars($user['email'] ?? '') ?>">
+        <input type="text" name="cpf" placeholder="CPF" value="<?= htmlspecialchars($user['cpf'] ?? '') ?>">
+        <input type="text" name="endereco" placeholder="Endereço" value="<?= htmlspecialchars($user['endereco'] ?? '') ?>">
+        <input type="text" name="cep" placeholder="CEP" value="<?= htmlspecialchars($user['cep'] ?? '') ?>">
+        <button type="submit">Salvar</button>
+      </form>
+      <p style="text-align:center;"><a href="dashboard3.php">Voltar</a></p>
     </div>
 
    <script>
