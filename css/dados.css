@@ -177,6 +177,10 @@ p a:hover {
     .dashboard-content {
         padding: 15px;
     }
+
+    form {
+        padding: 15px;
+    }
     
 }
 
