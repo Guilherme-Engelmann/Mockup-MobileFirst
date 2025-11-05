@@ -191,6 +191,10 @@ p a:hover {
         font-size: 0.95em;
     }
 
+    button[type="submit"] {
+        padding: 12px;
+        font-size: 1em;
+    }
     
 }
 
