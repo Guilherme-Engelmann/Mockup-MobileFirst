@@ -97,3 +97,14 @@ h3 {
     font-weight: 600;
 }
 
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #000;
+    background: #e0e0e0;
+    border: 1px solid #c0c0c0;
+}
+
