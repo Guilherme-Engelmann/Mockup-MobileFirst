@@ -53,3 +53,9 @@ main-wrapper {
     flex: 1;
 }
 
+.header-icon {
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
