@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS tracktrain;
+CREATE DATABASE tracktrain;
 USE tracktrain;
 
 
