@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
 
     if ($username) {
         // Check if username exists
-        $stmt = $mysqli->prepare("SELECT pk FROM Usuarios WHERE username = ?");
+        $stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();

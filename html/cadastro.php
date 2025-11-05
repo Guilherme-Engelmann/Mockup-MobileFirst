@@ -16,14 +16,14 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     $new_func = $_POST['new_func'] ?? "";
     if($new_user && $new_pass){
         // Check if username already exists
-        $check_stmt = $mysqli->prepare("SELECT pk FROM Usuarios WHERE username = ?");
+        $check_stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE username = ?");
         $check_stmt->bind_param("s", $new_user);
         $check_stmt->execute();
         $check_stmt->store_result();
         if ($check_stmt->num_rows > 0) {
             $register_msg = "Usuário já cadastrado.";
         } else {
-            $stmt = $mysqli -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
+            $stmt = $conn -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
             $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
             
             if($stmt->execute()) {
