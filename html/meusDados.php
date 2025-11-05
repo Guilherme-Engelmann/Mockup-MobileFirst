@@ -98,16 +98,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="phone-content">
-      <div class="header">
-        <a href="dashboard3.php"><i class="fas fa-arrow-left back-icon"></i></a>
-        <div class="icon-title">
-          <i class="fas fa-clipboard-list header-icon"></i>
-          <h2>Meus dados</h2>
-        </div>
+  <div class="main-wrapper">
+    <div class="header">
+      <a href="dashboard3.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+      <div class="icon-title">
+        <i class="fas fa-clipboard-list header-icon"></i>
+        <h2>Meus dados</h2>
       </div>
-      <form method="post" style="padding: 0 20px;">
+    </div>
+    <div class="dashboard-content">
+      <form method="post" style="width:100%;max-width:500px;margin:0 auto;">
         <h3>Atualize seus dados</h3>
         <?php if($msg): ?> <p><?= $msg ?></p> <?php endif; ?>
         <input type="text" name="telefone" placeholder="Telefone" value="<?= htmlspecialchars($user['telefone'] ?? '') ?>">
@@ -117,13 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="text" name="cep" placeholder="CEP" value="<?= htmlspecialchars($user['cep'] ?? '') ?>">
         <button type="submit">Salvar</button>
       </form>
-      <p style="text-align:center;"><a href="dashboard3.php">Voltar</a></p>
+      <p style="text-align:center;margin-top:20px;"><a href="dashboard3.php">Voltar</a></p>
     </div>
-
-   <script>
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "dashboard3.php";
-    });
-  </script>
+  </div>
 </body>
 </html>
