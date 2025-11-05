@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_pk'])) {
 }
 
 $user_pk = $_SESSION['user_pk'];
-$stmt = $mysqli->prepare("SELECT nome, funcao, linha, velocidade, codigo_barra FROM Usuarios WHERE pk = ?");
+$stmt = $conn->prepare("SELECT nome, funcao, linha, velocidade, codigo_barra FROM Usuarios WHERE pk = ?");
 $stmt->bind_param("i", $user_pk);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -29,7 +29,7 @@ $stmt->close();
 
     <div class="phone-content">
       <div class="header">
-        <i id="backBtn" class="fas fa-arrow-left back-icon"></i>
+        <a href="dashboard3.php"><i class="fas fa-arrow-left back-icon"></i></a>
         <div class="icon-title">
           <i class="fas fa-clipboard-list header-icon"></i>
           <h2>Dash Board Geral</h2>
