@@ -155,4 +155,10 @@ p a {
     transition: color 0.3s ease;
 }
 
+p a:hover {
+    color: #404040;
+    text-decoration: underline;
+}
+
+
 
