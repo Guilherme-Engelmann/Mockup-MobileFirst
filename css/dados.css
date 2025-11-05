@@ -139,3 +139,8 @@ button[type="submit"] {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button[type="submit"]:hover {
+    background: #404040;
+    transform: translateY(-2px);
+}
+
