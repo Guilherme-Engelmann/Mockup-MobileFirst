@@ -181,6 +181,10 @@ p a:hover {
     form {
         padding: 15px;
     }
+
+    h3 {
+        font-size: 1.1em;
+    }
     
 }
 
