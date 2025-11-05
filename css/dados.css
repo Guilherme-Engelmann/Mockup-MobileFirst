@@ -173,6 +173,10 @@ p a:hover {
     h2 {
         font-size: 1.2em;
     }
+
+    .dashboard-content {
+        padding: 15px;
+    }
     
 }
 
