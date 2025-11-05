@@ -119,3 +119,10 @@ input[type="text"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+input[type="text"]:focus {
+    outline: none;
+    border-color: #808080;
+    box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.1);
+    background: #fff;
+}
+
