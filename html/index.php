@@ -1,11 +1,11 @@
 <?php
 
-
+//faz a conexao
 include "db.php";
-
+//inicia a sessao
 session_start();
 
-
+//logout
 if(isset($_GET['logout'])){
     session_destroy();
     header("Location: index.php");
@@ -14,10 +14,10 @@ if(isset($_GET['logout'])){
 
 $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    
+    // sanitize inputs
     $user = trim($_POST["username"] ?? "");
     $pass = trim($_POST["senha"] ?? "");
-    $stmt = $conn->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
+    $stmt =$mysqli->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
     $stmt-> bind_param("ss", $user, $pass);
     $stmt->execute();
 
@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $stmt->close();
 
     if($dados){
-     
+        // prevent session fixation
         session_regenerate_id(true);
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];

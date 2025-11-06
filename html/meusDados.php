@@ -1,6 +1,17 @@
 <?php
 session_start();
 include 'db.php';
+// Certifique-se que a conexão está em $mysqli
+if (isset($conn) && !isset($mysqli)) {
+    $mysqli = $conn;
+}
+if (!isset($mysqli) || !($mysqli instanceof mysqli)) {
+    // Fallback: cria conexão padrão caso db.php não defina
+    $mysqli = new mysqli('localhost', 'root', '', '2025_atividades_guilherme');
+    if ($mysqli->connect_errno) {
+        die('Erro: conexão com o banco de dados não estabelecida.');
+    }
+}
 include 'api_validators.php';
 
 if (!isset($_SESSION['user_pk'])) {
@@ -10,24 +21,25 @@ if (!isset($_SESSION['user_pk'])) {
 
 $user_pk = $_SESSION['user_pk'];
 $msg = "";
+$user = [
+    'nome' => '',
+    'email' => '',
+    'telefone' => '',
+    'cpf' => '',
+    'endereco' => '',
+    'cep' => ''
+];
 
-
-$stmt = $conn->prepare("SELECT nome, email, telefone, cpf, endereco, cep FROM Usuarios WHERE pk = ?");
-$stmt->bind_param("i", $user_pk);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-if (!$user) {
-    $user = [
-        'nome' => '',
-        'email' => '',
-        'telefone' => '',
-        'cpf' => '',
-        'endereco' => '',
-        'cep' => ''
-    ];
+$stmt = $mysqli->prepare("SELECT nome, email, telefone, cpf, endereco, cep FROM Usuarios WHERE pk = ?");
+if ($stmt) {
+    $stmt->bind_param("i", $user_pk);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result && $result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    }
+    $stmt->close();
 }
-$stmt->close();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $telefone = $_POST['telefone'] ?? '';
@@ -38,62 +50,59 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
-    
     if (!validar_telefone($telefone)) {
         $errors[] = "Telefone inválido.";
     }
-
-    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Email inválido.";
     }
-
-    
     if (!validar_cpf($cpf)) {
         $errors[] = "CPF inválido.";
     }
-
-    
     if (!validar_endereco($endereco)) {
         $errors[] = "Endereço muito curto.";
     }
-
-    
     $cep_validation = validar_cep($cep);
     if (!$cep_validation['valid']) {
         $errors[] = $cep_validation['message'];
     }
 
     if (empty($errors)) {
-        
-        $check_stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE (email = ? OR cpf = ?) AND pk != ?");
-        $check_stmt->bind_param("ssi", $email, $cpf, $user_pk);
-        $check_stmt->execute();
-        $check_stmt->store_result();
-        if ($check_stmt->num_rows > 0) {
-            $msg = "E-mail ou CPF já cadastrado em outro usuário.";
+        $check_stmt = $mysqli->prepare("SELECT pk FROM Usuarios WHERE (email = ? OR cpf = ?) AND pk != ?");
+        if ($check_stmt) {
+            $check_stmt->bind_param("ssi", $email, $cpf, $user_pk);
+            $check_stmt->execute();
+            $check_stmt->store_result();
+            if ($check_stmt->num_rows > 0) {
+                $msg = "E-mail ou CPF já cadastrado em outro usuário.";
+            } else {
+                $stmt = $mysqli->prepare("UPDATE Usuarios SET telefone = ?, email = ?, cpf = ?, endereco = ?, cep = ? WHERE pk = ?");
+                if ($stmt) {
+                    $stmt->bind_param("sssssi", $telefone, $email, $cpf, $endereco, $cep, $user_pk);
+                    if ($stmt->execute()) {
+                        $msg = "Dados atualizados com sucesso!";
+                        log_auditoria($mysqli, $user_pk, 'update_dados', 'ok', 'Dados pessoais atualizados');
+                        $user['telefone'] = $telefone;
+                        $user['email'] = $email;
+                        $user['cpf'] = $cpf;
+                        $user['endereco'] = $endereco;
+                        $user['cep'] = $cep;
+                    } else {
+                        $msg = "Erro ao atualizar dados.";
+                        log_auditoria($mysqli, $user_pk, 'update_dados', 'error', 'Erro ao atualizar dados: ' . $mysqli->error);
+                    }
+                    $stmt->close();
+                } else {
+                    $msg = "Erro ao preparar atualização.";
+                }
+            }
             $check_stmt->close();
         } else {
-            $check_stmt->close();
-            $stmt = $conn->prepare("UPDATE Usuarios SET telefone = ?, email = ?, cpf = ?, endereco = ?, cep = ? WHERE pk = ?");
-            $stmt->bind_param("sssssi", $telefone, $email, $cpf, $endereco, $cep, $user_pk);
-            if ($stmt->execute()) {
-                $msg = "Dados atualizados com sucesso!";
-                log_auditoria($conn, $user_pk, 'update_dados', 'ok', 'Dados pessoais atualizados');
-                $user['telefone'] = $telefone;
-                $user['email'] = $email;
-                $user['cpf'] = $cpf;
-                $user['endereco'] = $endereco;
-                $user['cep'] = $cep;
-            } else {
-                $msg = "Erro ao atualizar dados.";
-                log_auditoria($conn, $user_pk, 'update_dados', 'error', 'Erro ao atualizar dados: ' . $conn->error);
-            }
-            $stmt->close();
+            $msg = "Erro ao preparar verificação de e-mail/CPF.";
         }
     } else {
         $msg = implode("<br>", $errors);
-        log_auditoria($conn, $user_pk, 'update_dados', 'error', 'Erros de validação: ' . $msg);
+        log_auditoria($mysqli, $user_pk, 'update_dados', 'error', 'Erros de validação: ' . $msg);
     }
 }
 ?>
