@@ -2,11 +2,10 @@
 session_start();
 include 'db.php';
 
-if (isset($conn) && !isset($mysqli)) {
+if (isset($conn) && $conn instanceof mysqli && !isset($mysqli)) {
     $mysqli = $conn;
 }
 if (!isset($mysqli) || !($mysqli instanceof mysqli)) {
-    
     $mysqli = new mysqli('localhost', 'root', '', '2025_atividades_guilherme');
     if ($mysqli->connect_errno) {
         die('Erro: conexão com o banco de dados não estabelecida.');
