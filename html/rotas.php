@@ -55,13 +55,13 @@
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-      // Inicializa o mapa focado em Joinville
-      var map = L.map('map').setView([-26.304408, -48.848022], 13); // Joinville
+      
+      var map = L.map('map').setView([-26.304408, -48.848022], 13);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
       }).addTo(map);
-      // Marcador de exemplo em Joinville
+      
       L.marker([-26.304408, -48.848022]).addTo(map)
         .bindPopup('Estação X (Joinville)')
         .openPopup();
