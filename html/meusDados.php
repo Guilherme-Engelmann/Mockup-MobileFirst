@@ -39,6 +39,8 @@ if ($stmt) {
         $user = $result->fetch_assoc();
     }
     $stmt->close();
+} else {
+    $msg = "Erro ao preparar consulta de usuário.";
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
