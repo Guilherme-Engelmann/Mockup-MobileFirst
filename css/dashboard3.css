@@ -27,7 +27,7 @@ body {
 
 .header {
     color: #000;
-    background: #f8f8f8;
+    background: silver;
     padding: 28px 5vw 18px 5vw;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     display: flex;
@@ -39,7 +39,7 @@ body {
 
 .back-icon {
     font-size: 22px;
-    color: #808080;
+    color: black;
     margin-right: 22px;
     padding: 12px;
     border-radius: 50%;
@@ -58,7 +58,7 @@ body {
     flex: 1;
 }
 .header-icon {
-    color: #a0a0a0;
+    color: black;
     margin-right: 12px;
     font-size: 24px;
 }
