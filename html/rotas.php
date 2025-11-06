@@ -5,6 +5,7 @@
     <title>Rotas</title>
     <link rel="stylesheet" href="../css/rotas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
  
@@ -28,7 +29,7 @@
           <div class="train-icon">🚆</div>
           <div class="linha-num">031</div>
         </div>
-        <img src="../imagens/mapa-rota.png" alt="Mapa da Rota" class="mapa">
+        <div id="map" style="height:300px;width:100%;border-radius:10px;"></div>
       </div>
 
       <div class="info">
@@ -52,6 +53,19 @@
     
     </div>
     
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Inicializa o mapa focado em Joinville
+      var map = L.map('map').setView([-26.304408, -48.848022], 13); // Joinville
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+      // Marcador de exemplo em Joinville
+      L.marker([-26.304408, -48.848022]).addTo(map)
+        .bindPopup('Estação X (Joinville)')
+        .openPopup();
+    </script>
     <script>
     document.getElementById('backBtn').addEventListener('click', () => {
       window.location.href = "dashboard3.html";
