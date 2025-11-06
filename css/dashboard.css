@@ -23,6 +23,15 @@ body {
     flex-direction: column;
 }
 
+.header {
+    background: silver;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
 .back-icon {
     font-size: 1.2em;
     cursor: pointer;
