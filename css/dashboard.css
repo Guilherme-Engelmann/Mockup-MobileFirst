@@ -7,27 +7,24 @@
 }
 
 body {
-    background: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #f4f4f4;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    color: #333;
+    line-height: 1.6;
 }
 
 .phone-content {
-    width: 100%;
-    max-width: 400px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    border: 1px solid #e0e0e0;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-
 .header {
-    background: #000000;
+    background: silver;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -39,7 +36,7 @@ body {
     font-size: 1.2em;
     cursor: pointer;
     transition: transform 0.3s;
-    color: #ffffff;
+    color: black;
 }
 
 .back-icon:hover {
@@ -54,13 +51,13 @@ body {
 
 .header-icon {
     font-size: 1.5em;
-    color: #ffffff;
+    color: black;
 }
 
 h2 {
     font-size: 1.2em;
     font-weight: 600;
-    color: #ffffff;
+    color: black;
 }
 
 .container {
@@ -203,7 +200,7 @@ h2 {
     }
 }
 
-/* Estados ativos */
+
 .linha:active, .velocidade:active {
     transform: translateY(0);
     transition: transform 0.1s;
