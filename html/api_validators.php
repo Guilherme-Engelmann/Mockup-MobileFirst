@@ -1,6 +1,6 @@
 <?php
 
-// Function to validate CPF using algorithm
+
 function validar_cpf($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     if (strlen($cpf) != 11) {
@@ -21,13 +21,13 @@ function validar_cpf($cpf) {
     return true;
 }
 
-// Function to validate telefone (Brazilian format)
+
 function validar_telefone($telefone) {
     $telefone = preg_replace('/[^0-9]/', '', $telefone);
     return strlen($telefone) >= 10 && strlen($telefone) <= 11;
 }
 
-// Function to validate CEP using ViaCEP API
+
 function validar_cep($cep) {
     $cep = preg_replace('/[^0-9]/', '', $cep);
     if (strlen($cep) != 8) {
@@ -38,7 +38,7 @@ function validar_cep($cep) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // 10 seconds timeout
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
@@ -59,12 +59,12 @@ function validar_cep($cep) {
     return ['valid' => true, 'data' => $data];
 }
 
-// Function to validate endereco (basic check)
+
 function validar_endereco($endereco) {
-    return strlen(trim($endereco)) > 5; // Minimum length
+    return strlen(trim($endereco)) > 5; 
 }
 
-// Function to log audit
+
 function log_auditoria($conn, $user_pk, $action, $status, $details = '') {
     $stmt = $conn->prepare("INSERT INTO Auditoria (user_pk, action, status, details) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("isss", $user_pk, $action, $status, $details);

@@ -7,17 +7,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset'])) {
     $username = trim($_POST['username'] ?? "");
 
     if ($username) {
-        // Check if username exists
+        
         $stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // For demo, just show success message. In real app, generate token and send email.
+            
             $reset_msg = "Link de redefinição enviado para seu e-mail!";
-            // Here you could: generate token, store in DB, send email with mail()
-            // Example: mail($email, "Redefinição de Senha", "Clique no link: ...");
+            
         } else {
             $reset_msg = "Nome de usuário não encontrado.";
         }

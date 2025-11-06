@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
     $new_pass = $_POST['new_password'] ?? "";
     $new_func = $_POST['new_func'] ?? "";
     if($new_user && $new_pass){
-        // Verifica se já existe usuário com o mesmo nome
+        
         $check_stmt = $conn->prepare("SELECT COUNT(*) FROM Usuarios WHERE username = ?");
         $check_stmt->bind_param("s", $new_user);
         $check_stmt->execute();

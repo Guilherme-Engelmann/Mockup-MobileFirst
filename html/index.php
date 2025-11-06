@@ -14,7 +14,7 @@ if(isset($_GET['logout'])){
 
 $msg = "";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    // sanitize inputs
+    
     $user = trim($_POST["username"] ?? "");
     $pass = trim($_POST["senha"] ?? "");
     $stmt = $conn->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");

@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (empty($errors)) {
-        // Verifica se já existe outro usuário com o mesmo email ou cpf
+        
         $check_stmt = $conn->prepare("SELECT pk FROM Usuarios WHERE (email = ? OR cpf = ?) AND pk != ?");
         $check_stmt->bind_param("ssi", $email, $cpf, $user_pk);
         $check_stmt->execute();
@@ -114,11 +114,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="text" name="email" placeholder="E-mail" value="<?= htmlspecialchars($user['email'] ?? '') ?>">
         <input type="text" name="cpf" placeholder="CPF" value="<?= htmlspecialchars($user['cpf'] ?? '') ?>">
         <input type="text" name="endereco" placeholder="Endereço" value="<?= htmlspecialchars($user['endereco'] ?? '') ?>">
-        <input type="text" name="cep" placeholder="CEP" value="<?= htmlspecialchars($user['cep'] ?? '') ?>">
+        <input type="text" name="cep" id="cep" placeholder="CEP" value="<?= htmlspecialchars($user['cep'] ?? '') ?>">
         <button type="submit">Salvar</button>
       </form>
       <p style="text-align:center;margin-top:20px;"><a href="dashboard3.php">Voltar</a></p>
     </div>
   </div>
+  <script>
+    document.getElementById('cep').addEventListener('blur', function() {
+      var cep = this.value.replace(/\D/g, '');
+      if (cep.length === 8) {
+        fetch('https://viacep.com.br/ws/' + cep + '/json/')
+          .then(response => response.json())
+          .then(data => {
+            if (!data.erro) {
+              document.querySelector('input[name="endereco"]').value = data.logradouro + (data.bairro ? ', ' + data.bairro : '') + (data.localidade ? ' - ' + data.localidade : '') + (data.uf ? '/' + data.uf : '');
+            }
+          });
+      }
+    });
+  </script>
 </body>
 </html>
