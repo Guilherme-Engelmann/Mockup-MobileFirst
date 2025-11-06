@@ -14,6 +14,15 @@ body {
     line-height: 1.6;
 }
 
+.phone-content {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .back-icon {
     font-size: 1.2em;
     cursor: pointer;
