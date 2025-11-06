@@ -33,7 +33,7 @@ body {
 
 .back-icon {
     font-size: 1.2em;
-    color: black
+    color: black;
     cursor: pointer;
     transition: transform 0.3s;
 }
