@@ -23,7 +23,7 @@ body {
 }
 
 .header {
-    background: #000000;
+    background: silver;
     padding: 20px;
     display: flex;
     align-items: center;
