@@ -33,7 +33,7 @@ body {
 
 .back-icon {
     font-size: 1.2em;
-    color: #ffffff;
+    color: black
     cursor: pointer;
     transition: transform 0.3s;
 }
@@ -50,13 +50,13 @@ body {
 
 .header-icon {
     font-size: 1.5em;
-    color: #ffffff;
+    color: black;
 }
 
 h2 {
     font-size: 1.2em;
     font-weight: 600;
-    color: #ffffff;
+    color: black;
 }
 
 form {
