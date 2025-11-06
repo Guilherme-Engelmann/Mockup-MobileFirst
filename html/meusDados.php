@@ -17,6 +17,16 @@ $stmt->bind_param("i", $user_pk);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
+if (!$user) {
+    $user = [
+        'nome' => '',
+        'email' => '',
+        'telefone' => '',
+        'cpf' => '',
+        'endereco' => '',
+        'cep' => ''
+    ];
+}
 $stmt->close();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
