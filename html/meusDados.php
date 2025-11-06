@@ -21,6 +21,7 @@ if (!isset($_SESSION['user_pk'])) {
 $user_pk = $_SESSION['user_pk'];
 $msg = "";
 $user = [
+    'nome' => '',
     'email' => '',
     'telefone' => '',
     'cpf' => '',
@@ -30,17 +31,16 @@ $user = [
 
 // Consulta dados do usuário
 $stmt = $mysqli->prepare("SELECT nome, email, telefone, cpf, endereco, cep FROM Usuarios WHERE pk = ?");
-if ($stmt) {
-    $stmt->bind_param("i", $user_pk);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result && $result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-    }
-    $stmt->close();
-} else {
-    die('Erro ao preparar consulta de dados do usuário: ' . $mysqli->error);
+if ($stmt === false) {
+    die('Erro ao preparar consulta de dados do usuário: ' . $mysqli->error . '<br>Verifique se a tabela Usuarios e o campo pk existem no banco de dados.');
 }
+$stmt->bind_param("i", $user_pk);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result && $result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+}
+$stmt->close();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $telefone = $_POST['telefone'] ?? '';
