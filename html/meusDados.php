@@ -29,6 +29,7 @@ $user = [
     'cep' => ''
 ];
 
+// Consulta dados do usuário
 $stmt = $mysqli->prepare("SELECT nome, email, telefone, cpf, endereco, cep FROM Usuarios WHERE pk = ?");
 if ($stmt) {
     $stmt->bind_param("i", $user_pk);
@@ -39,7 +40,7 @@ if ($stmt) {
     }
     $stmt->close();
 } else {
-    $msg = "Erro ao preparar consulta de usuário.";
+    die('Erro ao preparar consulta de dados do usuário: ' . $mysqli->error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
