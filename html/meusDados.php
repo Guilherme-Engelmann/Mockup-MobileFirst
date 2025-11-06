@@ -1,12 +1,12 @@
 <?php
 session_start();
 include 'db.php';
-// Certifique-se que a conexão está em $mysqli
+
 if (isset($conn) && !isset($mysqli)) {
     $mysqli = $conn;
 }
 if (!isset($mysqli) || !($mysqli instanceof mysqli)) {
-    // Fallback: cria conexão padrão caso db.php não defina
+    
     $mysqli = new mysqli('localhost', 'root', '', '2025_atividades_guilherme');
     if ($mysqli->connect_errno) {
         die('Erro: conexão com o banco de dados não estabelecida.');
