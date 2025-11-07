@@ -62,11 +62,25 @@
         attribution: '© OpenStreetMap'
       }).addTo(map);
       
-      L.marker([-26.304408, -48.848022]).addTo(map)
+      var estacaoX = [-26.304408, -48.848022];
+      var senaiSul = [-26.320000, -48.850000];
+      
+      L.marker(estacaoX).addTo(map)
         .bindPopup('Estação X (Joinville)');
       
-      L.marker([-26.320000, -48.850000]).addTo(map)
+      L.marker(senaiSul).addTo(map)
         .bindPopup('SENAI SUL');
+      
+      // Linha de rota entre os pontos
+      var rota = L.polyline([estacaoX, senaiSul], {
+        color: '#0066cc',
+        weight: 4,
+        opacity: 0.7,
+        dashArray: '10, 10'
+      }).addTo(map);
+      
+      // Ajusta o zoom para mostrar toda a rota
+      map.fitBounds(rota.getBounds());
     </script>
     <script>
     document.getElementById('backBtn').addEventListener('click', () => {
