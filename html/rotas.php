@@ -63,8 +63,10 @@
       }).addTo(map);
       
       L.marker([-26.304408, -48.848022]).addTo(map)
-        .bindPopup('Estação X (Joinville)')
-        .openPopup();
+        .bindPopup('Estação X (Joinville)');
+      
+      L.marker([-26.320000, -48.850000]).addTo(map)
+        .bindPopup('SENAI SUL');
     </script>
     <script>
     document.getElementById('backBtn').addEventListener('click', () => {
