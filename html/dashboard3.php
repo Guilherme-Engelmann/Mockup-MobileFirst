@@ -38,10 +38,7 @@
           <img src="../imagens/statustrem.jpg" alt="Status dos trens">
           <a href="statusTrans.php">Status do trem</a>
         </div>
-        <div class="app-item">
-          <img src="../imagens/chat.png" alt="Chat">
-          <a href="chat.php">Chat</a>
-        </div>
+       
         <div class="app-item">
           <img src="../imagens/notificação.avif" alt="Alertas">
           <a href="alertas.php">Alertas e notificações</a>
