@@ -37,9 +37,9 @@
             <div class="desempenho">
               <span class="label">Desempenho</span>
               <div class="options">
-                <label><input type="checkbox" checked> Ruim</label>
-                <label><input type="checkbox"> Moderado</label>
-                <label><input type="checkbox"> Bom</label>
+                <label><input type="radio" name="desempenho_031" checked> Ruim</label>
+                <label><input type="radio" name="desempenho_031"> Moderado</label>
+                <label><input type="radio" name="desempenho_031"> Bom</label>
               </div>
             </div>
 
@@ -63,9 +63,9 @@
             <div class="desempenho">
               <span class="label">Desempenho</span>
               <div class="options">
-                <label><input type="checkbox"> Ruim</label>
-                <label><input type="checkbox" checked> Moderado</label>
-                <label><input type="checkbox"> Bom</label>
+                <label><input type="radio" name="desempenho_057"> Ruim</label>
+                <label><input type="radio" name="desempenho_057" checked> Moderado</label>
+                <label><input type="radio" name="desempenho_057"> Bom</label>
               </div>
             </div>
 
@@ -89,9 +89,9 @@
             <div class="desempenho">
               <span class="label active">Desempenho</span>
               <div class="options">
-                <label><input type="checkbox"> Ruim</label>
-                <label><input type="checkbox"> Moderado</label>
-                <label><input type="checkbox" checked> Bom</label>
+                <label><input type="radio" name="desempenho_341"> Ruim</label>
+                <label><input type="radio" name="desempenho_341"> Moderado</label>
+                <label><input type="radio" name="desempenho_341" checked> Bom</label>
               </div>
             </div>
 
