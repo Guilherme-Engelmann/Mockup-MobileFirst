@@ -32,7 +32,7 @@
           <div class="linha-info-header">
             <div class="train-icon">🚆</div>
             <div class="linha-num">031</div>
-          </div>a
+          </div>
           <i class="fas fa-chevron-down aba-icon" id="icon031"></i>
         </div>
         <div class="aba-content" id="linha031">
