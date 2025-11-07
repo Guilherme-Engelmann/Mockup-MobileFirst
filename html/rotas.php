@@ -107,33 +107,39 @@
     <script>
       
       // Função para inicializar mapa quando container estiver visível
-      function initMapWhenVisible(linhaId, mapId, initFunction) {
+      function initMapWhenVisible(linhaId, mapId) {
         var mapContainer = document.getElementById(mapId);
-        var attempts = 0;
-        var maxAttempts = 20;
         
-        function tryInit() {
-          attempts++;
-          if (mapContainer && mapContainer.offsetHeight > 0) {
-            if (linhaId === 'linha031' && !window.map031) {
+        // Para a linha 031, inicializa de forma mais direta
+        if (linhaId === 'linha031') {
+          setTimeout(function() {
+            if (!window.map031) {
               initMap031();
-            } else if (linhaId === 'linha057' && !window.map057) {
-              initMap057();
-            } else if (linhaId === 'linha031' && window.map031) {
-              setTimeout(function() {
-                window.map031.invalidateSize();
-              }, 100);
-            } else if (linhaId === 'linha057' && window.map057) {
-              setTimeout(function() {
-                window.map057.invalidateSize();
-              }, 100);
+            } else {
+              window.map031.invalidateSize();
             }
-          } else if (attempts < maxAttempts) {
-            setTimeout(tryInit, 100);
+          }, 200);
+        } else if (linhaId === 'linha057') {
+          var attempts = 0;
+          var maxAttempts = 20;
+          
+          function tryInit() {
+            attempts++;
+            if (mapContainer && mapContainer.offsetHeight > 0) {
+              if (!window.map057) {
+                initMap057();
+              } else {
+                setTimeout(function() {
+                  window.map057.invalidateSize();
+                }, 100);
+              }
+            } else if (attempts < maxAttempts) {
+              setTimeout(tryInit, 100);
+            }
           }
+          
+          setTimeout(tryInit, 300);
         }
-        
-        setTimeout(tryInit, 300);
       }
       
       // Função para toggle das abas
@@ -156,85 +162,50 @@
         }
       }
       
-      // Mapa Linha 031 - Estação X até SENAI SUL
+      // Mapa Linha 031 - Estação X até SENAI SUL (versão original simples)
       function initMap031() {
         if (window.map031) {
-          setTimeout(function() {
-            window.map031.invalidateSize();
-          }, 100);
+          window.map031.invalidateSize();
           return;
         }
         
-        var mapContainer = document.getElementById('map031');
-        if (!mapContainer) {
-          console.error('Container map031 não encontrado');
-          return;
-        }
+        // Inicializa o mapa de forma simples, como era antes
+        window.map031 = L.map('map031').setView([-26.304408, -48.848022], 13);
         
-        try {
-          // Cria o mapa
-          window.map031 = L.map('map031', {
-            zoomControl: true
-          }).setView([-26.304408, -48.848022], 13);
-          
-          // Adiciona os tiles
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap',
-            crossOrigin: true
-          }).addTo(window.map031);
-          
-          // Aguarda o mapa carregar completamente
-          window.map031.whenReady(function() {
-            var estacaoX = L.latLng(-26.304408, -48.848022);
-            var senaiSul = L.latLng(-26.320000, -48.850000);
-            
-            // Adiciona marcadores
-            var marker1 = L.marker(estacaoX).addTo(window.map031);
-            marker1.bindPopup('Estação X (Joinville)');
-            
-            var marker2 = L.marker(senaiSul).addTo(window.map031);
-            marker2.bindPopup('SENAI SUL');
-            
-            // Rota seguindo as ruas usando OSRM
-            window.routingControl031 = L.Routing.control({
-              waypoints: [estacaoX, senaiSul],
-              router: L.Routing.osrmv1({
-                serviceUrl: 'https://router.project-osrm.org/route/v1'
-              }),
-              routeWhileDragging: false,
-              lineOptions: {
-                styles: [
-                  {color: '#0066cc', opacity: 0.8, weight: 5}
-                ]
-              },
-              addWaypoints: false,
-              draggableWaypoints: false,
-              fitSelectedRoutes: true,
-              showAlternatives: false,
-              createMarker: function() { return null; }
-            }).addTo(window.map031);
-            
-            // Ajusta o zoom após a rota ser calculada
-            window.routingControl031.on('routesfound', function(e) {
-              var routes = e.routes;
-              if (routes && routes.length > 0) {
-                var bounds = L.latLngBounds();
-                routes[0].coordinates.forEach(function(coord) {
-                  bounds.extend([coord.lat, coord.lng]);
-                });
-                window.map031.fitBounds(bounds, {padding: [50, 50]});
-              }
-            });
-            
-            // Força atualização do tamanho
-            setTimeout(function() {
-              window.map031.invalidateSize();
-            }, 200);
-          });
-        } catch (error) {
-          console.error('Erro ao inicializar mapa 031:', error);
-        }
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+        }).addTo(window.map031);
+        
+        // Adiciona os marcadores
+        L.marker([-26.304408, -48.848022]).addTo(window.map031)
+          .bindPopup('Estação X (Joinville)')
+          .openPopup();
+        
+        L.marker([-26.320000, -48.850000]).addTo(window.map031)
+          .bindPopup('SENAI SUL');
+        
+        // Adiciona a rota seguindo as ruas
+        var estacaoX = L.latLng(-26.304408, -48.848022);
+        var senaiSul = L.latLng(-26.320000, -48.850000);
+        
+        L.Routing.control({
+          waypoints: [estacaoX, senaiSul],
+          router: L.Routing.osrmv1({
+            serviceUrl: 'https://router.project-osrm.org/route/v1'
+          }),
+          routeWhileDragging: false,
+          lineOptions: {
+            styles: [
+              {color: '#0066cc', opacity: 0.8, weight: 5}
+            ]
+          },
+          addWaypoints: false,
+          draggableWaypoints: false,
+          fitSelectedRoutes: true,
+          showAlternatives: false,
+          createMarker: function() { return null; }
+        }).addTo(window.map031);
       }
       
       // Mapa Linha 057 - Expoville até SENAI NORTE
