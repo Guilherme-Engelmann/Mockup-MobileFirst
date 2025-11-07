@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             <a href="esqueceuasenha.php">Esqueceu a senha?</a>
             <br>
              <a href="inscreverse.php">Criar conta</a>
-            <p><small>Dica: admin / 123</small></p>
+            <p><small>Dica: adm / 123</small></p>
         </form>
     </div>
 
