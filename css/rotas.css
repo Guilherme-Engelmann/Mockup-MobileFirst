@@ -135,7 +135,7 @@ h2 {
 .data {
     text-align: center;
     font-size: 1em;
-    color: #718096;
+    color: white;
     margin-bottom: 20px;
     font-weight: 500;
 }
@@ -274,4 +274,90 @@ i.fas {
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+/* Estilos para as abas de linhas */
+.linha-aba {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.linha-aba:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.aba-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.aba-header:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.linha-info-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aba-icon {
+    color: white;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.aba-content {
+    display: none;
+    padding: 0;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+    }
+}
+
+.aba-content .map-section {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.aba-content .info {
+    margin: 20px;
+    margin-top: 20px;
+}
+
+/* Garantir que os mapas apareçam */
+#map031, #map057 {
+    position: relative;
+    z-index: 1;
+    min-height: 300px;
+    background-color: #e8e8e8;
+}
+
+/* Estilos para os tiles do Leaflet */
+.leaflet-container {
+    background-color: #e8e8e8;
+    z-index: 1;
+}
+
+.leaflet-tile-container {
+    z-index: 1;
 }
