@@ -296,13 +296,13 @@ i.fas {
     justify-content: space-between;
     padding: 15px 20px;
     cursor: pointer;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: gray;
     transition: all 0.3s ease;
     user-select: none;
 }
 
 .aba-header:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: gray;
 }
 
 .linha-info-header {
