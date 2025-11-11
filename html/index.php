@@ -83,7 +83,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <?php else: ?>
 
     <div>
-        <img src="../imagens/perfil.png" alt="Logo Tracktrain" class="logo">
         <h3>Login</h3>
         <form method="POST">
 
