@@ -21,85 +21,49 @@
       </div>
 
       <div class="train-list">
-      
-        <div class="train-card">
-          <div class="train-icon">
-            <i class="fas fa-subway"></i>
-            <img src="pngtrem.jpg" alt="">
-            <div class="train-id">031</div>
-          </div>
-          <div class="train-info">
-            <p><strong>Modelo:</strong></p>
-            <p><strong>Carga:</strong></p>
-            <p><strong>Horário de saída e chegada</strong></p>
-            <p><strong>Condutor</strong></p>
+        <?php
+        include "db.php";
+        $trens = [];
+        $result = $conn->query("SELECT * FROM Trens ORDER BY numero_serie");
+        if($result){
+            while($row = $result->fetch_assoc()){
+                $trens[] = $row;
+            }
+            $result->free();
+        }
+        if(empty($trens)){
+            echo "<p>Nenhum trem cadastrado.</p>";
+        }else{
+            foreach($trens as $trem){
+                ?>
+                <div class="train-card">
+                  <div class="train-icon">
+                    <i class="fas fa-subway"></i>
+                    <img src="pngtrem.jpg" alt="">
+                    <div class="train-id"><?=$trem['numero_serie']?></div>
+                  </div>
+                  <div class="train-info">
+                    <p><strong>Modelo:</strong> <?=$trem['modeloTrem']?></p>
+                    <p><strong>Carga:</strong> <?=$trem['capacidade_carga']?></p>
+                    <p><strong>Data Fabricação:</strong> <?=$trem['data_fabricacao']?></p>
+                    <p><strong>Capacidade Passageiros:</strong> <?=$trem['capacidade_passageiros']?></p>
 
-            <div class="desempenho">
-              <span class="label">Desempenho</span>
-              <div class="options">
-                <label><input type="radio" name="desempenho_031" checked> Ruim</label>
-                <label><input type="radio" name="desempenho_031"> Moderado</label>
-                <label><input type="radio" name="desempenho_031"> Bom</label>
-              </div>
-            </div>
+                    <div class="desempenho">
+                      <span class="label">Status</span>
+                      <div class="options">
+                        <label><?=$trem['status_operacional']?></label>
+                      </div>
+                    </div>
 
-            <div class="battery">
-              <i class="fas fa-bolt"></i> 60%
-            </div>
-          </div>
-        </div>
-
-        <div class="train-card">
-          <div class="train-icon">
-            <i class="fas fa-subway"></i>
-            <div class="train-id">057</div>
-          </div>
-          <div class="train-info">
-            <p><strong>Modelo:</strong></p>
-            <p><strong>Carga:</strong></p>
-            <p><strong>Horário de saída da estação x</strong></p>
-            <p><strong>Condutor</strong></p>
-
-            <div class="desempenho">
-              <span class="label">Desempenho</span>
-              <div class="options">
-                <label><input type="radio" name="desempenho_057"> Ruim</label>
-                <label><input type="radio" name="desempenho_057" checked> Moderado</label>
-                <label><input type="radio" name="desempenho_057"> Bom</label>
-              </div>
-            </div>
-
-            <div class="battery">
-              <i class="fas fa-bolt"></i> 90%
-            </div>
-          </div>
-        </div>
-
-        <div class="train-card">
-          <div class="train-icon">
-            <i class="fas fa-subway"></i>
-            <div class="train-id">341</div>
-          </div>
-          <div class="train-info">
-            <p><strong>Modelo:</strong></p>
-            <p><strong>Carga:</strong></p>
-            <p><strong>Horário de saída da estação x</strong></p>
-            <p><strong>Condutor</strong></p>
-
-            <div class="desempenho">
-              <span class="label active">Desempenho</span>
-              <div class="options">
-                <label><input type="radio" name="desempenho_341"> Ruim</label>
-                <label><input type="radio" name="desempenho_341"> Moderado</label>
-                <label><input type="radio" name="desempenho_341" checked> Bom</label>
-              </div>
-            </div>
-
-            <div class="battery">
-              <i class="fas fa-bolt"></i> 75%
-            </div>
-          </div>
-        </div>
+                    <div class="battery">
+                      <i class="fas fa-bolt"></i> 80%
+                    </div>
+                  </div>
+                </div>
+                <?php
+            }
+        }
+        ?>
       </div>
     </div>
   </div>

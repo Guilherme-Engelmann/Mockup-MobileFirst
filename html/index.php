@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         if($dados["cargo"] == "func"){
             header("Location: dashboard3.php");
         }else{
-            header("Location: cadastro.php");
+            header("Location: admin_dashboard.php");
         }
         exit;
 
@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <h3>Bem-vindo, <?= htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?>!</h3>
         <p>Sessão Ativa</p>
         <?php if(isset($_SESSION["cargo"]) && $_SESSION["cargo"] === 'admin'): ?>
-            <form action="cadastro.php" method="get">
+            <form action="admin_dashboard.php" method="get">
                 <button type="submit">ADM</button>
             </form>
         <?php elseif(isset($_SESSION["cargo"]) && $_SESSION["cargo"] === 'func'): ?>
@@ -69,8 +69,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 <button type="submit">FUNCIONÁRIO</button>
             </form>
         <?php else: ?>
-            
-            <form action="cadastro.php" method="get">
+
+            <form action="admin_dashboard.php" method="get">
                 <button type="submit">ADM</button>
             </form>
              <form action="dashboard3.php" method="get">

@@ -25,79 +25,105 @@
       
     </header>
     <section class="route-box">
-      
-      
-      <div class="linha-aba">
-        <div class="aba-header" onclick="toggleAba('linha031')">
-          <div class="linha-info-header">
-            <div class="train-icon">🚆</div>
-            <div class="linha-num">031</div>
-          </div>
-          <i class="fas fa-chevron-down aba-icon" id="icon031"></i>
-        </div>
-        <div class="aba-content" id="linha031">
-          <div class="map-section">
-            <div class="linha-info">
-              <div class="train-icon">🚆</div>
-              <div class="linha-num">031</div>
-            </div>
-            <div id="map031" style="height:300px;width:100%;border-radius:10px;"></div>
-          </div>
+      <?php
+      include "db.php";
+      $rotas = [];
+      $result = $conn->query("SELECT r.*, e1.nomeEstacao AS origem, e1.latitude AS lat_origem, e1.longitude AS lng_origem, e2.nomeEstacao AS destino, e2.latitude AS lat_destino, e2.longitude AS lng_destino FROM Rotas r JOIN Estacoes e1 ON r.estacaoOrigem = e1.idEstacao JOIN Estacoes e2 ON r.estacaoDestino = e2.idEstacao ORDER BY r.nomeRota");
+      if($result){
+          while($row = $result->fetch_assoc()){
+              $rotas[] = $row;
+          }
+          $result->free();
+      }
+      if(empty($rotas)){
+          echo "<p>Nenhuma rota cadastrada.</p>";
+      }else{
+          foreach($rotas as $index => $rota){
+              $linhaId = 'linha' . ($index + 1);
+              $iconId = 'icon' . ($index + 1);
+              $mapId = 'map' . ($index + 1);
+              $origem = $rota['origem'];
+              $destino = $rota['destino'];
+              $lat_origem = $rota['lat_origem'];
+              $lng_origem = $rota['lng_origem'];
+              $lat_destino = $rota['lat_destino'];
+              $lng_destino = $rota['lng_destino'];
+              ?>
+              <div class="linha-aba">
+                <div class="aba-header" onclick="toggleAba('<?=$linhaId?>')">
+                  <div class="linha-info-header">
+                    <div class="train-icon">🚆</div>
+                    <div class="linha-num"><?=$rota['nomeRota']?></div>
+                  </div>
+                  <i class="fas fa-chevron-down aba-icon" id="<?=$iconId?>"></i>
+                </div>
+                <div class="aba-content" id="<?=$linhaId?>">
+                  <div class="map-section">
+                    <div class="linha-info">
+                      <div class="train-icon">🚆</div>
+                      <div class="linha-num"><?=$rota['nomeRota']?></div>
+                    </div>
+                    <div id="<?=$mapId?>" style="height:300px;width:100%;border-radius:10px;"></div>
+                  </div>
 
-          <div class="info">
-            <p class="data">28 de março de 2025</p>
+                  <div class="info">
+                    <p class="data">Distância: <?=$rota['distanciaTotal']?> km | Tempo Médio: <?=$rota['tempoMedioPercurso']?></p>
 
-            <div class="hora-bloco">
-              <span class="hora">10:30</span>
-              <button class="acao">Saída da estação X</button>
-            </div>
+                    <div class="hora-bloco">
+                      <span class="hora">Saída</span>
+                      <button class="acao"><?=$origem?></button>
+                    </div>
 
-            <div class="pontos">⋮</div>
+                    <div class="pontos">⋮</div>
 
-            <div class="hora-bloco">
-              <span class="hora">10:50</span>
-              <button class="acao">Chegada na estação Y</button>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <div class="hora-bloco">
+                      <span class="hora">Chegada</span>
+                      <button class="acao"><?=$destino?></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                function initMap<?=$index + 1?>() {
+                  if (window.map<?=$index + 1?>) return;
 
-      
-      <div class="linha-aba">
-        <div class="aba-header" onclick="toggleAba('linha057')">
-          <div class="linha-info-header">
-            <div class="train-icon">🚌</div>
-            <div class="linha-num">057</div>
-          </div>
-          <i class="fas fa-chevron-down aba-icon" id="icon057"></i>
-        </div>
-        <div class="aba-content" id="linha057">
-          <div class="map-section">
-            <div class="linha-info">
-              <div class="train-icon">🚌</div>
-              <div class="linha-num">057</div>
-            </div>
-            <div id="map057" style="height:300px;width:100%;border-radius:10px;"></div>
-          </div>
+                  window.map<?=$index + 1?> = L.map('<?=$mapId?>').setView([<?=$lat_origem?>, <?=$lng_origem?>], 13);
+                  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                  }).addTo(window.map<?=$index + 1?>);
 
-          <div class="info">
-            <p class="data">28 de março de 2025</p>
+                  var estacaoOrigem = L.latLng(<?=$lat_origem?>, <?=$lng_origem?>);
+                  var estacaoDestino = L.latLng(<?=$lat_destino?>, <?=$lng_destino?>);
 
-            <div class="hora-bloco">
-              <span class="hora">11:00</span>
-              <button class="acao">Saída do Expoville</button>
-            </div>
+                  L.marker(estacaoOrigem).addTo(window.map<?=$index + 1?>)
+                    .bindPopup('<?=$origem?>');
 
-            <div class="pontos">⋮</div>
+                  L.marker(estacaoDestino).addTo(window.map<?=$index + 1?>)
+                    .bindPopup('<?=$destino?>');
 
-            <div class="hora-bloco">
-              <span class="hora">11:25</span>
-              <button class="acao">Chegada no SENAI NORTE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+                  L.Routing.control({
+                    waypoints: [estacaoOrigem, estacaoDestino],
+                    router: L.Routing.osrmv1({
+                      serviceUrl: 'https://router.project-osrm.org/route/v1'
+                    }),
+                    routeWhileDragging: false,
+                    lineOptions: {
+                      styles: [
+                        {color: '#0066cc', opacity: 0.8, weight: 5}
+                      ]
+                    },
+                    addWaypoints: false,
+                    draggableWaypoints: false,
+                    fitSelectedRoutes: true,
+                    showAlternatives: false
+                  }).addTo(window.map<?=$index + 1?>);
+                }
+              </script>
+              <?php
+          }
+      }
+      ?>
     </section>
     
     </div>
@@ -110,17 +136,16 @@
       function toggleAba(linhaId) {
         var content = document.getElementById(linhaId);
         var icon = document.getElementById('icon' + linhaId.replace('linha', ''));
-        
+
         if (content.style.display === 'none' || content.style.display === '') {
           content.style.display = 'block';
           icon.classList.remove('fa-chevron-down');
           icon.classList.add('fa-chevron-up');
-          
-          
-          if (linhaId === 'linha031' && !window.map031) {
-            initMap031();
-          } else if (linhaId === 'linha057' && !window.map057) {
-            initMap057();
+
+          // Inicializar mapa dinamicamente
+          var mapId = 'map' + linhaId.replace('linha', '');
+          if (!window['map' + linhaId.replace('linha', '')]) {
+            window['initMap' + linhaId.replace('linha', '')]();
           }
         } else {
           content.style.display = 'none';
@@ -130,84 +155,14 @@
       }
       
       
-      function initMap031() {
-        if (window.map031) return;
-        
-        window.map031 = L.map('map031').setView([-26.304408, -48.848022], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '© OpenStreetMap'
-        }).addTo(window.map031);
-        
-        var estacaoX = L.latLng(-26.304408, -48.848022);
-        var estacaoY = L.latLng(-26.320000, -48.850000);
-        
-        L.marker(estacaoX).addTo(window.map031)
-          .bindPopup('Estação X (Joinville)');
-        
-        L.marker(estacaoY).addTo(window.map031)
-          .bindPopup('Estação Y');
-        
-       
-        L.Routing.control({
-          waypoints: [estacaoX, estacaoY],
-          router: L.Routing.osrmv1({
-            serviceUrl: 'https://router.project-osrm.org/route/v1'
-          }),
-          routeWhileDragging: false,
-          lineOptions: {
-            styles: [
-              {color: '#0066cc', opacity: 0.8, weight: 5}
-            ]
-          },
-          addWaypoints: false,
-          draggableWaypoints: false,
-          fitSelectedRoutes: true,
-          showAlternatives: false
-        }).addTo(window.map031);
-      }
-      
-      
-      function initMap057() {
-        if (window.map057) return;
-        
-        window.map057 = L.map('map057').setView([-26.280000, -48.830000], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '© OpenStreetMap'
-        }).addTo(window.map057);
-        
-        var expoville = L.latLng(-26.280000, -48.840000);
-        var senaiNorte = L.latLng(-26.270000, -48.820000);
-        
-        L.marker(expoville).addTo(window.map057)
-          .bindPopup('Expoville');
-        
-        L.marker(senaiNorte).addTo(window.map057)
-          .bindPopup('SENAI NORTE');
-        
-        
-        L.Routing.control({
-          waypoints: [expoville, senaiNorte],
-          router: L.Routing.osrmv1({
-            serviceUrl: 'https://router.project-osrm.org/route/v1'
-          }),
-          routeWhileDragging: false,
-          lineOptions: {
-            styles: [
-              {color: '#0066cc', opacity: 0.8, weight: 5}
-            ]
-          },
-          addWaypoints: false,
-          draggableWaypoints: false,
-          fitSelectedRoutes: true,
-          showAlternatives: false
-        }).addTo(window.map057);
-      }
+
       
       
       window.addEventListener('DOMContentLoaded', function() {
-        toggleAba('linha031');
+        // Abrir a primeira aba se existir
+        if (document.getElementById('linha1')) {
+          toggleAba('linha1');
+        }
       });
     </script>
 </body>
