@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 <button type="submit">FUNCIONÁRIO</button>
             </form>
         <?php else: ?>
-            <!-- fallback: show both if cargo is unexpected -->
+            
             <form action="cadastro.php" method="get">
                 <button type="submit">ADM</button>
             </form>
