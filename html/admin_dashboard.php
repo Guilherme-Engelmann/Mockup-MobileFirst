@@ -56,6 +56,14 @@ if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
           <img src="../imagens/meusdados_logo.png" alt="Cadastrar Usuários">
           <a href="cadastro.php">Cadastrar Usuário</a>
         </div>
+        <div class="app-item">
+          <img src="../imagens/manutenção.jpg" alt="Manutenções">
+          <a href="manutencao.php">Manutenções</a>
+        </div>
+        <div class="app-item">
+          <img src="../imagens/dashboard.png" alt="Relatórios">
+          <a href="relatorios.php">Relatórios</a>
+        </div>
       </div>
     </div>
   </div>

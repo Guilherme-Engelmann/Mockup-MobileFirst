@@ -11,17 +11,17 @@
 - [x] Remove hardcoded alert data
 
 ## 3. Implement Maintenance Management
-- [ ] Create html/manutencao.php for viewing maintenance records
-- [ ] Create html/criar_manutencao.php for registering new maintenance
-- [ ] Connect to Manutencoes table
+- [x] Create html/manutencao.php for viewing maintenance records
+- [x] Create html/criar_manutencao.php for registering new maintenance
+- [x] Connect to Manutencoes table
 
 ## 4. Add Reports Functionality
-- [ ] Create html/relatorios.php for system reports
-- [ ] Include reports on trips, maintenance, alerts
-- [ ] Make it accessible to admin
+- [x] Create html/relatorios.php for system reports
+- [x] Include reports on trips, maintenance, alerts
+- [x] Make it accessible to admin
 
 ## 5. Update Admin Dashboard
-- [ ] Add links to maintenance and reports pages in html/admin_dashboard.php
+- [x] Add links to maintenance and reports pages in html/admin_dashboard.php
 
 ## 6. Ensure DB Connectivity
 - [ ] Verify all pages connect properly to existing tables
