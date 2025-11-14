@@ -24,6 +24,6 @@
 - [x] Add links to maintenance and reports pages in html/admin_dashboard.php
 
 ## 6. Ensure DB Connectivity
-- [ ] Verify all pages connect properly to existing tables
-- [ ] Test data retrieval and display
-- [ ] Ensure mobile-first responsive design
+- [x] Verify all pages connect properly to existing tables
+- [x] Test data retrieval and display
+- [x] Ensure mobile-first responsive design
