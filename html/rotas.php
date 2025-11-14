@@ -69,17 +69,45 @@
                   <div class="info">
                     <p class="data">Distância: <?=$rota['distanciaTotal']?> km | Tempo Médio: <?=$rota['tempoMedioPercurso']?></p>
 
-                    <div class="hora-bloco">
-                      <span class="hora">Saída</span>
-                      <button class="acao"><?=$origem?></button>
-                    </div>
+                    <?php
+                    // Buscar viagens para esta rota
+                    $viagens = [];
+                    $stmt = $conn->prepare("SELECT horario_partida_previsto, horario_chegada_previsto FROM Viagens WHERE idRota = ? ORDER BY horario_partida_previsto");
+                    $stmt->bind_param("i", $rota['idRota']);
+                    $stmt->execute();
+                    $result_viagens = $stmt->get_result();
+                    while($viagem = $result_viagens->fetch_assoc()){
+                        $viagens[] = $viagem;
+                    }
+                    $stmt->close();
+                    ?>
 
-                    <div class="pontos">⋮</div>
-
-                    <div class="hora-bloco">
-                      <span class="hora">Chegada</span>
-                      <button class="acao"><?=$destino?></button>
-                    </div>
+                    <?php if(!empty($viagens)): ?>
+                      <h4>Horários:</h4>
+                      <?php foreach($viagens as $viagem): ?>
+                        <div class="hora-bloco">
+                          <span class="hora">Saída: <?=$viagem['horario_partida_previsto']?></span>
+                          <button class="acao"><?=$origem?></button>
+                        </div>
+                        <div class="pontos">⋮</div>
+                        <div class="hora-bloco">
+                          <span class="hora">Chegada: <?=$viagem['horario_chegada_previsto']?></span>
+                          <button class="acao"><?=$destino?></button>
+                        </div>
+                        <hr style="margin: 10px 0;">
+                      <?php endforeach; ?>
+                    <?php else: ?>
+                      <div class="hora-bloco">
+                        <span class="hora">Saída</span>
+                        <button class="acao"><?=$origem?></button>
+                      </div>
+                      <div class="pontos">⋮</div>
+                      <div class="hora-bloco">
+                        <span class="hora">Chegada</span>
+                        <button class="acao"><?=$destino?></button>
+                      </div>
+                      <p style="color: #666; font-size: 12px;">Nenhum horário cadastrado</p>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
