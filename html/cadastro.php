@@ -23,8 +23,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
         if ($check_stmt->num_rows > 0) {
             $register_msg = "Usuário já cadastrado.";
         } else {
+            $hashed_pass = password_hash($new_pass, PASSWORD_DEFAULT);
             $stmt = $conn -> prepare("INSERT INTO Usuarios (username, senha, cargo) VALUES (?,?,?)");
-            $stmt -> bind_param("sss", $new_user, $new_pass,$new_func);
+            $stmt -> bind_param("sss", $new_user, $hashed_pass,$new_func);
             
             if($stmt->execute()) {
                 $register_msg = "Usuário cadastrado com sucesso!";

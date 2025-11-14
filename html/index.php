@@ -17,15 +17,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     // sanitize inputs
     $user = trim($_POST["username"] ?? "");
     $pass = trim($_POST["senha"] ?? "");
-    $stmt =$conn->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=? AND senha=?");
-    $stmt-> bind_param("ss", $user, $pass);
+    $stmt =$conn->prepare("SELECT pk, username, senha, cargo FROM Usuarios WHERE username=?");
+    $stmt-> bind_param("s", $user);
     $stmt->execute();
 
     $result = $stmt->get_result();
     $dados = $result -> fetch_assoc();
     $stmt->close();
 
-    if($dados){
+    if($dados && password_verify($pass, $dados['senha'])){
         // prevent session fixation
         session_regenerate_id(true);
         $_SESSION["user_pk"] = $dados["pk"];
