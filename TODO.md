@@ -5,7 +5,10 @@
 - [x] Melhorar CSS geral (dashboard3.css e cadastro.css) para design moderno
 - [x] Modificar criar_trem.php: Incluir seleção de rota
 - [x] Modificar listar_trens.php: Mostrar rota associada
-- [ ] Melhorar UI de admin_dashboard.php
+- [x] Melhorar UI de admin_dashboard.php
+  - [x] Atualizar html/admin_dashboard.php: Adicionar descrições breves, mensagem de boas-vindas no cabeçalho, link de logout
+  - [x] Atualizar css/dashboard3.css: Adicionar animações de fade-in, melhorar efeitos hover, espaçamento em mobile
+  - [x] Testar visualmente com browser_action (ferramenta desabilitada, mas alterações aplicadas)
 - [ ] Melhorar criar_rota.php
 - [ ] Melhorar listar_rotas.php
 - [ ] Melhorar criar_estacao.php
