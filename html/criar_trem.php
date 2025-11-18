@@ -15,10 +15,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_trem'])){
     $cap_pass = intval($_POST['cap_pass'] ?? 0);
     $cap_carga = trim($_POST['cap_carga'] ?? "");
     $status = trim($_POST['status'] ?? "");
+    $id_rota = intval($_POST['id_rota'] ?? 0);
 
     if($numero_serie && $modelo && $data_fab && $cap_pass && $cap_carga && $status){
-        $stmt = $conn->prepare("INSERT INTO Trens (numero_serie, modeloTrem, data_fabricacao, capacidade_passageiros, capacidade_carga, status_operacional) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ississ", $numero_serie, $modelo, $data_fab, $cap_pass, $cap_carga, $status);
+        $stmt = $conn->prepare("INSERT INTO Trens (numero_serie, modeloTrem, data_fabricacao, capacidade_passageiros, capacidade_carga, status_operacional, idRota) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ississi", $numero_serie, $modelo, $data_fab, $cap_pass, $cap_carga, $status, $id_rota ?: null);
         if($stmt->execute()){
             $msg = "Trem cadastrado com sucesso!";
         }else{
@@ -28,6 +29,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_trem'])){
     }else{
         $msg = "Preencha todos os campos.";
     }
+}
+
+// Buscar rotas para dropdown
+$rotas = [];
+$result = $conn->query("SELECT idRota, nomeRota FROM Rotas ORDER BY nomeRota");
+if($result){
+    while($row = $result->fetch_assoc()){
+        $rotas[] = $row;
+    }
+    $result->free();
 }
 ?>
 
@@ -62,6 +73,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_trem'])){
             <option value="ativo">Ativo</option>
             <option value="inativo">Inativo</option>
             <option value="manutencao">Em Manutenção</option>
+        </select>
+        <select name="id_rota">
+            <option value="">Selecione Rota (Opcional)</option>
+            <?php foreach($rotas as $rota): ?>
+                <option value="<?=$rota['idRota']?>"><?=$rota['nomeRota']?></option>
+            <?php endforeach; ?>
         </select>
         <button type="submit" name="criar_trem" value="1">Cadastrar</button>
       </form>

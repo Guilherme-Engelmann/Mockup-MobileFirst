@@ -1,29 +1,17 @@
-# TODO List for Implementing Train Management System Features
+# TODO: Melhorar Páginas Admin e Associar Rotas aos Trens
 
-## 1. Enhance Routes with Schedules
-- [x] Update html/rotas.php to display trip schedules from Viagens table
-- [x] Add departure/arrival times for each route
-- [x] Ensure schedules are linked to routes properly
-
-## 2. Make Alerts Functional
-- [x] Modify html/alertas.php to fetch alerts from Alertas table
-- [x] Display dynamic alerts linked to trips
-- [x] Remove hardcoded alert data
-
-## 3. Implement Maintenance Management
-- [x] Create html/manutencao.php for viewing maintenance records
-- [x] Create html/criar_manutencao.php for registering new maintenance
-- [x] Connect to Manutencoes table
-
-## 4. Add Reports Functionality
-- [x] Create html/relatorios.php for system reports
-- [x] Include reports on trips, maintenance, alerts
-- [x] Make it accessible to admin
-
-## 5. Update Admin Dashboard
-- [x] Add links to maintenance and reports pages in html/admin_dashboard.php
-
-## 6. Ensure DB Connectivity
-- [x] Verify all pages connect properly to existing tables
-- [x] Test data retrieval and display
-- [x] Ensure mobile-first responsive design
+## Etapas
+- [x] Atualizar banco.sql: Adicionar coluna idRota em Trens (opcional)
+- [x] Melhorar CSS geral (dashboard3.css e cadastro.css) para design moderno
+- [ ] Modificar criar_trem.php: Incluir seleção de rota
+- [ ] Modificar listar_trens.php: Mostrar rota associada
+- [ ] Melhorar UI de admin_dashboard.php
+- [ ] Melhorar criar_rota.php
+- [ ] Melhorar listar_rotas.php
+- [ ] Melhorar criar_estacao.php
+- [ ] Melhorar listar_estacoes.php
+- [ ] Melhorar manutencao.php
+- [ ] Melhorar criar_manutencao.php
+- [ ] Melhorar relatorios.php
+- [ ] Melhorar cadastro.php
+- [ ] Testar visualmente com browser_action

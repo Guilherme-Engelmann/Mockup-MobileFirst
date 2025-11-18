@@ -8,7 +8,7 @@ if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
 }
 
 $trens = [];
-$result = $conn->query("SELECT * FROM Trens ORDER BY numero_serie");
+$result = $conn->query("SELECT t.*, r.nomeRota FROM Trens t LEFT JOIN Rotas r ON t.idRota = r.idRota ORDER BY t.numero_serie");
 if($result){
     while($row = $result->fetch_assoc()){
         $trens[] = $row;
@@ -47,7 +47,8 @@ if($result){
               Data Fabricação: <?=$trem['data_fabricacao']?><br>
               Capacidade Passageiros: <?=$trem['capacidade_passageiros']?><br>
               Capacidade Carga: <?=$trem['capacidade_carga']?><br>
-              Status: <?=$trem['status_operacional']?>
+              Status: <?=$trem['status_operacional']?><br>
+              Rota Associada: <?=$trem['nomeRota'] ?: 'Nenhuma'?>
             </li>
           <?php endforeach; ?>
         </ul>

@@ -30,7 +30,9 @@ CREATE TABLE Trens (
     data_fabricacao DATE NOT NULL,
     capacidade_passageiros INT NOT NULL,
     capacidade_carga VARCHAR(120) NOT NULL,
-    status_operacional VARCHAR(50) NOT NULL
+    status_operacional VARCHAR(50) NOT NULL,
+    idRota INT NULL,
+    FOREIGN KEY (idRota) REFERENCES Rotas(idRota)
 );
 
 
