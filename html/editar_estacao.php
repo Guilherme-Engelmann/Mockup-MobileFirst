@@ -7,9 +7,25 @@ if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
     exit;
 }
 
+$id_estacao = intval($_GET['id'] ?? 0);
+
+if(!$id_estacao){
+    header("Location: listar_estacoes.php");
+    exit;
+}
+
+// Buscar dados da estação
+$result = $conn->query("SELECT * FROM Estacoes WHERE idEstacao = $id_estacao");
+if(!$result || $result->num_rows === 0){
+    header("Location: listar_estacoes.php");
+    exit;
+}
+$estacao = $result->fetch_assoc();
+$result->free();
+
 $msg = "";
 $msg_type = "";
-if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
     $nome = trim($_POST['nome'] ?? "");
     $latitude = trim($_POST['latitude'] ?? "");
     $longitude = trim($_POST['longitude'] ?? "");
@@ -24,22 +40,22 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
             $msg = "Longitude deve estar entre -180 e 180 graus.";
             $msg_type = "error";
         }else{
-            // Verificar se estação já existe
-            $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ?");
-            $check_stmt->bind_param("s", $nome);
+            // Verificar se nome já existe (exceto para esta estação)
+            $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ? AND idEstacao != ?");
+            $check_stmt->bind_param("si", $nome, $id_estacao);
             $check_stmt->execute();
             $check_stmt->store_result();
             if($check_stmt->num_rows > 0){
                 $msg = "Já existe uma estação cadastrada com este nome.";
                 $msg_type = "error";
             }else{
-                $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, latitude, longitude, tipoEstacao) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("sdds", $nome, $latitude, $longitude, $tipo);
+                $stmt = $conn->prepare("UPDATE Estacoes SET nomeEstacao = ?, latitude = ?, longitude = ?, tipoEstacao = ? WHERE idEstacao = ?");
+                $stmt->bind_param("sddsi", $nome, $latitude, $longitude, $tipo, $id_estacao);
                 if($stmt->execute()){
-                    $msg = "Estação cadastrada com sucesso!";
-                    $msg_type = "success";
+                    header("Location: listar_estacoes.php?msg=estacao_editada");
+                    exit;
                 }else{
-                    $msg = "Erro ao cadastrar estação: " . $conn->error;
+                    $msg = "Erro ao editar estação: " . $conn->error;
                     $msg_type = "error";
                 }
                 $stmt->close();
@@ -58,37 +74,36 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Estação</title>
+    <title>Editar Estação</title>
     <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 <body>
   <div class="main-wrapper">
     <div class="header">
-      <a href="admin_dashboard.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+      <a href="listar_estacoes.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
       <div class="icon-title">
-        <i class="fas fa-clipboard-list header-icon"></i>
-        <h2>Cadastrar Estação</h2>
+        <i class="fas fa-edit header-icon"></i>
+        <h2>Editar Estação</h2>
       </div>
     </div>
     <div class="dashboard-content">
       <form method="post" style="width:100%;max-width:500px;margin:0 auto;">
-        <h3>Cadastrar Nova Estação</h3>
+        <h3>Editar Estação</h3>
         <?php if($msg): ?><p class="message <?=$msg_type?>"><?=$msg?></p><?php endif; ?>
-        <input type="text" name="nome" placeholder="Nome da Estação" required>
-        <input type="number" step="any" name="latitude" placeholder="Latitude" required>
-        <input type="number" step="any" name="longitude" placeholder="Longitude" required>
+        <input type="text" name="nome" placeholder="Nome da Estação" value="<?=$estacao['nomeEstacao']?>" required>
+        <input type="number" step="any" name="latitude" placeholder="Latitude" value="<?=$estacao['latitude']?>" required>
+        <input type="number" step="any" name="longitude" placeholder="Longitude" value="<?=$estacao['longitude']?>" required>
         <select name="tipo" required>
             <option value="">Selecione o Tipo</option>
-            <option value="terminal">Terminal</option>
-            <option value="intermediaria">Intermediária</option>
-            <option value="final">Final</option>
+            <option value="terminal" <?=$estacao['tipoEstacao'] === 'terminal' ? 'selected' : ''?>>Terminal</option>
+            <option value="intermediaria" <?=$estacao['tipoEstacao'] === 'intermediaria' ? 'selected' : ''?>>Intermediária</option>
+            <option value="final" <?=$estacao['tipoEstacao'] === 'final' ? 'selected' : ''?>>Final</option>
         </select>
         <div class="form-buttons">
-          <button type="submit" name="criar_estacao" value="1">Cadastrar</button>
+          <button type="submit" name="editar_estacao" value="1">Salvar Alterações</button>
           <button type="button" onclick="limparFormulario()">Limpar</button>
         </div>
       </form>
-      <p style="text-align:center;margin-top:20px;"><a href="admin_dashboard.php">Voltar</a></p>
     </div>
   </div>
 <script>

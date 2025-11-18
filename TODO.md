@@ -14,17 +14,17 @@
 - [x] Criar editar_rota.php e deletar_rota.php
 
 ## Melhorar criar_estacao.php
-- [ ] Adicionar validação de coordenadas geográficas
-- [ ] Melhorar mensagens de erro/sucesso
-- [ ] Adicionar botão de limpar formulário
-- [ ] Melhorar responsividade
+- [x] Adicionar validação de coordenadas geográficas
+- [x] Melhorar mensagens de erro/sucesso
+- [x] Adicionar botão de limpar formulário
+- [x] Melhorar responsividade
 
 ## Melhorar listar_estacoes.php
-- [ ] Substituir lista por tabela
-- [ ] Adicionar botões de editar e deletar
+- [x] Substituir lista por tabela
+- [x] Adicionar botões de editar e deletar
 - [ ] Adicionar paginação
-- [ ] Adicionar filtro/busca
-- [ ] Criar editar_estacao.php e deletar_estacao.php
+- [x] Adicionar filtro/busca
+- [x] Criar editar_estacao.php e deletar_estacao.php
 
 ## Melhorar manutencao.php
 - [ ] Melhorar layout da lista de manutenções

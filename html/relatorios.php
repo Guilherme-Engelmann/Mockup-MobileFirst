@@ -47,6 +47,7 @@ $stats['usuarios'] = $result->fetch_assoc()['total'];
     <title>Relatórios</title>
     <link rel="stylesheet" href="../css/dashboard3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="main-wrapper">
@@ -60,33 +61,52 @@ $stats['usuarios'] = $result->fetch_assoc()['total'];
     <div class="dashboard-content">
       <h3>Estatísticas Gerais</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-route" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['rotas']?></h4>
           <p>Rotas Cadastradas</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-train" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['trens']?></h4>
           <p>Trens Cadastrados</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-building" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['estacoes']?></h4>
           <p>Estações Cadastradas</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-plane" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['viagens']?></h4>
           <p>Viagens Programadas</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-exclamation-triangle" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['alertas_pendentes']?></h4>
           <p>Alertas Pendentes</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-tools" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['manutencoes_andamento']?></h4>
           <p>Manutenções em Andamento</p>
         </div>
-        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; text-align: center;">
+        <div class="stat-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 12px; text-align: center; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+          <i class="fas fa-users" style="font-size: 2em; margin-bottom: 10px;"></i>
           <h4><?=$stats['usuarios']?></h4>
           <p>Usuários Ativos</p>
+        </div>
+      </div>
+
+      <h3>Gráficos e Análises</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h4 style="text-align: center; margin-bottom: 20px;">Status das Manutenções</h4>
+          <canvas id="manutencoesChart" width="300" height="200"></canvas>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h4 style="text-align: center; margin-bottom: 20px;">Viagens por Status</h4>
+          <canvas id="viagensChart" width="300" height="200"></canvas>
         </div>
       </div>
 
@@ -193,5 +213,77 @@ $stats['usuarios'] = $result->fetch_assoc()['total'];
       <p style="text-align:center;margin-top:20px;"><a href="admin_dashboard.php">Voltar</a></p>
     </div>
   </div>
+<style>
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gráfico de Manutenções
+    const manutencoesCtx = document.getElementById('manutencoesChart').getContext('2d');
+    new Chart(manutencoesCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Pendente', 'Em Andamento', 'Concluída', 'Cancelada'],
+            datasets: [{
+                data: [<?php
+                    $result = $conn->query("SELECT statusManutencoes, COUNT(*) as count FROM Manutencoes GROUP BY statusManutencoes");
+                    $counts = [];
+                    while($row = $result->fetch_assoc()){
+                        $counts[$row['statusManutencoes']] = $row['count'];
+                    }
+                    echo ($counts['pendente'] ?? 0) . ',';
+                    echo ($counts['em_andamento'] ?? 0) . ',';
+                    echo ($counts['concluida'] ?? 0) . ',';
+                    echo ($counts['cancelada'] ?? 0);
+                ?>],
+                backgroundColor: ['#ffc107', '#17a2b8', '#28a745', '#dc3545'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+
+    // Gráfico de Viagens
+    const viagensCtx = document.getElementById('viagensChart').getContext('2d');
+    new Chart(viagensCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Programada', 'Em Andamento', 'Concluída', 'Cancelada'],
+            datasets: [{
+                data: [<?php
+                    $result = $conn->query("SELECT statusViagens, COUNT(*) as count FROM Viagens GROUP BY statusViagens");
+                    $counts = [];
+                    while($row = $result->fetch_assoc()){
+                        $counts[$row['statusViagens']] = $row['count'];
+                    }
+                    echo ($counts['programada'] ?? 0) . ',';
+                    echo ($counts['em_andamento'] ?? 0) . ',';
+                    echo ($counts['concluida'] ?? 0) . ',';
+                    echo ($counts['cancelada'] ?? 0);
+                ?>],
+                backgroundColor: ['#007bff', '#ffc107', '#28a745', '#dc3545'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>
