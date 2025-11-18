@@ -1,20 +1,56 @@
-# TODO: Melhorar Páginas Admin e Associar Rotas aos Trens
+# TODO - Melhorar Páginas PHP do Sistema de Gerenciamento de Trens
 
-## Etapas
-- [x] Atualizar banco.sql: Adicionar coluna idRota em Trens (opcional)
-- [x] Melhorar CSS geral (dashboard3.css e cadastro.css) para design moderno
-- [x] Modificar criar_trem.php: Incluir seleção de rota
-- [x] Modificar listar_trens.php: Mostrar rota associada
-- [x] Melhorar UI de admin_dashboard.php
-  - [x] Atualizar html/admin_dashboard.php: Adicionar descrições breves, mensagem de boas-vindas no cabeçalho, link de logout
-  - [x] Atualizar css/dashboard3.css: Adicionar animações de fade-in, melhorar efeitos hover, espaçamento em mobile
-  - [x] Testar visualmente com browser_action (ferramenta desabilitada, mas alterações aplicadas)
-- [ ] Melhorar criar_rota.php
-- [ ] Melhorar listar_rotas.php
-- [ ] Melhorar criar_estacao.php
-- [ ] Melhorar listar_estacoes.php
-- [ ] Melhorar manutencao.php
-- [ ] Melhorar criar_manutencao.php
-- [ ] Melhorar relatorios.php
-- [ ] Melhorar cadastro.php
-- [ ] Testar visualmente com browser_action
+## Melhorar criar_rota.php
+- [x] Adicionar validação para garantir que origem e destino sejam diferentes
+- [x] Melhorar mensagens de erro/sucesso com estilos visuais (verde/vermelho)
+- [x] Adicionar botão de limpar formulário
+- [x] Melhorar responsividade do formulário
+
+## Melhorar listar_rotas.php
+- [x] Substituir lista por tabela para melhor visualização
+- [x] Adicionar botões de editar e deletar para cada rota
+- [ ] Adicionar paginação se houver muitas rotas
+- [x] Adicionar filtro/busca por nome da rota
+- [x] Criar editar_rota.php e deletar_rota.php
+
+## Melhorar criar_estacao.php
+- [ ] Adicionar validação de coordenadas geográficas
+- [ ] Melhorar mensagens de erro/sucesso
+- [ ] Adicionar botão de limpar formulário
+- [ ] Melhorar responsividade
+
+## Melhorar listar_estacoes.php
+- [ ] Substituir lista por tabela
+- [ ] Adicionar botões de editar e deletar
+- [ ] Adicionar paginação
+- [ ] Adicionar filtro/busca
+- [ ] Criar editar_estacao.php e deletar_estacao.php
+
+## Melhorar manutencao.php
+- [ ] Melhorar layout da lista de manutenções
+- [ ] Adicionar filtros por status/data
+- [ ] Adicionar paginação
+- [ ] Melhorar visual dos cards
+
+## Melhorar criar_manutencao.php
+- [ ] Adicionar validação de datas (não permitir datas passadas)
+- [ ] Melhorar mensagens de erro/sucesso
+- [ ] Adicionar botão de limpar
+- [ ] Melhorar responsividade
+
+## Melhorar relatorios.php
+- [ ] Adicionar gráficos simples (usando Chart.js ou similar)
+- [ ] Adicionar filtros por período
+- [ ] Melhorar layout dos cards de estatísticas
+- [ ] Adicionar opção de exportar relatórios (PDF/Excel)
+
+## Melhorar cadastro.php
+- [ ] Adicionar lista de usuários existentes com opção de editar/deletar
+- [ ] Melhorar validação de senha (mínimo de caracteres)
+- [ ] Adicionar confirmação de senha
+- [ ] Melhorar mensagens de erro/sucesso
+
+## Testar visualmente com browser_action
+- [ ] Testar todas as páginas melhoradas no navegador
+- [ ] Verificar responsividade em diferentes tamanhos de tela
+- [ ] Verificar funcionalidades de CRUD

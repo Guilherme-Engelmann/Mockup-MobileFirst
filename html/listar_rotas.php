@@ -15,6 +15,12 @@ if($result){
     }
     $result->free();
 }
+
+// Verificar se há mensagem de sucesso na URL
+$success_msg = "";
+if(isset($_GET['msg']) && $_GET['msg'] === 'rota_deletada'){
+    $success_msg = "Rota deletada com sucesso!";
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,22 +42,68 @@ if($result){
       </div>
     </div>
     <div class="dashboard-content">
+      <?php if($success_msg): ?><p class="message success"><?=$success_msg?></p><?php endif; ?>
       <?php if(empty($rotas)): ?>
         <p>Nenhuma rota cadastrada.</p>
       <?php else: ?>
-        <ul style="list-style: none; padding: 0;">
-          <?php foreach($rotas as $rota): ?>
-            <li style="border: 1px solid #ccc; margin: 10px 0; padding: 10px; border-radius: 5px;">
-              <strong><?=$rota['nomeRota']?></strong><br>
-              Origem: <?=$rota['origem']?> → Destino: <?=$rota['destino']?><br>
-              Distância: <?=$rota['distanciaTotal']?> km<br>
-              Tempo Médio: <?=$rota['tempoMedioPercurso']?>
-            </li>
-          <?php endforeach; ?>
-        </ul>
+        <div class="search-container" style="margin-bottom: 20px;">
+          <input type="text" id="searchInput" placeholder="Buscar rota por nome..." style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <table id="rotasTable" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <thead>
+            <tr style="background-color: #f5f5f5;">
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Nome da Rota</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Origem</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Destino</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Distância (km)</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Tempo Médio</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($rotas as $rota): ?>
+              <tr style="border: 1px solid #ddd;">
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong><?=$rota['nomeRota']?></strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['origem']?></td>
+                <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['destino']?></td>
+                <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['distanciaTotal']?></td>
+                <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['tempoMedioPercurso']?></td>
+                <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                  <button onclick="editarRota(<?=$rota['idRota']?>)" style="background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 5px;">Editar</button>
+                  <button onclick="deletarRota(<?=$rota['idRota']?>)" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Deletar</button>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       <?php endif; ?>
       <p style="text-align:center;margin-top:20px;"><a href="admin_dashboard.php">Voltar</a></p>
     </div>
   </div>
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#rotasTable tbody tr');
+
+    rows.forEach(row => {
+        const nomeRota = row.cells[0].textContent.toLowerCase();
+        if (nomeRota.includes(filter)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+
+function editarRota(id) {
+    window.location.href = 'editar_rota.php?id=' + id;
+}
+
+function deletarRota(id) {
+    if (confirm('Tem certeza que deseja deletar esta rota?')) {
+        window.location.href = 'deletar_rota.php?id=' + id;
+    }
+}
+</script>
 </body>
 </html>

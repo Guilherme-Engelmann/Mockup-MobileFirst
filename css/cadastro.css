@@ -200,14 +200,58 @@ a:hover {
     box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }
 
-p:not(:empty) {
+.message {
     padding: 15px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-    border: 1px solid #f39c12;
-    color: #333;
     font-weight: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 15px 0;
+}
+
+.message.success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 1px solid #28a745;
+    color: #155724;
+}
+
+.message.error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 1px solid #dc3545;
+    color: #721c24;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.form-buttons button {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.form-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.form-buttons button[type="button"] {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    box-shadow: 0 4px 16px rgba(108, 117, 125, 0.3);
+}
+
+.form-buttons button[type="button"]:hover {
+    box-shadow: 0 8px 24px rgba(108, 117, 125, 0.4);
 }
 
 @media (max-width: 480px) {
