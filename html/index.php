@@ -25,16 +25,38 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $dados = $result -> fetch_assoc();
     $stmt->close();
 
-    if($dados && password_verify($pass, $dados['senha'])){
-        
+    // Suporta senhas armazenadas como hash (password_hash) e também senhas legadas em texto puro
+    $login_ok = false;
+    if($dados){
+        $stored = $dados['senha'];
+        if(password_verify($pass, $stored)){
+            $login_ok = true;
+        } elseif($pass === $stored){
+            // Senha em texto puro - aceitar e atualizar para hash
+            $login_ok = true;
+            $newHash = password_hash($pass, PASSWORD_DEFAULT);
+            $upd = $conn->prepare("UPDATE Usuarios SET senha=? WHERE pk=?");
+            if($upd){
+                $upd->bind_param("si", $newHash, $dados['pk']);
+                $upd->execute();
+                $upd->close();
+            }
+        }
+    }
+
+    if($login_ok){
         session_regenerate_id(true);
         $_SESSION["user_pk"] = $dados["pk"];
         $_SESSION["username"] = $dados["username"];
         $_SESSION["cargo"] = $dados["cargo"];
-        if($dados["cargo"] == "func"){
+        // aceita tanto 'func' quanto 'adm' (registro usa 'adm') ou 'admin'
+        if(isset($dados["cargo"]) && $dados["cargo"] === "func"){
             header("Location: dashboard3.php");
-        }else{
+        }else if(isset($dados["cargo"]) && ($dados["cargo"] === "adm" || $dados["cargo"] === "admin")){
             header("Location: admin_dashboard.php");
+        } else {
+            // fallback: enviar ao dashboard de funcionário
+            header("Location: dashboard3.php");
         }
         exit;
 
@@ -87,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <form method="POST">
 
             <?php if($msg): ?> 
-                <p> <?= $msg ?> </p> 
+                <p> <?= htmlspecialchars($msg, ENT_QUOTES, 'UTF-8') ?> </p> 
             <?php endif; ?>
             
             <input type="text" name="username" placeholder="Usuário" required>

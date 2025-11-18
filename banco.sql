@@ -125,7 +125,7 @@ CREATE TABLE Usuarios (
 
 INSERT INTO Usuarios (username, senha, cargo, nome, funcao, linha, velocidade, codigo_barra) VALUES ('admin', '$2y$10$examplehashedpassword', 'admin', 'Administrador', 'Administrador', NULL, NULL, NULL);
 INSERT INTO Usuarios (username, senha, cargo, nome, funcao, linha, velocidade, codigo_barra) VALUES ('funcionario', '$2y$10$examplehashedpassword2', 'funcionario', 'Sergio Conceição', 'Maquinista', 157, 60, '0123456789');
-
+INSERT INTO Usuarios (username, senha, cargo, nome, funcao, linha, velocidade, codigo_barra) VALUES ('adm', '123', 'adm', 'Administrador', 'Administrador', NULL, NULL, NULL);
 CREATE INDEX idx_email ON Usuarios(email);
 
 CREATE TABLE Auditoria (
