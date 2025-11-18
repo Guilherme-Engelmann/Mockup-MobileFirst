@@ -18,8 +18,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_trem'])){
     $id_rota = intval($_POST['id_rota'] ?? 0);
 
     if($numero_serie && $modelo && $data_fab && $cap_pass && $cap_carga && $status){
-        $stmt = $conn->prepare("INSERT INTO Trens (numero_serie, modeloTrem, data_fabricacao, capacidade_passageiros, capacidade_carga, status_operacional, idRota) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ississi", $numero_serie, $modelo, $data_fab, $cap_pass, $cap_carga, $status, $id_rota ?: null);
+        $stmt = $conn->prepare("INSERT INTO Trens (numero_serie, modeloTrem, data_fabricacao, capacidade_passageiros, capacidade_carga, status_operacional) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ississ", $numero_serie, $modelo, $data_fab, $cap_pass, $cap_carga, $status);
         if($stmt->execute()){
             $msg = "Trem cadastrado com sucesso!";
         }else{
