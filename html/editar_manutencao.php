@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_manutencao'])){
     $status = trim($_POST['status'] ?? "");
 
     if($id_trem && $tipo && $descricao && $data_agendada && $custo >= 0 && $status){
-        // Validar data - não permitir datas passadas
+        
         $data_agendada_obj = new DateTime($data_agendada);
         $hoje = new DateTime();
         $hoje->setTime(0, 0, 0);
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_manutencao'])){
             if($stmt->execute()){
                 $msg = "Manutenção atualizada com sucesso!";
                 $msg_type = "success";
-                // Recarregar dados
+                
                 $stmt = $conn->prepare("SELECT * FROM Manutencoes WHERE idManutencoes = ?");
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_manutencao'])){
     }
 }
 
-// Buscar trens para dropdown
+
 $trens = [];
 $result = $conn->query("SELECT idTrem, numero_serie, modeloTrem FROM Trens ORDER BY numero_serie");
 if($result){
@@ -135,7 +135,7 @@ if($result){
 <script>
 function limparFormulario() {
     document.querySelector('form').reset();
-    // Limpar mensagens de erro/sucesso
+    
     const messages = document.querySelectorAll('.message');
     messages.forEach(msg => msg.remove());
 }

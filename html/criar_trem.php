@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_trem'])){
     }
 }
 
-// Buscar rotas para dropdown
+
 $rotas = [];
 $result = $conn->query("SELECT idRota, nomeRota FROM Rotas ORDER BY nomeRota");
 if($result){

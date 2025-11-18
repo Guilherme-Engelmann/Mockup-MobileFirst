@@ -14,7 +14,7 @@ if(!$id_estacao){
     exit;
 }
 
-// Buscar dados da estação
+
 $result = $conn->query("SELECT * FROM Estacoes WHERE idEstacao = $id_estacao");
 if(!$result || $result->num_rows === 0){
     header("Location: listar_estacoes.php");
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
     $tipo = trim($_POST['tipo'] ?? "");
 
     if($nome && $latitude && $longitude && $tipo){
-        // Validar coordenadas geográficas
+        
         if(!is_numeric($latitude) || $latitude < -90 || $latitude > 90){
             $msg = "Latitude deve estar entre -90 e 90 graus.";
             $msg_type = "error";
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
             $msg = "Longitude deve estar entre -180 e 180 graus.";
             $msg_type = "error";
         }else{
-            // Verificar se nome já existe (exceto para esta estação)
+           
             $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ? AND idEstacao != ?");
             $check_stmt->bind_param("si", $nome, $id_estacao);
             $check_stmt->execute();
@@ -109,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
 <script>
 function limparFormulario() {
     document.querySelector('form').reset();
-    // Limpar mensagens de erro/sucesso
+    
     const messages = document.querySelectorAll('.message');
     messages.forEach(msg => msg.remove());
 }

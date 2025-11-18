@@ -16,7 +16,7 @@ if($result){
     $result->free();
 }
 
-// Verificar se há mensagem de sucesso na URL
+
 $success_msg = "";
 if(isset($_GET['msg']) && $_GET['msg'] === 'rota_deletada'){
     $success_msg = "Rota deletada com sucesso!";
