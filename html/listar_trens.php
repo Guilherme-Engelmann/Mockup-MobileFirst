@@ -8,7 +8,7 @@ if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
 }
 
 $trens = [];
-$result = $conn->query("SELECT t.*, r.nomeRota FROM Trens t LEFT JOIN Rotas r ON t.idRota = r.idRota ORDER BY t.numero_serie");
+$result = $conn->query("SELECT t.*, r.nomeRota FROM Trens t LEFT JOIN Rotas r ON r.idRota = t.idRota ORDER BY t.numero_serie");
 if($result){
     while($row = $result->fetch_assoc()){
         $trens[] = $row;
