@@ -47,7 +47,7 @@ if(isset($_GET['msg']) && $_GET['msg'] === 'rota_deletada'){
         <p>Nenhuma rota cadastrada.</p>
       <?php else: ?>
         <div class="search-container" style="margin-bottom: 20px;">
-          <input type="text" id="searchInput" placeholder="Buscar rota por nome..." style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          <input type="text" id="searchInput" placeholder="Buscar rota por nome..." style="width: 100%; max-width: 400px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
         </div>
         <table id="rotasTable" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
           <thead>
@@ -69,8 +69,8 @@ if(isset($_GET['msg']) && $_GET['msg'] === 'rota_deletada'){
                 <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['distanciaTotal']?></td>
                 <td style="border: 1px solid #ddd; padding: 12px;"><?=$rota['tempoMedioPercurso']?></td>
                 <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
-                  <button onclick="editarRota(<?=$rota['idRota']?>)" style="background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 5px;">Editar</button>
-                  <button onclick="deletarRota(<?=$rota['idRota']?>)" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Deletar</button>
+                  <a href="editar_rota.php?id=<?=$rota['idRota']?>" style="background-color: #007bff; color: white; text-decoration: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; display: inline-block;">Editar</a>
+                  <a href="deletar_rota.php?id=<?=$rota['idRota']?>" onclick="return confirm('Tem certeza que deseja deletar esta rota?')" style="background-color: #dc3545; color: white; text-decoration: none; padding: 5px 10px; border-radius: 3px; display: inline-block;">Deletar</a>
                 </td>
               </tr>
             <?php endforeach; ?>
