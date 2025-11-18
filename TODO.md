@@ -3,8 +3,8 @@
 ## Etapas
 - [x] Atualizar banco.sql: Adicionar coluna idRota em Trens (opcional)
 - [x] Melhorar CSS geral (dashboard3.css e cadastro.css) para design moderno
-- [ ] Modificar criar_trem.php: Incluir seleção de rota
-- [ ] Modificar listar_trens.php: Mostrar rota associada
+- [x] Modificar criar_trem.php: Incluir seleção de rota
+- [x] Modificar listar_trens.php: Mostrar rota associada
 - [ ] Melhorar UI de admin_dashboard.php
 - [ ] Melhorar criar_rota.php
 - [ ] Melhorar listar_rotas.php
