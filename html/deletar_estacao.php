@@ -14,7 +14,7 @@ if(!$id_estacao){
     exit;
 }
 
-// Verificar se a estação existe
+
 $result = $conn->query("SELECT nomeEstacao FROM Estacoes WHERE idEstacao = $id_estacao");
 if(!$result || $result->num_rows === 0){
     header("Location: listar_estacoes.php");
@@ -23,7 +23,7 @@ if(!$result || $result->num_rows === 0){
 $estacao = $result->fetch_assoc();
 $result->free();
 
-// Verificar se a estação está sendo usada em rotas
+
 $check_rotas = $conn->query("SELECT COUNT(*) as total FROM Rotas WHERE estacaoOrigem = $id_estacao OR estacaoDestino = $id_estacao");
 $rotas_count = $check_rotas->fetch_assoc()['total'];
 $check_rotas->free();
