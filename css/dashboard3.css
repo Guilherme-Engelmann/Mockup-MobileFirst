@@ -60,16 +60,16 @@ body {
     flex: 1;
 }
 .header-icon {
-    color: #fff;
+    color: black;
     margin-right: 12px;
     font-size: 24px;
 }
 .header h2 {
-    color: #fff;
+    color: black;
     font-size: 2em;
     margin: 0;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
 }
 
 .welcome-message {
