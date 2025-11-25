@@ -2,7 +2,7 @@
 include "db.php";
 session_start();
 
-if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
+if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION["cargo"] !== "adm" )){
     header("Location: index.php");
     exit;
 }
@@ -59,22 +59,22 @@ if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
         </div>
         <div class="app-item">
           <img src="../imagens/mapa-rota.png" alt="Listar Estações">
-          <a href="listar_estacoes.php">Listar Estações</a>
+          <a href="html/listar_estacoes.php">Listar Estações</a>
           <p class="item-description">Ver todas as estações disponíveis</p>
         </div>
         <div class="app-item">
           <img src="../imagens/meusdados_logo.png" alt="Cadastrar Usuários">
-          <a href="cadastro.php">Cadastrar Usuário</a>
+          <a href="html/cadastro.php">Cadastrar Usuário</a>
           <p class="item-description">Adicionar novos usuários</p>
         </div>
         <div class="app-item">
           <img src="../imagens/manutenção.jpg" alt="Manutenções">
-          <a href="manutencao.php">Manutenções</a>
+          <a href="html/manutencao.php">Manutenções</a>
           <p class="item-description">Gerenciar manutenções de trens</p>
         </div>
         <div class="app-item">
           <img src="../imagens/dashboard.png" alt="Relatórios">
-          <a href="relatorios.php">Relatórios</a>
+          <a href="html/relatorios.php">Relatórios</a>
           <p class="item-description">Visualizar relatórios do sistema</p>
         </div>
       </div>

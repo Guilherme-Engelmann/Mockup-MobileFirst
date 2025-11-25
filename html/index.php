@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <div>
         <h3>Bem-vindo, <?= htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?>!</h3>
         <p>Sessão Ativa</p>
-        <?php if(isset($_SESSION["cargo"]) && $_SESSION["cargo"] === 'admin'): ?>
+        <?php if(isset($_SESSION["cargo"]) && ( $_SESSION["cargo"] === 'adm' || $_SESSION["cargo"] === 'admin')): ?>
             <form action="admin_dashboard.php" method="get">
                 <button type="submit">ADM</button>
             </form>

@@ -4,7 +4,7 @@ include "db.php";
 
 session_start();
 
-if(empty($_SESSION["user_pk"])){
+if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION["cargo"] !== "adm" )){
     header("Location: index.php");
     exit;
 };
