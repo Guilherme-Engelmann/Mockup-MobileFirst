@@ -130,7 +130,7 @@ body {
 }
 
 .app-item {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: silver;
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     display: flex;
