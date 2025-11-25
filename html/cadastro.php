@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
         </select>
         <button type="submit" name="register" value="1"> Cadastrar</button>
       </form>
-      <p style="text-align:center;margin-top:20px;"><a href="index.php">Voltar</a></p>
+      <p style="text-align:center;margin-top:20px;"><a href="admin_dashboard.php">Voltar</a></p>
     </div>
   </div>
 </body>
