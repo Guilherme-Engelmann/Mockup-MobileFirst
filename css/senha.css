@@ -76,16 +76,16 @@ body {
 }
 
 .login-container button[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: silver;
 }
 
 
 .login-container form button[type="submit"] {
-    background-color: #27ae60; 
+    background-color: silver; 
 }
 
 .login-container form button[type="submit"]:hover {
-    background-color: #229954;
+    background-color: silver;
 }
 
 .login-container a,
@@ -106,11 +106,11 @@ a:hover {
 }
 
 .login-container p.error {
-    color: #b20000;
-    background-color: #f9d6d5;
+    color: silver;
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
-    border-left: 4px solid #b20000;
+    border-left: 4px solid silver;
     margin-bottom: 15px;
 }
 

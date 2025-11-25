@@ -60,13 +60,13 @@ body {
 .login-container input[type="text"]:focus,
 .login-container input[type="password"]:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    border-color: silver;
+    box-shadow: black;
 }
 
 .login-container button[type="submit"] {
     padding: 12px;
-    background-color: #3498db;
+    background-color: silver;
     color: white;
     border: none;
     border-radius: 5px;
@@ -161,13 +161,13 @@ a:hover {
 }
 
 .header-icon {
-    color: #f39c12;
+    color: black;
     margin-right: 10px;
     font-size: 20px;
 }
 
 .header h2 {
-    color: #2c3e50;
+    color: black;
     font-size: 18px;
     margin: 0;
 }
