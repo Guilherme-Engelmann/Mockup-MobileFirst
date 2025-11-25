@@ -77,6 +77,16 @@ if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION[
           <a href="relatorios.php">Relatórios</a>
           <p class="item-description">Visualizar relatórios do sistema</p>
         </div>
+        <div class="app-item">
+          <img src="../imagens/notificação.avif" alt="Cadastrar Alerta/Notificação">
+          <a href="criar_alerta.php">Cadastrar Alerta/Notificação</a>
+          <p class="item-description">Adicionar novo alerta ou notificação</p>
+        </div>
+        <div class="app-item">
+          <img src="../imagens/notificação.avif" alt="Listar Alertas/Notificações">
+          <a href="listar_alertas.php">Listar Alertas/Notificações</a>
+          <p class="item-description">Visualizar todos os alertas e notificações</p>
+        </div>
       </div>
     </div>
   </div>

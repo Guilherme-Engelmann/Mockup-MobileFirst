@@ -23,8 +23,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
             $msg = "Já existe uma estação cadastrada com este nome.";
             $msg_type = "error";
         }else{
-            $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, tipoEstacao) VALUES (?, ?)");
-            $stmt->bind_param("ss", $nome, $tipo);
+            $null = NULL;
+            $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, latitude, longitude, tipoEstacao) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("sdds", $nome, $null, $null, $tipo);
             if($stmt->execute()){
                 $msg = "Estação cadastrada com sucesso!";
                 $msg_type = "success";
