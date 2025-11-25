@@ -61,6 +61,12 @@ h2 {
     margin: 0;
 }
 
+p {
+    color: black;
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
 .train-list {
     padding: 20px;
     background: white;
