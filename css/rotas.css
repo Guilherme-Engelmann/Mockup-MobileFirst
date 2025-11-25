@@ -37,7 +37,7 @@ body {
 
 .back-icon {
     font-size: 1.5em;
-    color: white;
+    color: black;
     text-decoration: none;
     margin-right: 15px;
     transition: color 0.3s ease;
@@ -45,7 +45,7 @@ body {
 }
 
 .back-icon:hover {
-    color: #e2e8f0;
+    color: black;
 }
 
 .icon-title {
