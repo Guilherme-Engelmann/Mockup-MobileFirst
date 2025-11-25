@@ -140,7 +140,7 @@ a:hover {
 
 .back-icon {
     font-size: 20px;
-    color: #3498db;
+    color: black;
     margin-right: 15px;
     padding: 10px;
     border-radius: 50%;
@@ -150,8 +150,8 @@ a:hover {
 }
 
 .back-icon:hover {
-    background-color: #ecf0f1;
-    color: #2980b9;
+    background-color: silver;
+    color: black;
 }
 
 .icon-title {
