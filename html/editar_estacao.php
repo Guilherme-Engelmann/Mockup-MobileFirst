@@ -2,7 +2,7 @@
 include "db.php";
 session_start();
 
-if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
+if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION["cargo"] !== "adm" )){
     header("Location: index.php");
     exit;
 }
@@ -13,7 +13,6 @@ if(!$id_estacao){
     header("Location: listar_estacoes.php");
     exit;
 }
-
 
 $result = $conn->query("SELECT * FROM Estacoes WHERE idEstacao = $id_estacao");
 if(!$result || $result->num_rows === 0){
@@ -27,41 +26,29 @@ $msg = "";
 $msg_type = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
     $nome = trim($_POST['nome'] ?? "");
-    $latitude = trim($_POST['latitude'] ?? "");
-    $longitude = trim($_POST['longitude'] ?? "");
     $tipo = trim($_POST['tipo'] ?? "");
 
-    if($nome && $latitude && $longitude && $tipo){
-        
-        if(!is_numeric($latitude) || $latitude < -90 || $latitude > 90){
-            $msg = "Latitude deve estar entre -90 e 90 graus.";
-            $msg_type = "error";
-        }elseif(!is_numeric($longitude) || $longitude < -180 || $longitude > 180){
-            $msg = "Longitude deve estar entre -180 e 180 graus.";
+    if($nome && $tipo){
+        $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ? AND idEstacao != ?");
+        $check_stmt->bind_param("si", $nome, $id_estacao);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        if($check_stmt->num_rows > 0){
+            $msg = "Já existe uma estação cadastrada com este nome.";
             $msg_type = "error";
         }else{
-           
-            $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ? AND idEstacao != ?");
-            $check_stmt->bind_param("si", $nome, $id_estacao);
-            $check_stmt->execute();
-            $check_stmt->store_result();
-            if($check_stmt->num_rows > 0){
-                $msg = "Já existe uma estação cadastrada com este nome.";
-                $msg_type = "error";
+            $stmt = $conn->prepare("UPDATE Estacoes SET nomeEstacao = ?, tipoEstacao = ? WHERE idEstacao = ?");
+            $stmt->bind_param("ssi", $nome, $tipo, $id_estacao);
+            if($stmt->execute()){
+                header("Location: listar_estacoes.php?msg=estacao_editada");
+                exit;
             }else{
-                $stmt = $conn->prepare("UPDATE Estacoes SET nomeEstacao = ?, latitude = ?, longitude = ?, tipoEstacao = ? WHERE idEstacao = ?");
-                $stmt->bind_param("sddsi", $nome, $latitude, $longitude, $tipo, $id_estacao);
-                if($stmt->execute()){
-                    header("Location: listar_estacoes.php?msg=estacao_editada");
-                    exit;
-                }else{
-                    $msg = "Erro ao editar estação: " . $conn->error;
-                    $msg_type = "error";
-                }
-                $stmt->close();
+                $msg = "Erro ao editar estação: " . $conn->error;
+                $msg_type = "error";
             }
-            $check_stmt->close();
+            $stmt->close();
         }
+        $check_stmt->close();
     }else{
         $msg = "Preencha todos os campos.";
         $msg_type = "error";
@@ -91,8 +78,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
         <h3>Editar Estação</h3>
         <?php if($msg): ?><p class="message <?=$msg_type?>"><?=$msg?></p><?php endif; ?>
         <input type="text" name="nome" placeholder="Nome da Estação" value="<?=$estacao['nomeEstacao']?>" required>
-        <input type="number" step="any" name="latitude" placeholder="Latitude" value="<?=$estacao['latitude']?>" required>
-        <input type="number" step="any" name="longitude" placeholder="Longitude" value="<?=$estacao['longitude']?>" required>
         <select name="tipo" required>
             <option value="">Selecione o Tipo</option>
             <option value="terminal" <?=$estacao['tipoEstacao'] === 'terminal' ? 'selected' : ''?>>Terminal</option>
@@ -109,7 +94,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
 <script>
 function limparFormulario() {
     document.querySelector('form').reset();
-    
     const messages = document.querySelectorAll('.message');
     messages.forEach(msg => msg.remove());
 }

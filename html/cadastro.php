@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
 <body>
   <div class="main-wrapper">
     <div class="header">
-      <a href="index.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+      <a href="admin_dashboard.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
       <div class="icon-title">
         <i class="fas fa-clipboard-list header-icon"></i>
         <h2>Cadastro de Novo Usuário</h2>

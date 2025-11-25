@@ -67,8 +67,6 @@ if(isset($_GET['msg'])){
             <tr style="background-color: #f5f5f5;">
               <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Nome da Estação</th>
               <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Tipo</th>
-              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Latitude</th>
-              <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Longitude</th>
               <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Ações</th>
             </tr>
           </thead>
@@ -77,8 +75,6 @@ if(isset($_GET['msg'])){
               <tr style="border: 1px solid #ddd;">
                 <td style="border: 1px solid #ddd; padding: 12px;"><strong><?=$estacao['nomeEstacao']?></strong></td>
                 <td style="border: 1px solid #ddd; padding: 12px;"><?=$estacao['tipoEstacao']?></td>
-                <td style="border: 1px solid #ddd; padding: 12px;"><?=$estacao['latitude']?></td>
-                <td style="border: 1px solid #ddd; padding: 12px;"><?=$estacao['longitude']?></td>
                 <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
                   <button onclick="editarEstacao(<?=$estacao['idEstacao']?>)" style="background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 5px;">Editar</button>
                   <button onclick="deletarEstacao(<?=$estacao['idEstacao']?>)" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Deletar</button>

@@ -1,8 +1,8 @@
-d<?php
+<?php
 include "db.php";
 session_start();
 
-if(empty($_SESSION["user_pk"]) || $_SESSION["cargo"] !== "admin"){
+if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION["cargo"] !== "adm" )){
     header("Location: index.php");
     exit;
 }
@@ -76,7 +76,8 @@ if($result){
       <form method="post" style="width:100%;max-width:500px;margin:0 auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <h3>Cadastrar Nova Manutenção</h3>
         <?php if($msg): ?><p class="message <?=$msg_type?>" style="padding: 10px; margin: 10px 0; border-radius: 5px; <?=$msg_type=='success'?'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;':'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'?>"><?=$msg?></p><?php endif; ?>
-        <select name="id_trem" required>
+        <label for="id_trem">Trem (Número de Série - Modelo):</label>
+        <select name="id_trem" id="id_trem" required>
             <option value="">Selecione o Trem</option>
             <?php foreach($trens as $trem): ?>
                 <option value="<?=$trem['idTrem']?>"><?=$trem['numero_serie']?> - <?=$trem['modeloTrem']?></option>

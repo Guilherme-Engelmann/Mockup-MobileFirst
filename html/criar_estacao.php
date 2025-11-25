@@ -11,41 +11,30 @@ $msg = "";
 $msg_type = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
     $nome = trim($_POST['nome'] ?? "");
-    $latitude = trim($_POST['latitude'] ?? "");
-    $longitude = trim($_POST['longitude'] ?? "");
     $tipo = trim($_POST['tipo'] ?? "");
 
-    if($nome && $latitude && $longitude && $tipo){
-        // Validar coordenadas geográficas
-        if(!is_numeric($latitude) || $latitude < -90 || $latitude > 90){
-            $msg = "Latitude deve estar entre -90 e 90 graus.";
-            $msg_type = "error";
-        }elseif(!is_numeric($longitude) || $longitude < -180 || $longitude > 180){
-            $msg = "Longitude deve estar entre -180 e 180 graus.";
+    if($nome && $tipo){
+        // Verificar se estação já existe
+        $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ?");
+        $check_stmt->bind_param("s", $nome);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        if($check_stmt->num_rows > 0){
+            $msg = "Já existe uma estação cadastrada com este nome.";
             $msg_type = "error";
         }else{
-            // Verificar se estação já existe
-            $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ?");
-            $check_stmt->bind_param("s", $nome);
-            $check_stmt->execute();
-            $check_stmt->store_result();
-            if($check_stmt->num_rows > 0){
-                $msg = "Já existe uma estação cadastrada com este nome.";
-                $msg_type = "error";
+            $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, tipoEstacao) VALUES (?, ?)");
+            $stmt->bind_param("ss", $nome, $tipo);
+            if($stmt->execute()){
+                $msg = "Estação cadastrada com sucesso!";
+                $msg_type = "success";
             }else{
-                $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, latitude, longitude, tipoEstacao) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("sdds", $nome, $latitude, $longitude, $tipo);
-                if($stmt->execute()){
-                    $msg = "Estação cadastrada com sucesso!";
-                    $msg_type = "success";
-                }else{
-                    $msg = "Erro ao cadastrar estação: " . $conn->error;
-                    $msg_type = "error";
-                }
-                $stmt->close();
+                $msg = "Erro ao cadastrar estação: " . $conn->error;
+                $msg_type = "error";
             }
-            $check_stmt->close();
+            $stmt->close();
         }
+        $check_stmt->close();
     }else{
         $msg = "Preencha todos os campos.";
         $msg_type = "error";
@@ -75,8 +64,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
         <h3>Cadastrar Nova Estação</h3>
         <?php if($msg): ?><p class="message <?=$msg_type?>"><?=$msg?></p><?php endif; ?>
         <input type="text" name="nome" placeholder="Nome da Estação" required>
-        <input type="number" step="any" name="latitude" placeholder="Latitude" required>
-        <input type="number" step="any" name="longitude" placeholder="Longitude" required>
         <select name="tipo" required>
             <option value="">Selecione o Tipo</option>
             <option value="terminal">Terminal</option>
