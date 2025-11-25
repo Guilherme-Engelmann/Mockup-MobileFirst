@@ -246,7 +246,7 @@ a {
     border-radius: 25px;
     background: silver;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    
 }
 
 a:hover {
