@@ -23,12 +23,8 @@ if(empty($_SESSION["user_pk"]) || ( $_SESSION["cargo"] !== "admin" && $_SESSION[
       <a href="index.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
       <div class="icon-title">
         <i class="fas fa-clipboard-list header-icon"></i>
-        <div>
-          <h2>Dashboard Admin</h2>
-          <p class="welcome-message">Bem-vindo, <?php echo htmlspecialchars($_SESSION["nome"] ?? "Admin"); ?>!</p>
-        </div>
+        <h2>Dashboard Admin</h2>
       </div>
-      <a href="logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> Sair</a>
     </div>
     <div class="dashboard-content">
       <div class="app-grid">
