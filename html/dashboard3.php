@@ -19,10 +19,6 @@
     <div class="dashboard-content">
       <div class="app-grid">
         <div class="app-item">
-          <img src="../imagens/dashboard.png" alt="Dashboard">
-          <a href="dashboardGeral.php">Dashboard</a>
-        </div>
-        <div class="app-item">
           <img src="../imagens/velocimetro.jpg" alt="Velocidade">
           <a href="velocidade.php">Velocidade</a>
         </div>
