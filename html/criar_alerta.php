@@ -117,7 +117,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_alerta'])){
           <button type="button" onclick="limparFormulario()">Limpar</button>
         </div>
       </form>
-      <p style="text-align:center;margin-top:20px;"><a href="alertas.php">Voltar</a></p>
+      <p style="text-align:center;margin-top:20px;"><a href="admin_dashboard.php">Voltar</a></p>
     </div>
   </div>
 <script>
