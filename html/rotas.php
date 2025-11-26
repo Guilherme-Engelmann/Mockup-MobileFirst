@@ -36,7 +36,7 @@
           $result->free();
       }
       if(empty($rotas)){
-          echo "<img src='../imagens/ferrorama.png' alt='Nenhuma rota cadastrada' style='width: 100%; max-width: 300px; margin: 20px auto; display: block;'>";
+          echo "<img src='../imagens/ferrorama.png' alt='Nenhuma rota cadastrada' style='width: 100%; max-width: 500px; margin: 20px auto; display: block;'>";
           echo "<p>Nenhuma rota cadastrada.</p>";
       }else{
           foreach($rotas as $index => $rota){
