@@ -63,7 +63,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])){
         <input type="text" name="new_username" placeholder="Novo Usuário" required>
         <input type="password" name="new_password" placeholder="Nova Senha" required>
         <select name="new_func">
-            <option value="adm">ADM</option>
             <option value="func" selected>FUNC</option>
         </select>
         <button type="submit" name="register" value="1"> Cadastrar</button>
