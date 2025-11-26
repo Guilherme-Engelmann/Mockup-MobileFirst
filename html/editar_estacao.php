@@ -27,8 +27,10 @@ $msg_type = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
     $nome = trim($_POST['nome'] ?? "");
     $tipo = trim($_POST['tipo'] ?? "");
+    $latitude = floatval($_POST['latitude'] ?? 0);
+    $longitude = floatval($_POST['longitude'] ?? 0);
 
-    if($nome && $tipo){
+    if($nome && $tipo && $latitude && $longitude){
         $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ? AND idEstacao != ?");
         $check_stmt->bind_param("si", $nome, $id_estacao);
         $check_stmt->execute();
@@ -37,8 +39,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
             $msg = "Já existe uma estação cadastrada com este nome.";
             $msg_type = "error";
         }else{
-            $stmt = $conn->prepare("UPDATE Estacoes SET nomeEstacao = ?, tipoEstacao = ? WHERE idEstacao = ?");
-            $stmt->bind_param("ssi", $nome, $tipo, $id_estacao);
+            $stmt = $conn->prepare("UPDATE Estacoes SET nomeEstacao = ?, tipoEstacao = ?, latitude = ?, longitude = ? WHERE idEstacao = ?");
+            $stmt->bind_param("ssddi", $nome, $tipo, $latitude, $longitude, $id_estacao);
             if($stmt->execute()){
                 header("Location: listar_estacoes.php?msg=estacao_editada");
                 exit;
@@ -84,6 +86,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editar_estacao'])){
             <option value="intermediaria" <?=$estacao['tipoEstacao'] === 'intermediaria' ? 'selected' : ''?>>Intermediária</option>
             <option value="final" <?=$estacao['tipoEstacao'] === 'final' ? 'selected' : ''?>>Final</option>
         </select>
+        <input type="number" name="latitude" placeholder="Latitude" step="0.01" value="<?=$estacao['latitude']?>" required>
+        <input type="number" name="longitude" placeholder="Longitude" step="0.01" value="<?=$estacao['longitude']?>" required>
         <div class="form-buttons">
           <button type="submit" name="editar_estacao" value="1">Salvar Alterações</button>
           <button type="button" onclick="limparFormulario()">Limpar</button>

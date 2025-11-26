@@ -12,8 +12,10 @@ $msg_type = "";
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
     $nome = trim($_POST['nome'] ?? "");
     $tipo = trim($_POST['tipo'] ?? "");
+    $latitude = floatval($_POST['latitude'] ?? 0);
+    $longitude = floatval($_POST['longitude'] ?? 0);
 
-    if($nome && $tipo){
+    if($nome && $tipo && $latitude && $longitude){
         // Verificar se estação já existe
         $check_stmt = $conn->prepare("SELECT idEstacao FROM Estacoes WHERE nomeEstacao = ?");
         $check_stmt->bind_param("s", $nome);
@@ -23,9 +25,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
             $msg = "Já existe uma estação cadastrada com este nome.";
             $msg_type = "error";
         }else{
-            $null = NULL;
             $stmt = $conn->prepare("INSERT INTO Estacoes (nomeEstacao, latitude, longitude, tipoEstacao) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("sdds", $nome, $null, $null, $tipo);
+            $stmt->bind_param("sdds", $nome, $latitude, $longitude, $tipo);
             if($stmt->execute()){
                 $msg = "Estação cadastrada com sucesso!";
                 $msg_type = "success";
@@ -71,6 +72,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['criar_estacao'])){
             <option value="intermediaria">Intermediária</option>
             <option value="final">Final</option>
         </select>
+        <input type="number" name="latitude" placeholder="Latitude" step="0.01" required>
+        <input type="number" name="longitude" placeholder="Longitude" step="0.01" required>
         <div class="form-buttons">
           <button type="submit" name="criar_estacao" value="1">Cadastrar</button>
           <button type="button" onclick="limparFormulario()">Limpar</button>
