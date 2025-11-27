@@ -35,12 +35,20 @@ body {
     justify-content: space-between;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid silver;
 }
 
+a.back-icon {
+    background: radial-gradient(circle at center, #0b1b3b, #08142a);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    font-size: 2em;
+    margin: 0;
+    font-weight: 700;
+    
+}
 .back-icon {
     font-size: 22px;
-    color: #fff;
+    color: white;
     margin-right: 22px;
     padding: 12px;
     border-radius: 50%;
@@ -49,8 +57,8 @@ body {
     display: inline-block;
 }
 .back-icon:hover {
-    background-color: silver;
-    color: #fff;
+    background-color: radial-gradient(circle at center, #0b1b3b, #08142a);
+    color: 0 2px 8px rgba(0,0,0,0.07);
     transform: scale(1.1);
 }
 
