@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: silver;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -52,14 +52,14 @@ body {
     top: 20px;
     left: 20px;
     font-size: 24px;
-    color: #667eea;
+    color: silver;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .back-icon:hover {
     transform: scale(1.2);
-    color: #764ba2;
+    color: gray;
 }
 
 .icon-title {
@@ -69,7 +69,7 @@ body {
 }
 
 .header-icon {
-    color: #667eea;
+    color: silver;
     margin-right: 10px;
     font-size: 28px;
 }
@@ -157,7 +157,7 @@ select {
 
 button[type="submit"] {
     width: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: gray;
     color: #ffffff;
     border: none;
     padding: 15px;
@@ -182,11 +182,11 @@ button[type="submit"]:active {
 a {
     display: block;
     text-align: center;
-    color: #667eea;
+    color: gray;
     text-decoration: none;
     margin-top: 20px;
     padding: 12px 24px;
-    border: 2px solid #667eea;
+    border: 2px solid gray;
     border-radius: 12px;
     background: transparent;
     transition: all 0.3s ease;
@@ -194,7 +194,7 @@ a {
 }
 
 a:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: gray
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
@@ -228,7 +228,7 @@ a:hover {
 
 .form-buttons button {
     flex: 1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: silver;
     color: #ffffff;
     border: none;
     padding: 15px;
